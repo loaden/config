@@ -1,0 +1,18 @@
+font:
+  normal:
+    family:  Migu 1M
+    style: Regular
+
+  bold:
+    family: Migu 1M
+    style: Bold
+
+  italic:
+    family: Migu 1M
+    style: Italic
+
+  bold_italic:
+    family: Migu 1M
+    style: Bold Italic
+
+  size: 12
