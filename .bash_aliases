@@ -1,6 +1,0 @@
-alias y='./you-get'
-alias yp='./you-get --playlist'
-alias y7='./you-get --format=dash-flv720'
-alias y1='./you-get --format=dash-flv'
-alias yp7='./you-get --playlist --format=dash-flv720'
-alias yp1='./you-get --playlist --format=dash-flv'

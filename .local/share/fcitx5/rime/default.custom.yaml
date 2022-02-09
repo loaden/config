@@ -1,0 +1,52 @@
+# default.custom.yaml
+# save it to:
+#   ~/.config/ibus/rime (Linux)
+#   ~/Library/Rime      (macOS)
+#   %APPDATA%\Rime      (Windows)
+
+patch:
+  schema_list:
+    - schema: wubi_pinyin
+    - schema: luna_pinyin
+    - schema: wubi86
+    - schema: wubi_trad
+  menu:
+    page_size: 5  # 候选词数量
+  switcher:
+    caption: 〔输入法设置〕
+    hotkeys:
+      - Control+0
+      - Control+grave
+      - Control+Shift+grave
+      - F4
+    fold_options: true
+    abbreviate_options: true
+    option_list_separator: "｜"
+
+  # 中英文切换键
+  # inline_ascii  在输入法的临时英文编辑区内输入字母，数字，符号，空格等，回车上屏后自动复位到中文
+  # commit_text   已输入的候选文字上屏并切换至英文输入模式
+  # commit_code   已输入的编码字符上屏并切换至英文输入模式
+  # clear         清除已输入的编码并切换至英文输入模式
+  # noop          保留该键原始功能，不做任何处理
+  ascii_composer:
+    good_old_caps_lock: true  # true切换大小写，false禁止切换大小写
+    switch_key:
+      Caps_Lock: clear
+      Shift_L: commit_code # macOS 不区分左右，右Shift与左Shift功能相同
+      Shift_R: commit_code
+      Control_L: noop
+      Control_R: noop
+
+  # 翻页选择功能键
+  key_binder:
+    bindings:
+      - { when: has_menu, accept: minus, send: Page_Up }              # - 向后翻页
+      - { when: has_menu, accept: equal, send: Page_Down }            # = 向前翻页
+      - { when: paging, accept: comma, send: Page_Up }                # , 向后翻页
+      - { when: has_menu, accept: period, send: Page_Down }           # . 向前翻页
+      - { when: has_menu, accept: semicolon, send: 2 }                # ; 候选2
+      - { when: has_menu, accept: apostrophe, send: 3 }               # ' 候选3
+      - { when: always, accept: Control+comma, toggle: full_shape }   # Control+, 半角/全角
+      - { when: always, accept: Control+period, toggle: ascii_punct } # Control+. .,/。，
+    import_preset: default
