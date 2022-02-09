@@ -19,7 +19,33 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run | xargs swaymsg exec --
+set $menu wofi --show drun | xargs swaymsg exec --
+
+# 输入法
+exec_always fcitx5 -d --replace
+
+# 密码验证
+exec_always /usr/libexec/polkit-gnome-authentication-agent-1
+
+# 区域截图并拷贝到剪贴板
+bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | wl-copy
+
+# 全屏截图并保存
+bindsym $mod+Print exec grim
+bindsym $mod+Insert exec grim
+
+# 音量控制
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# GTK主题
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Numix'
+    gsettings set $gnome-schema icon-theme 'Numix'
+    gsettings set $gnome-schema font-name 'Sans 11'
+}
 
 ### Output configuration
 #
