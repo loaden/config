@@ -37,7 +37,8 @@ exec_always /usr/libexec/polkit-gnome-authentication-agent-1
 exec_always mako
 
 # 保护视力
-exec_always wlsunset -t 5500
+exec_always killall -9 wlsunset && wlsunset -t 5500
+bindsym Ctrl+Shift+Alt+N exec killall -9 wlsunset && wlsunset -t 4500
 
 # 截图
 bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
