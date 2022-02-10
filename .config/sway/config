@@ -36,12 +36,14 @@ exec_always mako
 # 保护视力
 exec_always wlsunset -t 5500
 
-# 区域截图并拷贝到剪贴板
-bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | wl-copy
-
-# 全屏截图并保存
-bindsym $mod+Print exec grim
-bindsym $mod+Insert exec grim
+# 截图
+bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
+bindsym $mod+Insert exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
+    && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
+    && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
+bindsym $mod+Print exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
+    && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
+    && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
 
 # 媒体控制
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
