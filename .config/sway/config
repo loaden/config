@@ -21,6 +21,9 @@ set $term alacritty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun | xargs swaymsg exec --
 
+# 不显示标题
+default_border pixel
+
 # 输入法
 exec_always fcitx5 -d --replace
 
@@ -44,7 +47,7 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Numix'
-    gsettings set $gnome-schema font-name 'Sans 11'
+    gsettings set $gnome-schema font-name 'Sans 10'
 }
 
 ### Output configuration
