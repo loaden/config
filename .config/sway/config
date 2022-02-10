@@ -21,6 +21,9 @@ set $term alacritty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi -I -m --show=drun --prompt="" | xargs swaymsg exec --
 
+# 修正屏幕共享
+exec --no-startup-id dbus-update-activation-environment --all
+
 # 不显示标题
 default_border pixel
 
@@ -61,9 +64,10 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # GTK主题
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Numix'
-    gsettings set $gnome-schema icon-theme 'Numix'
-    gsettings set $gnome-schema font-name 'Sans 10'
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'sans-serif 10'
 }
 
 ### Output configuration

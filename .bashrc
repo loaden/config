@@ -30,3 +30,7 @@ export XMODIFIERS=@im=fcitx5
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export SDL_IM_MODULE=fcitx5
+export MOZ_DBUS_REMOTE=1
+export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
