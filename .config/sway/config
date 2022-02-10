@@ -19,7 +19,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show drun | xargs swaymsg exec --
+set $menu wofi -I -m --show drun | xargs swaymsg exec --
 
 # 不显示标题
 default_border pixel
@@ -30,6 +30,12 @@ exec_always fcitx5 -d --replace
 # 密码验证
 exec_always /usr/libexec/polkit-gnome-authentication-agent-1
 
+# 消息通知
+exec_always mako
+
+# 保护视力
+exec_always wlsunset -t 5500
+
 # 区域截图并拷贝到剪贴板
 bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | wl-copy
 
@@ -37,10 +43,18 @@ bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+Print exec grim
 bindsym $mod+Insert exec grim
 
-# 音量控制
+# 媒体控制
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# 屏幕亮度控制
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 # GTK主题
 set $gnome-schema org.gnome.desktop.interface
