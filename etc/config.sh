@@ -5,6 +5,7 @@
 # 启动单元初始化配置
 sudo systemd-machine-id-setup
 sudo systemctl preset-all --preset-mode=enable-only
+sudo systemctl --global enable pipewire.socket
 
 # 主机名
 read -p "Please input the hostname: " hostname
