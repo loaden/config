@@ -1,0 +1,3 @@
+app-i18n/fcitx5-configtool -kcm
+app-i18n/fcitx5-qt qt5
+app-text/xmlto text
