@@ -19,7 +19,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi -I -m --show drun | xargs swaymsg exec --
+set $menu wofi -I -m --show=drun --prompt="" | xargs swaymsg exec --
 
 # 不显示标题
 default_border pixel
