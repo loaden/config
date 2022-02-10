@@ -19,7 +19,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi -I -m --show=drun --prompt="" | xargs swaymsg exec --
+set $menu wofi -I -m --show=drun --prompt=""
 
 # 修正屏幕共享
 exec --no-startup-id dbus-update-activation-environment --all
@@ -38,10 +38,10 @@ exec_always mako
 
 # 保护视力
 exec_always killall -9 wlsunset && wlsunset -t 5500
-bindsym Ctrl+Shift+Alt+N exec killall -9 wlsunset && wlsunset -t 4500
+bindsym $mod+n exec killall -9 wlsunset && wlsunset -t 4500
 
 # 截图
-bindsym Ctrl+Alt+A exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
+bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 bindsym $mod+Insert exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
     && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
     && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
@@ -262,17 +262,18 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    swaybar_command waybar
+    # position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
 }
 
 include /etc/sway/config.d/*
