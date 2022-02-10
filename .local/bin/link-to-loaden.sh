@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 if [ `whoami` == "loaden" ]; then
     echo "当前用户loaden不可执行该脚本，危险！"
@@ -90,4 +91,3 @@ ln -s /home/loaden/文档 ~
 ln -s /home/loaden/音乐 ~
 ln -s /home/loaden/图片 ~
 ln -s /home/loaden/视频 ~
-

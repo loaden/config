@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 read -p "是否安装Flatpak到用户目录？[y/N]" choice
 case $choice in
@@ -33,4 +34,3 @@ fi
 
 
 flatpak remote-list --columns=name,title,options,priority,url
-

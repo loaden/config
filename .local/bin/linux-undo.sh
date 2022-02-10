@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 sudo chmod 0640 /etc/shadow
 sudo chmod 0644 /etc/passwd
@@ -26,4 +27,3 @@ sudo touch -d "2021-05-27 03:15:55" /usr/bin/idevicegs
 sudo touch -d "2021-08-17 16:37:08" /usr/bin/idevicesu
 sudo touch -d "2021-07-23 21:18:31" /usr/bin/ideviceui
 sudo touch -d "2021-09-01 23:14:48" /usr/bin/idevicegi
-

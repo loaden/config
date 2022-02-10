@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 for file in `find . -type f -a -name '*-*.mp4'`
 do

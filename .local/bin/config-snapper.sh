@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 # 确认普通用户执行
 if [ $EUID = 0 ]; then
@@ -144,4 +145,3 @@ if [[ -z $(systemctl status snapper-cleanup.timer 2>/dev/null |grep '; enabled;'
     sudo systemctl enable snapper-cleanup.timer
     sudo systemctl start snapper-cleanup.timer
 fi
-

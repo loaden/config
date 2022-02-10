@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 kill -9 `pgrep wine` &> /dev/null
 kill -9 `ps aux |grep -i "C:" |grep "exe" |egrep -i "Windows|Program" |grep -v grep |awk '{print $2}'` &> /dev/null

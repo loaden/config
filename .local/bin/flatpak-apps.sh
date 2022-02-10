@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 #如果下载速度慢，请修改成国内镜像源
 #参考1：https://zh.fedoracommunity.org/2020/05/13/try-on-flatpak-mainland-china-mirror.html
@@ -32,7 +33,7 @@ fi
 function install_app()
 {
     [ -z $1 ] && echo empty arg '$1' && return
-    
+
     if [[ -z $(flatpak list --app |grep $1) ]]; then
         flatpak install $TARGET -y $1
     fi
@@ -74,4 +75,3 @@ install_app org.kde.index
 install_app org.ksnip.ksnip
 install_app org.remmina.Remmina
 #install_app org.stellarium.Stellarium
-

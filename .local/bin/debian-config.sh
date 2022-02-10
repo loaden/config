@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 source `dirname ${BASH_SOURCE[0]}`/debian-apps.sh
 
@@ -25,4 +26,3 @@ sudo apt purge transmission* -y
 sudo apt purge xiterm+thai -y
 sudo apt purge xterm -y
 sudo apt autopurge -y
-

@@ -1,5 +1,6 @@
 #!/bin/bash
-# 维护：Yuchen Deng [Zz] QQ群：19346666、111601117
+# 维护：Yuchen Deng [loaden] 钉钉群：35948877
+# QQ群：19346666、111601117
 
 ###steam###begin###
 #sudo dpkg --add-architecture i386
@@ -62,4 +63,3 @@ sudo systemctl enable sshd.service
 sudo systemctl start sshd.service
 
 sudo apt autopurge -y
-
