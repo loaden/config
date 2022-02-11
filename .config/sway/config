@@ -19,7 +19,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi -I -m --show=drun --prompt=""
+set $menu wofi -I -m --show=drun --prompt="Hi..."
 
 # 修正屏幕共享
 exec --no-startup-id dbus-update-activation-environment --all
@@ -37,8 +37,9 @@ exec_always /usr/libexec/polkit-gnome-authentication-agent-1
 exec_always mako
 
 # 保护视力
-exec_always killall -9 wlsunset && wlsunset -t 5500
-bindsym $mod+n exec killall -9 wlsunset && wlsunset -t 4500
+set $sunset 'bash -c "killall -9 wlsunset >/dev/null 2>&1 & echo > /dev/null" && sleep 0.1 && wlsunset -T 5500 -t 4000 -l 37.4 -L 118.0'
+exec_always $sunset
+bindsym $mod+n exec $sunset
 
 # 截图
 bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
