@@ -37,7 +37,7 @@ exec_always /usr/libexec/polkit-gnome-authentication-agent-1
 exec_always mako
 
 # 保护视力
-set $sunset 'bash -c "killall -9 wlsunset >/dev/null 2>&1 & echo > /dev/null" && sleep 0.1 && wlsunset -T 5500 -t 4000 -l 37.4 -L 118.0'
+set $sunset $$(killall -9 wlsunset -q || /bin/true) && wlsunset -T 5500 -t 4000 -l 37.4 -L 118.0
 exec_always $sunset
 bindsym $mod+n exec $sunset
 
