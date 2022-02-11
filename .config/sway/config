@@ -40,6 +40,8 @@ exec_always mako
 set $sunset $$(killall -9 wlsunset -q || /bin/true) && wlsunset -T 5500 -t 4000 -l 37.4 -L 118.0
 exec_always $sunset
 bindsym $mod+n exec $sunset
+bindsym $mod+Shift+n exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -t 4500 -s $(date "+%H:%M")
+bindsym $mod+Shift+d exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -T 6000 -t 5999 -S $(date "+%H:%M")
 
 # 截图
 bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
