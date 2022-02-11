@@ -37,7 +37,17 @@ window#waybar.hidden {
     border-bottom: 3px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
+#taskbar, #custom-time, #custom-power {
+    padding: 0 3px;
+    margin: 0 1px;
+}
+
+#taskbar button {
+    padding: 0 5px;
+    margin: 0 1px;
+}
+
+#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 1px;
 }
@@ -126,7 +136,7 @@ window#waybar.hidden {
 }
 
 #tray {
-    background-color: #f07cf0;
+    background-color: @theme_base_color;
 }
 
 #idle_inhibitor {

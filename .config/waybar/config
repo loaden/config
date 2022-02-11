@@ -2,33 +2,103 @@
     "layer": "top",
     "position": "top",
     "height": 20,
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "temperature", "cpu", "memory", "battery", "clock", "custom/china"],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "disable-click": true,
+    "fixed-center": false,
+    "modules-left": [
+        "custom/launcher",
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "wlr/taskbar",
+        "tray",
+        "pulseaudio",
+        "keyboard-state",
+        "network",
+        "temperature",
+        "cpu",
+        "memory",
+        "battery",
+        "clock",
+        "custom/time",
+        "idle_inhibitor",
+        "custom/power"
+    ],
+    "custom/launcher": {
+        "format": "",
+        "on-click": "wofi -I -m --show=drun --prompt=''",
+        "tooltip": false
+    },
+    "sway/mode": {
+        "format": " {}",
+        "max-length": 30
+    },
+    "sway/window": {
+        "max-length": 60,
+        "rewrite": {
+            "(.*) - Visual Studio Code": "Code : $1"
+        }
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "Alacritty"
+        ]
     },
     "tray": {
-        "spacing": 10,
+        "spacing": 10
     },
-    "clock": {
-        "format": "{:%a %Y %b %d}"
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": "🎜"
+        },
+        "scroll-step": 1,
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
-    "custom/china": {
-        "format": "{}",
-        "exec": "TZ=Asia/Shanghai date \"+%H:%M:%S %Z\"",
-        "interval": 1,
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "family": "ipv4",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}"
+    },
+    "temperature": {
+        "critical-threshold": 75,
+        "format": " {temperatureC}°C"
     },
     "cpu": {
         "format": " {usage}%"
     },
     "memory": {
         "format": " {}%"
-    },
-    "temperature": {
-        "critical-threshold": 75,
-        "format": " {temperatureC}°C"
     },
     "battery": {
         "bat": "BAT0",
@@ -39,19 +109,33 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-disconnected": "⚠ Disconnected"
+    "clock": {
+        "format": "{:%a %Y %b %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
+    "custom/time": {
+        "format": "{}",
+        "exec": "TZ=Asia/Shanghai date \"+%H:%M:%S\"",
+        "interval": 1,
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
         "format-icons": {
-            "headphones": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
+            "activated": "",
+            "deactivated": ""
+        }
     },
+    "custom/power": {
+        "format": "",
+        "on-click": "swaynag -t warning -m '电源菜单选项' -b '注销' 'swaymsg exit' -b '重启' 'shutdown -r now' -b '关机' 'shutdown -h now'"
+    }
 }

@@ -37,7 +37,7 @@ sudo eselect repository enable gentoo-zh
 sudo emaint --fix cleanresume
 
 # 配置默认终端
-sudo chsh -s /bin/fish $USER
+sudo chsh -s /bin/bash $USER
 
 # 重载UDEV规则
 sudo udevadm control --reload

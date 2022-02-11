@@ -15,7 +15,6 @@ app-misc/neofetch
 app-office/wps-office
 app-portage/gentoolkit
 app-shells/bash-completion
-app-shells/fish
 dev-libs/wayland
 dev-util/catfish
 dev-util/meld
@@ -26,6 +25,7 @@ gui-apps/grim
 gui-apps/mako
 gui-apps/slurp
 gui-apps/swappy
+gui-apps/waybar
 gui-apps/wl-clipboard
 gui-apps/wlsunset
 gui-apps/wofi
