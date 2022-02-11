@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: 'Font Awesome 5', sans-serif;
+    font-family: Font Awesome, sans-serif;
     font-size: 13px;
     min-height: 0;
 }
@@ -119,14 +119,6 @@ window#waybar.hidden {
     color: #2a5c45;
 }
 
-.custom-spotify {
-    background: #66cc99;
-}
-
-.custom-vlc {
-    background: #ffa000;
-}
-
 #temperature {
     background: #f0932b;
 }
@@ -136,11 +128,11 @@ window#waybar.hidden {
 }
 
 #tray {
-    background-color: @theme_base_color;
+    background-color: shade(@theme_base_color, 1.25);
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: shade(@theme_base_color, 0.75);
 }
 
 #idle_inhibitor.activated {

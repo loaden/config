@@ -4,7 +4,6 @@
     "height": 20,
     "fixed-center": false,
     "modules-left": [
-        "custom/launcher",
         "sway/workspaces",
         "sway/mode"
     ],
@@ -27,8 +26,8 @@
         "custom/power"
     ],
     "custom/launcher": {
-        "format": "",
-        "on-click": "wofi -I -m --show=drun --prompt=''",
+        "format": "",
+        "on-click": "wofi -I -m --show=drun --prompt='Hi...'",
         "tooltip": false
     },
     "sway/mode": {
@@ -135,7 +134,7 @@
         }
     },
     "custom/power": {
-        "format": "",
+        "format": "",
         "on-click": "swaynag -t warning -m '电源菜单选项' -b '注销' 'swaymsg exit' -b '重启' 'shutdown -r now' -b '关机' 'shutdown -h now'"
     }
 }
