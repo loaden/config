@@ -82,6 +82,7 @@ x11-misc/qt5ct
 x11-misc/stalonetray
 x11-misc/xdg-user-dirs
 x11-terms/alacritty
+x11-themes/adwaita-qt
 x11-themes/papirus-icon-theme
 xfce-base/thunar
 xfce-extra/thunar-archive-plugin
