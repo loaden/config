@@ -43,6 +43,9 @@ bindsym $mod+n exec $sunset
 bindsym $mod+Shift+n exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -t 4500 -s $(date "+%H:%M")
 bindsym $mod+Shift+d exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -T 6000 -t 5999 -S $(date "+%H:%M")
 
+# 单击取色到剪贴板
+bindsym $mod+Ctrl+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+
 # 截图
 bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 bindsym $mod+Insert exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
