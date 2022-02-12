@@ -37,3 +37,6 @@
 # required by gui-apps/waybar-0.9.9::gentoo
 # required by waybar (argument)
 =dev-libs/date-3.0.0 ~amd64
+
+# required by featherpad (argument)
+=app-editors/featherpad-1.1.0 ~amd64
