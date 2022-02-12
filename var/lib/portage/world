@@ -26,7 +26,6 @@ dev-util/meld
 dev-vcs/git
 games-board/gnome-mines
 gnome-extra/gnome-system-monitor
-gnome-extra/polkit-gnome
 gui-apps/grim
 gui-apps/mako
 gui-apps/slurp
