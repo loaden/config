@@ -61,7 +61,6 @@ net-wireless/iw
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/pciutils
-sys-apps/systemd
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
@@ -73,7 +72,6 @@ sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
 sys-process/htop
-virtual/udev
 www-client/firefox
 x11-apps/xlsclients
 x11-libs/libXv
@@ -86,4 +84,5 @@ x11-themes/papirus-icon-theme
 xfce-base/thunar
 xfce-extra/thunar-archive-plugin
 xfce-extra/thunar-media-tags-plugin
+xfce-extra/thunar-volman
 xfce-extra/tumbler

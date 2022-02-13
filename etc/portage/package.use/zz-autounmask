@@ -25,3 +25,10 @@
 # required by app-shells/fish-3.3.1-r1::gentoo
 # required by fish (argument)
 >=dev-libs/libpcre2-10.39 pcre32
+# required by xfce-extra/thunar-volman-4.16.0::gentoo
+# required by thunar-volman (argument)
+>=xfce-base/thunar-4.16.10 udisks
+# required by xfce-base/thunar-4.16.10::gentoo[udisks]
+# required by xfce-extra/thunar-volman-4.16.0::gentoo
+# required by thunar-volman (argument)
+>=gnome-base/gvfs-1.48.1-r1 udisks

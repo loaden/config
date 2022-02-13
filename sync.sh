@@ -3,10 +3,11 @@
 # QQ群：19346666、111601117
 
 # etc
+rm -rf etc/portage/
+mkdir etc/portage
 cp -r /etc/portage/make.conf etc/portage/make.conf
 cp -r /etc/portage/repos.conf/ etc/portage/
 cp -r /etc/portage/package.accept_keywords/ etc/portage/
-cp -r /etc/portage/package.accept_keywords/ package.use
 cp -r /etc/portage/package.mask/ etc/portage/
 cp -r /etc/portage/package.use/ etc/portage/
 
