@@ -71,6 +71,8 @@ sys-kernel/genkernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
+sys-power/acpid
+sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
