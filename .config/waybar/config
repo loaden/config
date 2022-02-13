@@ -153,6 +153,7 @@
     },
     "custom/power": {
         "format": "",
-        "on-click": "swaynag -t warning -m '电源菜单选项' -b '注销' 'swaymsg exit' -b '重启' 'shutdown -r now' -b '关机' 'shutdown -h now'"
+        "on-click": "swaynag -t warning -m '电源菜单选项' -b '注销' 'swaymsg exit' -b '重启' 'shutdown -r now' -b '关机' 'shutdown -h now'",
+        "tooltip": false
     }
 }
