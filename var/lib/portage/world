@@ -60,6 +60,7 @@ net-misc/remmina
 net-wireless/iw
 sci-calculators/galculator
 sys-apps/baobab
+sys-apps/gnome-disk-utility
 sys-apps/pciutils
 sys-apps/usb_modeswitch
 sys-apps/usbutils
