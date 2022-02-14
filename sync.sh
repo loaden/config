@@ -16,3 +16,5 @@ sudo cat /var/lib/portage/world > var/lib/portage/world
 
 # usr
 cp /usr/src/linux/.config usr/src/linux/
+cp /usr/src/linux/.config.ubuntu.* usr/src/linux/
+cp /usr/src/linux/.config.gentoo.* usr/src/linux/
