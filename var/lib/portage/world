@@ -36,7 +36,6 @@ gui-apps/wlsunset
 gui-apps/wofi
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
-media-fonts/corefonts
 media-gfx/gimp
 media-gfx/imagemagick
 media-gfx/imv
@@ -55,6 +54,7 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
 net-misc/anydesk
+net-misc/aria2
 net-misc/networkmanager
 net-misc/remmina
 net-wireless/iw
@@ -79,7 +79,6 @@ www-client/firefox
 x11-apps/xlsclients
 x11-libs/libXv
 x11-misc/qt5ct
-x11-misc/stalonetray
 x11-misc/xdg-user-dirs
 x11-terms/alacritty
 x11-themes/adwaita-qt
