@@ -1,3 +1,4 @@
+app-admin/eclean-kernel
 app-admin/sudo
 app-admin/system-config-printer
 app-arch/unrar
@@ -68,7 +69,7 @@ sys-auth/polkit
 sys-boot/grub
 sys-fs/btrfs-progs
 sys-fs/dosfstools
-sys-kernel/genkernel
+sys-kernel/dracut
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
