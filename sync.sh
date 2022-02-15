@@ -5,11 +5,13 @@
 # etc
 rm -rf etc/portage/
 mkdir etc/portage
-cp -r /etc/portage/make.conf etc/portage/make.conf
+cp /etc/portage/make.conf etc/portage/make.conf
 cp -r /etc/portage/repos.conf/ etc/portage/
 cp -r /etc/portage/package.accept_keywords/ etc/portage/
 cp -r /etc/portage/package.mask/ etc/portage/
 cp -r /etc/portage/package.use/ etc/portage/
+mkdir etc/dracut.conf.d/
+cp -r /etc/dracut.conf.d/ etc/
 
 # var
 sudo cat /var/lib/portage/world > var/lib/portage/world
