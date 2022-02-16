@@ -49,3 +49,6 @@ sudo systemctl enable thermald.service
 
 # 用户组
 sudo usermod -aG wheel,audio,video,plugdev,pcap $USER
+
+# udisks 支持 NTFS3
+sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
