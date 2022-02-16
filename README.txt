@@ -15,6 +15,7 @@ Gentoo正确安装（amd64+systemd)
     ○ systemd用户需要执行一次：systemd-machine-id-setup 创建机器 ID，这个 ID 会被systemd 日志和 systemd-networkd 用到。再执行一次：systemctl preset-all --preset-mode=enable-only 激活一些默认应处于启用状态的 systemd 单元，其中许多单元都是基础系统功能所必需的。
     ○ make -j3 && make modules_install && make install
     ○ genkernel --kernel-config=.config --compress-initramfs-type=zstd --install initramfs
+    ○ 目前根分区如果是btrfs格式，则必须使用initramfs，建议dracut生成最小化的initramfs。
     ○ 引导直接：emerge grub，然后grub-install、grub-mkconfig就行了。
 
 
@@ -31,23 +32,32 @@ menuconfig”命令，然后“save”你的内核配置，于是你就得到了
 ● 查看内核编译配置区别：scripts/diffconfig .config .config.bak
 ● 参考链接：https://zhuanlan.zhihu.com/p/165322740
 钻研二：通用设置与性能优化
-● 提高桌面响应速度：将“Preemption Model”设为“Preemptible Kernel (Low-Latency Desktop)”、将“Timer tick handling”设为“Idle dynticks system (tickless idle)”、将“Cputime
-accounting”设为“Simple tick based cputime accounting”。
-● “Automatic process group scheduling”，这号称linux桌面系统的“鸡血补丁”，开启后能显著降低操作延迟、提升程序响应速度。
-● 内存大于8G的用户：不设置swap分区（无法休眠），启用zram。zram不需要任何实际的物理swap分区，它的实现原理是直接在内存中开辟出一块固定大小的区域来，作为一个虚拟的swap分区，在内存容量不足的情况下，将多余的内存数据经过压缩然后放到这块区域中，从而变相地增加内存的容量。由于这个虚拟的swap分区存在于内存中，而内存的读写速度是远远高于SSD的，所以zram区域中数据解压缩的速度也是很快的，几乎感觉不到延迟，但是代价是需要更多的CPU资源来提供数据的解压缩计算。这项技术在windows和android平台上名叫“内存压缩技术”，建议内存小于32G的用户开启： Device Drivers - Block devices - Compressed RAM block device support，并选择 zstd 压缩算法。禁用zswap：Memory Management options - Compressed cache for swap pages。
-● 使用intel核显开源驱动mesa的，必须开启“Checkpoint/restore support”。
-● “Enable loadable module support - Module compression mode”设置为None，否则默认不加载内核模块。
-● “Processor type and features - Avoid speculative indirect branches in kernel”表示给内核打上retpoline补丁。2018年Intel、AMD和ARM处理器均爆出了Meltdown（熔断）和Spectre（幽灵）内存崩溃漏洞，几乎涉及了以往开发的每一款处理器，其影响几乎遍及全世界的每一台电脑。retpoline补丁就是为了补上这两个严重的漏洞的，但是会带来一个不好的问题，那就是CPU性能的下降。所以为了提高性能，我选择禁用此选项，以牺牲内核安全性的代价换取性能。修改内核启动参数禁用spectre_v1、spectre_v2、spectre_v4补丁：Processor type and features - Built-in kernel command line，添加：spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off，也可以添加GRUB内核启动参数：
+● 提高桌面响应速度：将“General setup - Preemption Model”设为“Preemptible Kernel (Low-Latency Desktop)”、将“Timer tick handling”设为“Idle dynticks system (tickless idle)”、将“Cputime
+accounting”设为“Simple tick based cputime accounting”。后两项新内核已默认。
+● “Automatic process group scheduling”，这号称linux桌面系统的“鸡血补丁”，开启后能显著降低操作延迟、提升程序响应速度。新内核已默认。
+● 使用intel核显开源驱动mesa的，必须开启“General setup - Checkpoint/restore support”。新内核已默认。
+● 建议取消“General setup - Initramfs source files”除zstd之外的其它压缩格式支持。
+● “Processor type and features - Avoid speculative indirect branches in kernel”表示给内核打上retpoline补丁。2018年Intel、AMD和ARM处理器均爆出了Meltdown（熔断）和Spectre（幽灵）内存崩溃漏洞，几乎涉及了以往开发的每一款处理器，其影响几乎遍及全世界的每一台电脑。retpoline补丁就是为了补上这两个严重的漏洞的，但是会带来一个不好的问题，那就是CPU性能的下降。所以为了提高性能，我选择禁用此选项，以牺牲内核安全性的代价换取性能。修改内核启动参数禁用spectre_v1、spectre_v2、spectre_v4补丁：Processor type and features - Built-in kernel command line string，添加：spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off。也可以添加GRUB内核启动参数：
 # nano /etc/default/grub
 GRUB_CMDLINE_LINUX="spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off"
 # grub-mkconfig -o /boot/grub/grub.cfg
+● 禁用“Processor type and features - Linux guest support”：禁止在虚拟机中运行。
 ● 开启“Processor type and features - TSX enable mode”，这也是一项牺牲内核安全性换取性能的实现。英特尔事务扩展技术（TSX）是intel为旗下的CPU开发的一项优化指令集，但是存在僵尸负载漏洞（ZombieLoad）。
-● 启用“BFQ I/O scheduler”，即当下在各大桌面发行版如Ubuntu、Manjaro、SUSE中广为流行的BFQ调度器，可以打造快速实时响应的桌面系统。 其余两个调度器可放心禁用。 另外以前的CFQ调度器现在已被BFQ调度器取代。
+● “Power management and ACPI options”，禁用Hibernation。别忘启用系统acpid和thermal服务。
+● 取消“Virtualization”，如果不使用虚拟机的话（建议多系统）。
 ● 禁用“General architecture-dependent options - Stack Protector buffer overflow detection”，相当于gcc编译器的“-fno-stack-protector”选项，禁用程序栈堆溢出保护。由于栈堆溢出保护需要一定的性能开销，所以为了提高性能，可以禁用此选项，以牺牲内核安全性的代价换取性能。
+● 禁用“General architecture-dependent options - GCC plugins”。
+● “Enable loadable module support - Module compression mode”设置为None，否则默认不加载内核模块。
+● 内置启用“IO Schedulers - BFQ I/O scheduler”，即当下在各大桌面发行版如Ubuntu、Manjaro、SUSE中广为流行的BFQ调度器，可以打造快速实时响应的桌面系统。 其余调度器可放心禁用。 另外以前的CFQ调度器现在已被BFQ调度器取代。
+● 禁用“Memory Management options - Compressed cache for swap pages”交换页缓存压缩。
+● 启用“Networking support - Bluetooth subsystem support”交换页缓存压缩，按需开启“Bluetooth device drivers”相应驱动支持。
+● 内置编译：“Device Drivers - Block devices - Compressed RAM block device support”，并选择 zstd 压缩算法。内存大于8G的用户：不设置swap分区（无法休眠），启用zram。zram不需要任何实际的物理swap分区，它的实现原理是直接在内存中开辟出一块固定大小的区域来，作为一个虚拟的swap分区，在内存容量不足的情况下，将多余的内存数据经过压缩然后放到这块区域中，从而变相地增加内存的容量。由于这个虚拟的swap分区存在于内存中，而内存的读写速度是远远高于SSD的，所以zram区域中数据解压缩的速度也是很快的，几乎感觉不到延迟，但是代价是需要更多的CPU资源来提供数据的解压缩计算。这项技术在windows和android平台上名叫“内存压缩技术”。
+● “Device Drivers - Network device support”：启用“USB Network Adapters”中的“Apple iPhone USB Ethernet driver”，禁用不必要的光纤、拨号、有线与无线网卡驱动。
+● “Device Drivers - Graphics support”禁用不需要的显卡驱动。Nvidia独立显卡的闭源驱动：内核中一切与nvidia和nouveau有关的驱动全部禁用！这是遵照Nvidia官方闭源驱动说明书册的指导原则，否则linux内核中的nvidia驱动会和Nvidia官方闭源驱动模块起冲突。
+● “Device Drivers - HID support - USB HID transport layer”：必须内置编译，否则就必须在initramfs中添加内核模块，dracut无法no_kernel=yes。
+● “Device Drivers - USB support”：启用“USB Printer support”、“USB Mass Storage support”以及“USB Type-C Support”模块化支持。
+● 禁用：“Device Drivers - Virtualization drivers、Virtio drivers、VHOST drivers”：如果不使用虚拟机的话。以及：“Device Drivers - Staging drivers、X86 Platform Specific Device Drivers、”
+● 启用“File systems - DOS/FAT/EXFAT/NT Filesystems”中的 exFAT 和 NTFS Read-Write file system support 模块化支持，内置编译VFAT驱动，勾选新的Paragon NTFS3驱动下的压缩和ACL特性。
 ● 禁用“Security options - Enable different security models”：牺牲内核安全性换取性能。
-● 启用“File systems - DOS/FAT/EXFAT/NT Filesystems”中的 exFAT 和 NTFS Read-Write file system support 支持，勾选NTFS下的所有特性。
-● Nvidia独立显卡的闭源驱动：内核中一切与nvidia和nouveau有关的驱动全部禁用！这是遵照Nvidia官方闭源驱动说明书册的指导原则，否则linux内核中的nvidia驱动会和Nvidia官方闭源驱动模块起冲突。Device Drivers - Graphics support - 酌情关闭。
-● 禁用内核调试：Kernel hacking - Kernel debugging.
-● 禁用“Processor type and features - Linux guest support”：禁止在虚拟机中运行　。
-● systemd必须启用的内核选项（仅供参考）：https://wiki.gentoo.org/wiki/Systemd/zh-cn#.E5.86.85.E6.A0.B8
+● 关闭“Kernel hacking - Kernel debugging”内核调试。
 ● 参考链接：https://zhuanlan.zhihu.com/p/164910411
