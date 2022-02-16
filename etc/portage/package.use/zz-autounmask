@@ -32,3 +32,6 @@
 # required by xfce-extra/thunar-volman-4.16.0::gentoo
 # required by thunar-volman (argument)
 >=gnome-base/gvfs-1.48.1-r1 udisks
+# required by app-arch/unar-1.10.7::gentoo
+# required by unar (argument)
+>=gnustep-base/gnustep-make-2.8.0 native-exceptions

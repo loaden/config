@@ -1,6 +1,8 @@
 app-admin/eclean-kernel
 app-admin/sudo
 app-admin/system-config-printer
+app-arch/p7zip
+app-arch/unar
 app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
@@ -27,6 +29,7 @@ dev-util/meld
 dev-vcs/git
 games-board/gnome-mines
 gnome-extra/gnome-system-monitor
+gnome-extra/nm-applet
 gui-apps/grim
 gui-apps/mako
 gui-apps/slurp
@@ -37,11 +40,10 @@ gui-apps/wlsunset
 gui-apps/wofi
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
+media-gfx/eog
 media-gfx/gimp
 media-gfx/imagemagick
 media-gfx/imv
-media-plugins/audacious-plugins
-media-sound/audacious
 media-sound/deadbeef
 media-sound/pavucontrol
 media-sound/playerctl
