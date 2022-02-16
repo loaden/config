@@ -46,3 +46,6 @@ sudo udevadm trigger
 # 电源管理
 sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
+
+# 用户组
+sudo usermod -aG wheel,audio,video,plugdev,pcap $USER
