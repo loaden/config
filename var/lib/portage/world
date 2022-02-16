@@ -19,7 +19,6 @@ app-i18n/fcitx5-rime
 app-misc/brightnessctl
 app-misc/neofetch
 app-office/wps-office
-app-pda/ifuse
 app-pda/usbmuxd
 app-portage/gentoolkit
 app-shells/bash-completion
