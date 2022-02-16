@@ -77,10 +77,17 @@ exec_always {
     gsettings set $gnome-schema font-name 'Sans 10'
 }
 
+# 浮动窗口
+for_window [app_id="pavucontrol"] floating enable, resize set width 40 ppt height 30 ppt
+
+# 随机壁纸
+output * bg $(find $(xdg-user-dir PICTURES)/Wallpapers -type f | shuf -n1) fill
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
 #
 # Example configuration:
 #
