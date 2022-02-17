@@ -11,11 +11,7 @@ app-editors/featherpad
 app-editors/mousepad
 app-editors/vscode
 app-eselect/eselect-repository
-app-i18n/fcitx5
-app-i18n/fcitx5-configtool
-app-i18n/fcitx5-gtk
-app-i18n/fcitx5-qt
-app-i18n/fcitx5-rime
+app-i18n/fcitx5-meta
 app-misc/brightnessctl
 app-misc/neofetch
 app-office/wps-office
@@ -65,7 +61,6 @@ net-wireless/iw
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/gnome-disk-utility
-sys-apps/pciutils
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
