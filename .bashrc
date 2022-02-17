@@ -26,10 +26,10 @@ if ! result=$( echo $PATH | grep "$HOME/.local/bin" ) ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export XMODIFIERS=@im=fcitx5
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export SDL_IM_MODULE=fcitx5
+export XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export SDL_IM_MODULE=ibus
 export MOZ_DBUS_REMOTE=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export XDG_CURRENT_DESKTOP=sway
