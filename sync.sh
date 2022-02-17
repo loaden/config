@@ -8,6 +8,7 @@ mkdir -p etc/portage
 cp /etc/portage/make.conf etc/portage/make.conf
 cp -r /etc/portage/package.accept_keywords/ etc/portage/
 rm -f etc/portage/package.accept_keywords/zz-*
+touch etc/portage/package.accept_keywords/zz-autounmask
 cp -r /etc/portage/package.mask/ etc/portage/
 cp -r /etc/portage/package.use/ etc/portage/
 rm -f etc/portage/package.use/zz-*

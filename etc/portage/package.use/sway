@@ -1,1 +1,2 @@
->=gui-wm/sway-1.6.1 -swaybar 
+gui-wm/sway X -swaybar
+gui-libs/wlroots X

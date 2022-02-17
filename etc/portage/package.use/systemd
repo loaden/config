@@ -1,1 +1,1 @@
-sys-apps/systemd -resolvconf
+sys-apps/systemd policykit -resolvconf
