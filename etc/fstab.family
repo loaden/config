@@ -13,7 +13,6 @@
 
 
 # <file system>                       <mount point> <type>  <options>  <dump> <pass>
+UUID=53f831be-7e96-4712-8365-5ce6f7a805fc /         btrfs   subvol=/@gentoo,noatime,noautodefrag,compress=zstd,discard=async,ssd 0 0
+UUID=53f831be-7e96-4712-8365-5ce6f7a805fc /home     btrfs   subvol=/@home,noatime,noautodefrag,compress=zstd,discard=async,ssd 0 0
 UUID=6C3F-2EBE                            /boot/efi vfat    umask=0077 0 2
-UUID=53f831be-7e96-4712-8365-5ce6f7a805fc /         btrfs   subvol=/@gentoo,defaults,noatime,noautodefrag,compress=zstd,discard=async,ssd 0 0
-UUID=53f831be-7e96-4712-8365-5ce6f7a805fc /home     btrfs   subvol=/@home,defaults,noatime,noautodefrag,compress=zstd,discard=async,ssd 0 0
-tmpfs                                     /tmp      tmpfs   defaults,noatime,mode=1777 0 0

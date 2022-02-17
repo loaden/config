@@ -1,1 +1,1 @@
-sys-devel/gcc -fortran objc
+sys-devel/gcc objc
