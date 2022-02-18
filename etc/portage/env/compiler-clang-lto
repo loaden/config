@@ -1,0 +1,10 @@
+CFLAGS="${CFLAGS} -flto=thin"
+CXXFLAGS="${CXXFLAGS} -flto=thin"
+# -O2 in LDFLAGS refers to binary size optimization during linking, it is NOT related to the -O levels of the compiler          
+LDFLAGS="${LDFLAGS} -Wl,-O2 -Wl,--as-needed"
+
+CC="clang"                         
+CXX="clang++"
+AR="llvm-ar"
+NM="llvm-nm"
+RANLIB="llvm-ranlib"

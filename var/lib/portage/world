@@ -1,7 +1,6 @@
 app-admin/eclean-kernel
 app-admin/sudo
 app-admin/system-config-printer
-app-arch/p7zip
 app-arch/unar
 app-arch/unrar
 app-arch/xarchiver
@@ -16,6 +15,7 @@ app-misc/brightnessctl
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
+app-portage/eix
 app-portage/gentoolkit
 app-shells/bash-completion
 app-text/evince
@@ -54,7 +54,6 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
 net-misc/anydesk
-net-misc/aria2
 net-misc/networkmanager
 net-misc/remmina
 net-wireless/iw
@@ -65,6 +64,7 @@ sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
 sys-boot/grub
+sys-devel/clang
 sys-fs/btrfs-progs
 sys-fs/dosfstools
 sys-kernel/dracut
