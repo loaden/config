@@ -1,1 +1,1 @@
-xfce-base/thunar udisks libnotify
+xfce-base/thunar udisks libnotify -trash-panel-plugin
