@@ -8,7 +8,8 @@
         "sway/mode"
     ],
     "modules-center": [
-        "sway/window"
+        "sway/window",
+        "custom/weather"
     ],
     "modules-right": [
         "wlr/taskbar",
@@ -52,6 +53,13 @@
     },
     "tray": {
         "spacing": 10
+    },
+    "custom/weather": {
+        "format": "{}",
+        "interval": 300,
+        "return-type": "json",
+        "exec": "curl -s 'https://wttr.in/Binzhou?format=1' | jq --unbuffered --compact-output -M -R '{text:.}'",
+        "exec-if": "ping wttr.in -c1"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -98,6 +106,7 @@
     },
     "temperature": {
         "critical-threshold": 80,
+        "thermal-zone": 2,
         "interval": 5,
         "format": "{icon} {temperatureC}°C",
         "format-icons": [
