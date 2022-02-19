@@ -4,7 +4,7 @@
 	<icon>utilities-terminal</icon>
 	<name>在此打开终端</name>
 	<unique-id>1644289779505905-1</unique-id>
-	<command>/usr/bin/alacritty --working-directory %f</command>
+	<command>/usr/bin/foot --working-directory %f</command>
 	<description>自定义动作示例</description>
 	<patterns>*</patterns>
 	<startup-notify/>
