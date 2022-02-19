@@ -1,1 +1,1 @@
-sys-devel/clang default-compiler-rt default-lld llvm-libunwind
+sys-devel/clang default-compiler-rt default-lld 

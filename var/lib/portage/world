@@ -6,7 +6,6 @@ app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
 app-backup/snapper
-app-editors/featherpad
 app-editors/mousepad
 app-editors/vscode
 app-eselect/eselect-repository
@@ -54,9 +53,9 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
 net-misc/anydesk
+net-misc/aria2
 net-misc/networkmanager
 net-misc/remmina
-net-wireless/iw
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/gnome-disk-utility

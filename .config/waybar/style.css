@@ -128,11 +128,11 @@ window#waybar.hidden {
 }
 
 #tray {
-    background-color: shade(@theme_base_color, 1.25);
+    background-color: shade(@theme_base_color, 1.5);
 }
 
 #idle_inhibitor {
-    background-color: shade(@theme_base_color, 0.75);
+    background-color: shade(@theme_base_color, 1.25);
 }
 
 #idle_inhibitor.activated {
