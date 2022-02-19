@@ -25,9 +25,7 @@ dev-python/i3ipc
 dev-util/catfish
 dev-util/meld
 dev-vcs/git
-games-board/gnome-mines
 gnome-extra/gnome-system-monitor
-gnome-extra/nm-applet
 gui-apps/foot
 gui-apps/grim
 gui-apps/mako
@@ -41,7 +39,6 @@ gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
 media-gfx/eog
 media-gfx/gimp
-media-gfx/imagemagick
 media-gfx/imv
 media-sound/deadbeef
 media-sound/pavucontrol
@@ -51,7 +48,6 @@ media-video/ffmpeg
 media-video/mpv
 media-video/obs-studio
 media-video/shotcut
-net-analyzer/nmap
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
@@ -64,10 +60,8 @@ sys-apps/baobab
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
-sys-auth/polkit
 sys-boot/grub
 sys-devel/clang
-sys-devel/gcc
 sys-fs/btrfs-progs
 sys-fs/dosfstools
 sys-kernel/dracut
@@ -79,7 +73,6 @@ sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
-x11-libs/libXv
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
 x11-themes/adwaita-qt
