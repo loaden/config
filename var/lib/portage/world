@@ -11,6 +11,7 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-i18n/fcitx5-meta
 app-misc/brightnessctl
+app-misc/jq
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
