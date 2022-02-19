@@ -44,9 +44,11 @@ media-sound/pavucontrol
 media-sound/playerctl
 media-sound/pulseaudio
 media-video/ffmpeg
+media-video/handbrake
 media-video/mpv
 media-video/obs-studio
 media-video/shotcut
+media-video/vidcutter
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk

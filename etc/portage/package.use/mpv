@@ -1,1 +1,1 @@
-media-video/mpv -xv
+media-video/mpv libmpv -xv
