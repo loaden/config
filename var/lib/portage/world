@@ -22,6 +22,7 @@ app-text/tree
 dev-libs/wayland
 dev-python/i3ipc
 dev-util/catfish
+dev-util/debootstrap
 dev-util/meld
 dev-vcs/git
 gnome-extra/gnome-system-monitor
