@@ -15,7 +15,6 @@ app-misc/jq
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
-app-portage/eix
 app-portage/gentoolkit
 app-shells/bash-completion
 app-text/evince
