@@ -139,7 +139,9 @@ scripts/config  -e CONFIG_NET_VENDOR_REALTEK \
 # 禁止内核调试
 scripts/config  -d CONFIG_DEBUG_KERNEL
 
+
 # 本机再次localyesconfig后补充配置
+#
 scripts/config  -m CONFIG_QRTR  # Qualcomm IPC Router support
 scripts/config  -m CONFIG_BT_INTEL \
                 -m CONFIG_BT_BCM \
@@ -150,13 +152,25 @@ scripts/config  -m CONFIG_BT_INTEL \
                 -e CONFIG_BT_HCIBTUSB_MTK \
                 -e CONFIG_BT_HCIBTUSB_RTL # 蓝牙
 
+scripts/config  -u CONFIG_MT76_CORE
 scripts/config  -m CONFIG_MT76_CORE \
-                -m CONFIG_MT76_LEDS \
+                -e CONFIG_MT76_LEDS \
                 -m CONFIG_MT76_USB \
                 -m CONFIG_MT76x02_LIB \
                 -m CONFIG_MT76x02_USB \
                 -m CONFIG_MT76x2_COMMON \
                 -m CONFIG_MT76x2U # 无线网卡
+
+CONFIG_MT76_CORE=m
+CONFIG_MT76_LEDS=y
+CONFIG_MT76_USB=m
+CONFIG_MT76x02_LIB=m
+CONFIG_MT76x02_USB=m
+# CONFIG_MT76x0U is not set
+# CONFIG_MT76x0E is not set
+CONFIG_MT76x2_COMMON=m
+# CONFIG_MT76x2E is not set
+CONFIG_MT76x2U=m
 
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
@@ -178,16 +192,10 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_USX2Y \
                 -m CONFIG_SND_USB_US122L # 摄像头
 
-#
-# Video4Linux options
-#
-#CONFIG_VIDEO_V4L2=m
-#CONFIG_VIDEO_V4L2_I2C=y
-#CONFIG_VIDEO_V4L2_SUBDEV_API=y
-#
-# CONFIG_INPUT_UINPUT=m User level driver support
-#
+scripts/config  -m CONFIG_INPUT_UINPUT # User level driver support
 
+
+# # #
 # 图形界面调整编译选项
 make menuconfig
 
