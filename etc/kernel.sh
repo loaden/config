@@ -20,9 +20,6 @@ cd /usr/src/linux
 # 启用Clang编译内核
 export LLVM=1
 
-# 创建默认配置
-# make defconfig
-
 # 版本信息
 scripts/config  -d CONFIG_LOCALVERSION_AUTO
 
@@ -141,6 +138,55 @@ scripts/config  -e CONFIG_NET_VENDOR_REALTEK \
 
 # 禁止内核调试
 scripts/config  -d CONFIG_DEBUG_KERNEL
+
+# 本机再次localyesconfig后补充配置
+scripts/config  -m CONFIG_QRTR  # Qualcomm IPC Router support
+scripts/config  -m CONFIG_BT_INTEL \
+                -m CONFIG_BT_BCM \
+                -m CONFIG_BT_RTL \
+                -m CONFIG_BT_HCIBTUSB \
+                -e CONFIG_BT_HCIBTUSB_AUTOSUSPEND \
+                -e CONFIG_BT_HCIBTUSB_BCM \
+                -e CONFIG_BT_HCIBTUSB_MTK \
+                -e CONFIG_BT_HCIBTUSB_RTL # 蓝牙
+
+scripts/config  -m CONFIG_MT76_CORE \
+                -m CONFIG_MT76_LEDS \
+                -m CONFIG_MT76_USB \
+                -m CONFIG_MT76x02_LIB \
+                -m CONFIG_MT76x02_USB \
+                -m CONFIG_MT76x2_COMMON \
+                -m CONFIG_MT76x2U # 无线网卡
+
+scripts/config  -m CONFIG_MEDIA_SUPPORT \
+                -e CONFIG_MEDIA_SUPPORT_FILTER \
+                -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
+                -e CONFIG_MEDIA_CAMERA_SUPPORT \
+                -e CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+                -e CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
+                -e CONFIG_MEDIA_RADIO_SUPPORT \
+                -e CONFIG_MEDIA_PLATFORM_SUPPORT \
+                -m CONFIG_VIDEO_DEV \
+                -e CONFIG_MEDIA_CONTROLLER \
+                -m CONFIG_DVB_CORE \
+                -e CONFIG_MEDIA_USB_SUPPORT \
+                -m CONFIG_USB_VIDEO_CLASS \
+                -e CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
+                -m CONFIG_SND_USB_AUDIO \
+                -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
+                -m CONFIG_SND_USB_UA101 \
+                -m CONFIG_SND_USB_USX2Y \
+                -m CONFIG_SND_USB_US122L # 摄像头
+
+#
+# Video4Linux options
+#
+#CONFIG_VIDEO_V4L2=m
+#CONFIG_VIDEO_V4L2_I2C=y
+#CONFIG_VIDEO_V4L2_SUBDEV_API=y
+#
+# CONFIG_INPUT_UINPUT=m User level driver support
+#
 
 # 图形界面调整编译选项
 make menuconfig
