@@ -15,6 +15,7 @@ app-misc/jq
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
+app-portage/eix
 app-portage/gentoolkit
 app-shells/bash-completion
 app-text/evince
@@ -39,6 +40,7 @@ gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
 media-gfx/eog
 media-gfx/gimp
+media-gfx/imagemagick
 media-gfx/imv
 media-sound/deadbeef
 media-sound/pavucontrol
