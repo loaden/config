@@ -203,4 +203,6 @@ esac
 
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install && dracut -f && grub-mkconfig -o /boot/grub/grub.cfg
+    ls -lh /boot/vmlinuz* /boot/initramfs*
+    du -sh /lib/modules/
 fi
