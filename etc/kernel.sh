@@ -20,6 +20,9 @@ cd /usr/src/linux
 # 启用Clang编译内核
 export LLVM=1
 
+# 初始配置
+make localmodconfig
+
 # 版本信息
 scripts/config  -d CONFIG_LOCALVERSION_AUTO
 
@@ -161,17 +164,6 @@ scripts/config  -m CONFIG_MT76_CORE \
                 -m CONFIG_MT76x2_COMMON \
                 -m CONFIG_MT76x2U # 无线网卡
 
-CONFIG_MT76_CORE=m
-CONFIG_MT76_LEDS=y
-CONFIG_MT76_USB=m
-CONFIG_MT76x02_LIB=m
-CONFIG_MT76x02_USB=m
-# CONFIG_MT76x0U is not set
-# CONFIG_MT76x0E is not set
-CONFIG_MT76x2_COMMON=m
-# CONFIG_MT76x2E is not set
-CONFIG_MT76x2U=m
-
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
                 -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
@@ -212,5 +204,5 @@ esac
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install && dracut -f && grub-mkconfig -o /boot/grub/grub.cfg
     ls -lh /boot/vmlinuz* /boot/initramfs*
-    du -sh /lib/modules/
+    du -sh /lib/modules/*
 fi
