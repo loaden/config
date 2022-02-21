@@ -23,8 +23,8 @@ export LLVM=1
 # 初始本地配置
 read -p "是否生成本地配置？[yes/mod/N]" choice
 case $choice in
-YES | yes | Y | y) make localyesconfig ;;
-MOD | mod | M | m) make localmodconfig ;;
+YES | yes | Y | y) make localyesconfig && sleep 1 ;;
+MOD | mod | M | m) make localmodconfig && sleep 1  ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
 esac
@@ -74,7 +74,9 @@ scripts/config  -e CONFIG_USB_HID \
                 -m CONFIG_USB_STORAGE \
                 -m CONFIG_TYPEC \
                 -d CONFIG_USB_SERIAL \
-                -d CONFIG_USB_OHCI_HCD
+                -d CONFIG_USB_OHCI_HCD \
+                -m CONFIG_QRTR
+
 # BPF调整
 scripts/config  -e CONFIG_BPF \
                 -e CONFIG_HAVE_EBPF_JIT \
@@ -84,6 +86,7 @@ scripts/config  -e CONFIG_BPF \
                 -e CONFIG_BPF_JIT_ALWAYS_ON \
                 -e CONFIG_BPF_JIT_DEFAULT_ON \
                 -d CONFIG_BPF_PRELOAD
+
 # systemd需要
 scripts/config  -e CONFIG_EXPERT \
                 -e CONFIG_FHANDLE \
@@ -178,17 +181,13 @@ scripts/config  -m CONFIG_MT76_CORE \
                 -m CONFIG_MT76x2_COMMON \
                 -m CONFIG_MT76x2U # 无线网卡
 
+scripts/config  -u CONFIG_MEDIA_SUPPORT
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
                 -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
                 -e CONFIG_MEDIA_CAMERA_SUPPORT \
-                -e CONFIG_MEDIA_ANALOG_TV_SUPPORT \
-                -e CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
-                -e CONFIG_MEDIA_RADIO_SUPPORT \
                 -e CONFIG_MEDIA_PLATFORM_SUPPORT \
                 -m CONFIG_VIDEO_DEV \
-                -e CONFIG_MEDIA_CONTROLLER \
-                -m CONFIG_DVB_CORE \
                 -e CONFIG_MEDIA_USB_SUPPORT \
                 -m CONFIG_USB_VIDEO_CLASS \
                 -e CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
