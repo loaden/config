@@ -33,7 +33,8 @@ esac
 scripts/config  -d CONFIG_LOCALVERSION_AUTO \
                 -d MICROCODE \
                 -m CONFIG_IKCONFIG \
-                -e CONFIG_IKCONFIG_PROC
+                -e CONFIG_IKCONFIG_PROC \
+                -d CONFIG_PRINTK_INDEX
 
 # Gentoo配置
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
@@ -155,9 +156,6 @@ scripts/config  -e CONFIG_NET_VENDOR_REALTEK \
 
 # 禁止内核调试
 scripts/config  -d CONFIG_DEBUG_KERNEL
-
-# 其它
-scripts/config  -d CONFIG_PRINTK_INDEX
 
 
 # 本机再次localyesconfig后补充配置

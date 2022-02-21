@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background: alpha(@theme_base_color, 0.8);
+    background: alpha(@theme_base_color, 0.9);
     border-bottom: 1px solid @unfocused_borders;
     color: @theme_text_color;
 }
