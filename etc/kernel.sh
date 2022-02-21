@@ -21,7 +21,7 @@ cd /usr/src/linux
 export LLVM=1
 
 # 初始配置
-make localmodconfig
+make defconfig
 
 # 版本信息
 scripts/config  -d CONFIG_LOCALVERSION_AUTO
