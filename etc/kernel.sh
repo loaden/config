@@ -142,6 +142,9 @@ scripts/config  -e CONFIG_NET_VENDOR_REALTEK \
 # 禁止内核调试
 scripts/config  -d CONFIG_DEBUG_KERNEL
 
+# 其它
+scripts/config  -d CONFIG_PRINTK_INDEX
+
 
 # 本机再次localyesconfig后补充配置
 #
