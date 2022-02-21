@@ -20,11 +20,24 @@ cd /usr/src/linux
 # 启用Clang编译内核
 export LLVM=1
 
-# 初始配置
-make defconfig
+# 初始本地配置
+read -p "是否生成本地配置？[yes/mod/N]" choice
+case $choice in
+YES | yes | Y | y) make localyesconfig ;;
+MOD | mod | M | m) make localmodconfig ;;
+N | n | '') true ;;
+*) echo 错误选择，程序意外退出！ && exit ;;
+esac
 
-# 版本信息
-scripts/config  -d CONFIG_LOCALVERSION_AUTO
+# 通用设置
+scripts/config  -d CONFIG_LOCALVERSION_AUTO \
+                -d MICROCODE \
+                -m CONFIG_IKCONFIG \
+                -e CONFIG_IKCONFIG_PROC
+
+# Gentoo配置
+scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
+                -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD
 
 # 压缩模式
 scripts/config  -e CONFIG_KERNEL_ZSTD \
@@ -66,8 +79,10 @@ scripts/config  -e CONFIG_BPF \
                 -e CONFIG_HAVE_EBPF_JIT \
                 -e CONFIG_CGROUP_BPF \
                 -e CONFIG_BPF_UNPRIV_DEFAULT_OFF \
+                -e CONFIG_BPF_JIT \
+                -e CONFIG_BPF_JIT_ALWAYS_ON \
+                -e CONFIG_BPF_JIT_DEFAULT_ON \
                 -d CONFIG_BPF_PRELOAD
-
 # systemd需要
 scripts/config  -e CONFIG_EXPERT \
                 -e CONFIG_FHANDLE \
@@ -129,7 +144,6 @@ scripts/config  -d CONFIG_DRM_NOUVEAU \
                 -m CONFIG_DRM_I915 \
                 -m CONFIG_DRM_SIMPLEDRM
 
-
 # 网卡
 scripts/config  -u CONFIG_ETHERNET \
                 -u CONFIG_WLAN
@@ -148,7 +162,6 @@ scripts/config  -d CONFIG_PRINTK_INDEX
 
 # 本机再次localyesconfig后补充配置
 #
-scripts/config  -m CONFIG_QRTR  # Qualcomm IPC Router support
 scripts/config  -m CONFIG_BT_INTEL \
                 -m CONFIG_BT_BCM \
                 -m CONFIG_BT_RTL \
@@ -186,9 +199,6 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_UA101 \
                 -m CONFIG_SND_USB_USX2Y \
                 -m CONFIG_SND_USB_US122L # 摄像头
-
-scripts/config  -m CONFIG_INPUT_UINPUT # User level driver support
-
 
 # # #
 # 图形界面调整编译选项
