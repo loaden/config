@@ -1,1 +1,1 @@
-sys-devel/gcc -fortran objc lto
+sys-devel/gcc objc lto
