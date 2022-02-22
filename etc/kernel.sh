@@ -21,10 +21,10 @@ cd /usr/src/linux
 export LLVM=1
 
 # 初始本地配置
-read -p "是否生成本地配置？[yes/mod/N]" choice
+read -p "是否生成本地配置？[y/N/old]" choice
 case $choice in
-YES | yes | Y | y) make localyesconfig && sleep 1 ;;
-MOD | mod | M | m) make localmodconfig && sleep 1  ;;
+YES | yes | Y | y) make localmodconfig && sleep 1 ;;
+OLD | old | O | o) make oldconfig && sleep 1 ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
 esac
@@ -34,7 +34,11 @@ scripts/config  -d CONFIG_LOCALVERSION_AUTO \
                 -d MICROCODE \
                 -m CONFIG_IKCONFIG \
                 -e CONFIG_IKCONFIG_PROC \
-                -d CONFIG_PRINTK_INDEX
+                -d CONFIG_PRINTK_INDEX \
+                --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
+                -d CONFIG_HYPERVISOR_GUEST \
+                -d CONFIG_DEBUG_KERNEL \
+                -d CONFIG_MODULE_FORCE_LOAD
 
 # Gentoo配置
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
@@ -45,6 +49,7 @@ scripts/config  -e CONFIG_KERNEL_ZSTD \
                 -e CONFIG_ZRAM \
                 -e CONFIG_ZRAM_DEF_COMP_ZSTD \
                 -d CONFIG_ZSWAP \
+                -d CONFIG_MODULE_COMPRESS_ZSTD \
                 -e CONFIG_MODULE_COMPRESS_NONE \
                 -d CONFIG_RD_GZIP \
                 -d CONFIG_RD_BZIP2 \
@@ -56,10 +61,12 @@ scripts/config  -e CONFIG_KERNEL_ZSTD \
 
 # 桌面快速响应
 scripts/config  -e CONFIG_NO_HZ_IDLE \
+                -d CONFIG_NO_HZ \
                 -e CONFIG_PREEMPT \
                 -e CONFIG_TICK_CPU_ACCOUNTING \
                 -e CONFIG_SCHED_AUTOGROUP \
                 -e CONFIG_IOSCHED_BFQ \
+                -e CONFIG_BFQ_GROUP_IOSCHED \
                 -e CONFIG_HZ_1000
 
 # Intel显卡需要
@@ -75,7 +82,8 @@ scripts/config  -e CONFIG_USB_HID \
                 -m CONFIG_TYPEC \
                 -d CONFIG_USB_SERIAL \
                 -d CONFIG_USB_OHCI_HCD \
-                -m CONFIG_QRTR
+                -m CONFIG_QRTR \
+                -e CONFIG_USB_UAS
 
 # BPF调整
 scripts/config  -e CONFIG_BPF \
@@ -104,7 +112,6 @@ scripts/config  -e CONFIG_EXPERT \
 
 # 虚拟机需要
 scripts/config  -e CONFIG_VIRTUALIZATION \
-                -m CONFIG_VIRT_DRIVERS \
                 -m CONFIG_VIRTIO_MEM \
                 -m CONFIG_VIRTIO_FS
 
@@ -112,14 +119,11 @@ scripts/config  -e CONFIG_VIRTUALIZATION \
 scripts/config  -d CONFIG_RETPOLINE \
                 -e CONFIG_CMDLINE_BOOL \
                 --set-str CONFIG_CMDLINE "spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off" \
+                -d CONFIG_X86_INTEL_TSX_MODE_AUTO \
                 -e CONFIG_X86_INTEL_TSX_MODE_ON \
                 -d CONFIG_STACKPROTECTOR \
                 -d CONFIG_MQ_IOSCHED_KYBER \
                 -d CONFIG_SECURITY
-
-# 蓝牙
-scripts/config  -u CONFIG_BT
-scripts/config  -m CONFIG_BT
 
 # 苹果手机
 scripts/config  -m USB_NET_DRIVERS \
@@ -142,27 +146,11 @@ scripts/config  -e CONFIG_BTRFS_FS \
                 -e CONFIG_NETWORK_FILESYSTEMS
 
 # 显卡
-scripts/config  -u CONFIG_DRM
-scripts/config  -m CONFIG_DRM
 scripts/config  -d CONFIG_DRM_NOUVEAU \
                 -m CONFIG_DRM_I915 \
                 -m CONFIG_DRM_SIMPLEDRM
 
-# 网卡
-scripts/config  -u CONFIG_ETHERNET \
-                -u CONFIG_WLAN
-scripts/config  -e CONFIG_ETHERNET \
-                -e CONFIG_WLAN
-scripts/config  -e CONFIG_NET_VENDOR_REALTEK \
-                -e CONFIG_WLAN_VENDOR_MEDIATEK \
-                -m CONFIG_MT76x2U
-
-# 禁止内核调试
-scripts/config  -d CONFIG_DEBUG_KERNEL
-
-
-# 本机再次localyesconfig后补充配置
-#
+# 蓝牙
 scripts/config  -m CONFIG_BT_INTEL \
                 -m CONFIG_BT_BCM \
                 -m CONFIG_BT_RTL \
@@ -170,18 +158,19 @@ scripts/config  -m CONFIG_BT_INTEL \
                 -e CONFIG_BT_HCIBTUSB_AUTOSUSPEND \
                 -e CONFIG_BT_HCIBTUSB_BCM \
                 -e CONFIG_BT_HCIBTUSB_MTK \
-                -e CONFIG_BT_HCIBTUSB_RTL # 蓝牙
+                -e CONFIG_BT_HCIBTUSB_RTL
 
-scripts/config  -u CONFIG_MT76_CORE
+# 网卡
 scripts/config  -m CONFIG_MT76_CORE \
                 -e CONFIG_MT76_LEDS \
                 -m CONFIG_MT76_USB \
                 -m CONFIG_MT76x02_LIB \
                 -m CONFIG_MT76x02_USB \
                 -m CONFIG_MT76x2_COMMON \
-                -m CONFIG_MT76x2U # 无线网卡
+                -m CONFIG_MT76x2U
 
-scripts/config  -u CONFIG_MEDIA_SUPPORT
+
+# 摄像头
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
                 -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
@@ -195,14 +184,114 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
                 -m CONFIG_SND_USB_UA101 \
                 -m CONFIG_SND_USB_USX2Y \
-                -m CONFIG_SND_USB_US122L # 摄像头
+                -m CONFIG_SND_USB_US122L
+
+# 精简
+# 精简
+scripts/config  -d CONFIG_PARAVIRT \
+                -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
+                -d CONFIG_PVH \
+                -d CONFIG_JAILHOUSE_GUEST \
+                -d CONFIG_ACRN_GUEST \
+                -d CONFIG_NET_FC \
+                -d CONFIG_NET_VENDOR_3COM \
+                -d CONFIG_NET_VENDOR_ADAPTEC \
+                -d CONFIG_NET_VENDOR_AGERE \
+                -d CONFIG_NET_VENDOR_ALACRITECH \
+                -d CONFIG_NET_VENDOR_ALTEON \
+                -d CONFIG_NET_VENDOR_AMAZON \
+                -d CONFIG_NET_VENDOR_AMD \
+                -d CONFIG_NET_VENDOR_AQUANTIA \
+                -d CONFIG_NET_VENDOR_ARC \
+                -d CONFIG_NET_VENDOR_ATHEROS \
+                -d CONFIG_NET_VENDOR_BROADCOM \
+                -d CONFIG_NET_VENDOR_BROCADE \
+                -d CONFIG_NET_VENDOR_CADENCE \
+                -d CONFIG_NET_VENDOR_CAVIUM \
+                -d CONFIG_NET_VENDOR_CHELSIO \
+                -d CONFIG_NET_VENDOR_CISCO \
+                -d CONFIG_NET_VENDOR_CORTINA \
+                -d CONFIG_NET_VENDOR_DEC \
+                -d CONFIG_NET_VENDOR_DLINK \
+                -d CONFIG_NET_VENDOR_EMULEX \
+                -d CONFIG_NET_VENDOR_EZCHIP \
+                -d CONFIG_NET_VENDOR_GOOGLE \
+                -d CONFIG_NET_VENDOR_HUAWEI \
+                -d CONFIG_NET_VENDOR_INTEL \
+                -d CONFIG_NET_VENDOR_MICROSOFT \
+                -d CONFIG_NET_VENDOR_LITEX \
+                -d CONFIG_NET_VENDOR_MARVELL \
+                -d CONFIG_NET_VENDOR_MELLANOX \
+                -d CONFIG_NET_VENDOR_MICREL \
+                -d CONFIG_NET_VENDOR_MICROCHIP \
+                -d CONFIG_NET_VENDOR_MICROSEMI \
+                -d CONFIG_NET_VENDOR_MYRI \
+                -d CONFIG_NET_VENDOR_NATSEMI \
+                -d CONFIG_NET_VENDOR_NETERION \
+                -d CONFIG_NET_VENDOR_NETRONOME \
+                -d CONFIG_NET_VENDOR_NI \
+                -d CONFIG_NET_VENDOR_NVIDIA \
+                -d CONFIG_NET_VENDOR_OKI \
+                -d CONFIG_NET_VENDOR_PACKET_ENGINES \
+                -d CONFIG_NET_VENDOR_PENSANDO \
+                -d CONFIG_NET_VENDOR_QLOGIC \
+                -d CONFIG_NET_VENDOR_QUALCOMM \
+                -d CONFIG_NET_VENDOR_RDC \
+                -d CONFIG_NET_VENDOR_RENESAS \
+                -d CONFIG_NET_VENDOR_ROCKER \
+                -d CONFIG_NET_VENDOR_SAMSUNG \
+                -d CONFIG_NET_VENDOR_SEEQ \
+                -d CONFIG_NET_VENDOR_SOLARFLARE \
+                -d CONFIG_NET_VENDOR_SILAN \
+                -d CONFIG_NET_VENDOR_SIS \
+                -d CONFIG_NET_VENDOR_SMSC \
+                -d CONFIG_NET_VENDOR_SOCIONEXT \
+                -d CONFIG_NET_VENDOR_STMICRO \
+                -d CONFIG_NET_VENDOR_SUN \
+                -d CONFIG_NET_VENDOR_SYNOPSYS \
+                -d CONFIG_NET_VENDOR_TEHUTI \
+                -d CONFIG_NET_VENDOR_TI \
+                -d CONFIG_NET_VENDOR_VIA \
+                -d CONFIG_NET_VENDOR_WIZNET \
+                -d CONFIG_NET_VENDOR_XILINX \
+                -d CONFIG_WLAN_VENDOR_MICROCHIP \
+                -d CONFIG_WLAN_VENDOR_RALINK \
+                -d CONFIG_WLAN_VENDOR_REALTEK \
+                -d CONFIG_WLAN_VENDOR_RSI \
+                -d CONFIG_WLAN_VENDOR_ST \
+                -d CONFIG_WLAN_VENDOR_TI \
+                -d CONFIG_WLAN_VENDOR_ZYDAS \
+                -d CONFIG_WLAN_VENDOR_QUANTENNA \
+                -d CONFIG_ISDN \
+                -d CONFIG_VIRT_DRIVERS \
+                -d CONFIG_STAGING \
+                -d CONFIG_DEBUG_INFO \
+                -d CONFIG_BOOT_PRINTK_DELAY \
+                -d CONFIG_SCHED_STACK_END_CHECK \
+                -d CONFIG_DEBUG_SHIRQ \
+                -d CONFIG_SOFTLOCKUP_DETECTOR \
+                -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_DETECT_HUNG_TASK \
+                -d CONFIG_DEBUG_SHIRQ \
+                -d CONFIG_SOFTLOCKUP_DETECTOR \
+                -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_DETECT_HUNG_TASK \
+                -d CONFIG_SCHEDSTATS \
+                -d CONFIG_DEBUG_LIST \
+                -d CONFIG_LATENCYTOP \
+                -d CONFIG_X86_DECODER_SELFTEST \
+                -d CONFIG_DEBUG_BOOT_PARAMS \
+                -d CONFIG_KALLSYMS_ALL
+
+# 刷新
+scripts/config  --refresh
 
 # # #
 # 图形界面调整编译选项
 make menuconfig
 
 # 对比选项
-scripts/diffconfig .config.bak .config | less
+scripts/diffconfig .config.bak .config
 
 read -p "是否编译并安装内核？[y/N]" choice
 case $choice in
