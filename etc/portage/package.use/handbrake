@@ -1,1 +1,1 @@
-media-video/handbrake x265 libav-aac -fdk
+media-video/handbrake x265 libav-aac -fdk gtk
