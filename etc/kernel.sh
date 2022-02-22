@@ -37,12 +37,44 @@ scripts/config  -d CONFIG_LOCALVERSION_AUTO \
                 -d CONFIG_PRINTK_INDEX \
                 --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
                 -d CONFIG_HYPERVISOR_GUEST \
-                -d CONFIG_DEBUG_KERNEL \
-                -d CONFIG_MODULE_FORCE_LOAD
+                -d CONFIG_MODULE_FORCE_LOAD \
+                -e CONFIG_HIBERNATION \
+                -d CONFIG_X86_X32
 
 # Gentoo配置
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
                 -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD
+
+# 驱动
+scripts/config  -d CONFIG_BLK_DEV_NVME \
+                -d CONFIG_INPUT_JOYDEV \
+                -d CONFIG_INPUT_JOYSTICK \
+                -d CONFIG_INPUT_TOUCHSCREEN \
+                -e CONFIG_X86_PLATFORM_DEVICES \
+                -d CONFIG_CHROME_PLATFORMS \
+                -d CONFIG_MELLANOX_PLATFORM \
+                -d CONFIG_SURFACE_PLATFORMS \
+                -d CONFIG_ANDROID
+
+# 内核调试
+scripts/config  -d CONFIG_DEBUG_KERNEL \
+                -d CONFIG_FTRACE \
+                -d CONFIG_DEBUG_PREEMPT \
+                -d CONFIG_DEBUG_MISC \
+                -d CONFIG_STRICT_DEVMEM \
+                -d CONFIG_EARLY_PRINTK \
+                -d CONFIG_X86_DEBUG_FPU \
+                -d RUNTIME_TESTING_MENU \
+                -d CONFIG_MAGIC_SYSRQ \
+                -d CONFIG_DEBUG_FS \
+                -d CONFIG_PRINTK_TIME \
+                -d CONFIG_STACKTRACE_BUILD_ID \
+                --set-val CONFIG_CONSOLE_LOGLEVEL_DEFAULT "2" \
+                --set-val CONFIG_MESSAGE_LOGLEVEL_DEFAULT "3" \
+                -d CONFIG_DYNAMIC_DEBUG \
+                -d CONFIG_DYNAMIC_DEBUG_CORE \
+                -d CONFIG_SYMBOLIC_ERRNAME \
+                -d CONFIG_DEBUG_BUGVERBOSE
 
 # 压缩模式
 scripts/config  -e CONFIG_KERNEL_ZSTD \
@@ -112,6 +144,7 @@ scripts/config  -e CONFIG_EXPERT \
 
 # 虚拟机需要
 scripts/config  -e CONFIG_VIRTUALIZATION \
+                -m CONFIG_KVM \
                 -m CONFIG_VIRTIO_MEM \
                 -m CONFIG_VIRTIO_FS
 
@@ -123,7 +156,15 @@ scripts/config  -d CONFIG_RETPOLINE \
                 -e CONFIG_X86_INTEL_TSX_MODE_ON \
                 -d CONFIG_STACKPROTECTOR \
                 -d CONFIG_MQ_IOSCHED_KYBER \
-                -d CONFIG_SECURITY
+                -d CONFIG_SECURITY \
+                -d CONFIG_HARDENED_USERCOPY \
+                -d CONFIG_SECURITYFS \
+                -d CONFIG_SECURITY_DMESG_RESTRICT \
+                -d CONFIG_KEY_NOTIFICATIONS \
+                -d CONFIG_KEY_DH_OPERATIONS \
+                -d CONFIG_KEYS_REQUEST_CACHE \
+                -d CONFIG_PERSISTENT_KEYRINGS \
+                -d CONFIG_PAGE_TABLE_ISOLATION
 
 # 苹果手机
 scripts/config  -m USB_NET_DRIVERS \
@@ -143,7 +184,10 @@ scripts/config  -e CONFIG_BTRFS_FS \
                 -m CONFIG_NTFS3_FS \
                 -e CONFIG_NTFS3_LZX_XPRESS \
                 -e CONFIG_NTFS3_FS_POSIX_ACL \
-                -e CONFIG_NETWORK_FILESYSTEMS
+                -e CONFIG_NETWORK_FILESYSTEMS \
+                -d CONFIG_FS_ENCRYPTION \
+                -d CONFIG_FS_VERITY \
+                -d CONFIG_MSDOS_FS
 
 # 显卡
 scripts/config  -d CONFIG_DRM_NOUVEAU \
@@ -151,14 +195,16 @@ scripts/config  -d CONFIG_DRM_NOUVEAU \
                 -m CONFIG_DRM_SIMPLEDRM
 
 # 蓝牙
-scripts/config  -m CONFIG_BT_INTEL \
+scripts/config  -m CONFIG_BT \
+                -m CONFIG_BT_INTEL \
                 -m CONFIG_BT_BCM \
                 -m CONFIG_BT_RTL \
                 -m CONFIG_BT_HCIBTUSB \
                 -e CONFIG_BT_HCIBTUSB_AUTOSUSPEND \
                 -e CONFIG_BT_HCIBTUSB_BCM \
                 -e CONFIG_BT_HCIBTUSB_MTK \
-                -e CONFIG_BT_HCIBTUSB_RTL
+                -e CONFIG_BT_HCIBTUSB_RTL \
+                -d CONFIG_BT_DEBUGFS
 
 # 网卡
 scripts/config  -m CONFIG_MT76_CORE \
@@ -184,9 +230,14 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
                 -m CONFIG_SND_USB_UA101 \
                 -m CONFIG_SND_USB_USX2Y \
-                -m CONFIG_SND_USB_US122L
+                -m CONFIG_SND_USB_US122L \
+                -e CONFIG_VIDEO_V4L2_SUBDEV_API \
+                -d CONFIG_VIDEO_V4L2_SUBDEV_API \
+                -d CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
+                -d CONFIG_MEDIA_RADIO_SUPPORT \
+                -d CONFIG_MEDIA_TEST_SUPPORT \
+                -d CONFIG_MEDIA_PCI_SUPPORT
 
-# 精简
 # 精简
 scripts/config  -d CONFIG_PARAVIRT \
                 -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
