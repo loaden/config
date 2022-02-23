@@ -215,7 +215,6 @@ scripts/config  -m CONFIG_MT76_CORE \
                 -m CONFIG_MT76x2_COMMON \
                 -m CONFIG_MT76x2U
 
-
 # 摄像头
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
@@ -334,6 +333,23 @@ scripts/config  -d CONFIG_PARAVIRT \
                 -d CONFIG_DEBUG_BOOT_PARAMS \
                 -d CONFIG_KALLSYMS_ALL
 
+# sys-kernel/gentoo-kernel-bin内核localmodconfig
+scripts/config  -d CONFIG_NETFILTER_XTABLES \
+                -d CONFIG_IP_NF_IPTABLES \
+                -d CONFIG_MTD \
+                -d CONFIG_MAC_EMUMOUSEBTN \
+                -d CONFIG_INPUT_MOUSEDEV \
+                -d CONFIG_INPUT_MOUSEDEV \
+                -d CONFIG_IPMI_HANDLER \
+                -d CONFIG_VIDEO_IR_I2C \
+                -d CONFIG_MEDIA_TUNER_TEA5761 \
+                -d CONFIG_MEDIA_TUNER_TEA5767 \
+                -d CONFIG_SND_HRTIMER \
+                -d CONFIG_CRYPTO_USER \
+                -d CONFIG_CRYPTO_LZO \
+                -d CONFIG_CRYPTO_842 \
+                -d CONFIG_CRYPTO_LZ4HC
+
 # 刷新
 scripts/config  --refresh
 
@@ -343,6 +359,9 @@ make menuconfig
 
 # 对比选项
 scripts/diffconfig .config.bak .config
+
+# 输出配置文件大小
+ls -lh .config
 
 read -p "是否编译并安装内核？[y/N]" choice
 case $choice in

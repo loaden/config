@@ -19,6 +19,7 @@ app-portage/gentoolkit
 app-shells/bash-completion
 app-text/evince
 app-text/tree
+dev-lang/rust-bin
 dev-libs/wayland
 dev-python/i3ipc
 dev-util/catfish
