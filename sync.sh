@@ -32,5 +32,8 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # mnt kernel config
 [ -d /mnt/gentoo/ ] && cp /mnt/gentoo/usr/src/linux/.config.*.* usr/src/linux/
 
+# ccache
+[ -f /etc/ccache.conf ] && cp /etc/ccache.conf etc/
+
 # else
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world

@@ -1,7 +1,6 @@
 app-admin/eclean-kernel
 app-admin/sudo
 app-admin/system-config-printer
-app-arch/unar
 app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
@@ -23,6 +22,7 @@ app-text/tree
 dev-libs/wayland
 dev-python/i3ipc
 dev-util/catfish
+dev-util/ccache
 dev-util/debootstrap
 dev-util/meld
 dev-vcs/git
@@ -64,6 +64,7 @@ sys-apps/baobab
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
+sys-auth/polkit
 sys-boot/grub
 sys-devel/clang
 sys-fs/btrfs-progs
