@@ -27,6 +27,7 @@ dev-util/ccache
 dev-util/debootstrap
 dev-util/meld
 dev-vcs/git
+dev-vcs/gitg
 gnome-extra/gnome-system-monitor
 gui-apps/foot
 gui-apps/grim
