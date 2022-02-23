@@ -350,6 +350,43 @@ scripts/config  -d CONFIG_NETFILTER_XTABLES \
                 -d CONFIG_CRYPTO_842 \
                 -d CONFIG_CRYPTO_LZ4HC
 
+# 再次与Arch内核配置对比
+scripts/config  -d CONFIG_KEXEC_JUMP \
+                -d CONFIG_PM_GENERIC_DOMAINS \
+                -d CONFIG_KVM_INTEL \
+                -d CONFIG_KVM_XEN \
+                -d CONFIG_HMM_MIRROR \
+                -d CONFIG_WLAN_VENDOR_ADMTEK \
+                -d CONFIG_WLAN_VENDOR_ATH \
+                -d CONFIG_WLAN_VENDOR_ATMEL \
+                -d CONFIG_WLAN_VENDOR_BROADCOM \
+                -d CONFIG_WLAN_VENDOR_CISCO \
+                -d CONFIG_WLAN_VENDOR_INTEL \
+                -d CONFIG_WLAN_VENDOR_INTERSIL \
+                -d CONFIG_WLAN_VENDOR_MARVELL \
+                -d CONFIG_MFD_INTEL_PMC_BXT \
+                -m CONFIG_CEC_CORE \
+                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+                -d CONFIG_MEDIA_TUNER \
+                -d CONFIG_DRM_DEBUG_MM \
+                -d CONFIG_DRM_RADEON \
+                -d CONFIG_DRM_AMDGPU \
+                -d CONFIG_DRM_VIRTIO_GPU \
+                -d CONFIG_SND_SEQUENCER \
+                -d CONFIG_VIRTIO_MENU \
+                -d CONFIG_VHOST_MENU \
+                -d CONFIG_ACPI_WMI \
+                -d CONFIG_X86_PLATFORM_DRIVERS_DELL \
+                -d CONFIG_RCU_TRACE \
+                -e CONFIG_V4L_PLATFORM_DRIVERS \
+                -e CONFIG_V4L_MEM2MEM_DRIVERS \
+                -d CONFIG_VGA_SWITCHEROO \
+                -e CONFIG_INIT_STACK_NONE \
+                -d CONFIG_INIT_STACK_ALL_ZERO \
+                -m CONFIG_I2C_ALGOBIT \
+                -e CONFIG_MEDIA_ATTACH \
+                -e CONFIG_USB_XHCI_PCI
+
 # 刷新
 scripts/config  --refresh
 
