@@ -52,7 +52,7 @@ window#waybar.hidden {
     margin: 0 1px;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #tray, #mode, #idle_inhibitor, #keyboard-state  {
     padding: 0 10px;
     margin: 0 1px;
 }
@@ -102,7 +102,7 @@ window#waybar.hidden {
 }
 
 #network {
-    background: #2980b9;
+    background: #eb7405;
 }
 
 #network.disconnected {
@@ -122,6 +122,11 @@ window#waybar.hidden {
 #custom-media {
     background: #66cc99;
     color: #2a5c45;
+}
+
+#keyboard-state {
+    background: #a93bf3;
+    color: #e5f3ec;
 }
 
 #temperature {

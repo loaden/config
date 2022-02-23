@@ -47,7 +47,7 @@
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
-            "Alacritty",
+            "foot",
             "钉钉"
         ]
     },
@@ -87,7 +87,7 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "keyboard-state": {
-        "numlock": true,
+        "numlock": false,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
