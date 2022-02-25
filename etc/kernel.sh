@@ -387,6 +387,21 @@ scripts/config  -d CONFIG_KEXEC_JUMP \
                 -e CONFIG_MEDIA_ATTACH \
                 -e CONFIG_USB_XHCI_PCI
 
+# iwd
+scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
+                -e CONFIG_CRYPTO_USER_API_HASH \
+                -e CONFIG_CRYPTO_HMAC \
+                -e CONFIG_CRYPTO_CMAC \
+                -e CONFIG_CRYPTO_MD4 \
+                -e CONFIG_CRYPTO_MD5 \
+                -e CONFIG_CRYPTO_SHA256 \
+                -e CONFIG_CRYPTO_SHA512 \
+                -e CONFIG_CRYPTO_AES \
+                -e CONFIG_CRYPTO_ECB \
+                -e CONFIG_CRYPTO_DES \
+                -e CONFIG_CRYPTO_CBC \
+                -e CONFIG_KEY_DH_OPERATIONS
+
 # 刷新
 scripts/config  --refresh
 
@@ -408,7 +423,9 @@ N | n | '') COMPILE_KERNEL=0 ;;
 esac
 
 if [ "$COMPILE_KERNEL" = "1" ]; then
-    make -j$(nproc) && make modules_install && make install && dracut -f && grub-mkconfig -o /boot/grub/grub.cfg
-    ls -lh /boot/vmlinuz* /boot/initramfs*
+    make -j$(nproc) && make modules_install && make install
+    find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp {} /boot/efi/EFI/gentoo/vmlinuz \; -print
+    ls -lh /boot/efi/EFI/gentoo/
+    ls -lh /boot/vmlinuz*
     du -sh /lib/modules/*
 fi

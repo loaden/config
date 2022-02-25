@@ -5,6 +5,7 @@ app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
 app-backup/snapper
+app-editors/featherpad
 app-editors/mousepad
 app-editors/vscode
 app-eselect/eselect-repository
@@ -29,6 +30,7 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-extra/gnome-system-monitor
+gnome-extra/polkit-gnome
 gui-apps/foot
 gui-apps/grim
 gui-apps/mako
@@ -57,10 +59,11 @@ media-video/vidcutter
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
+net-im/tencent-qq
 net-misc/anydesk
 net-misc/aria2
-net-misc/networkmanager
 net-misc/remmina
+net-wireless/iwd
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/gnome-disk-utility
@@ -68,11 +71,9 @@ sys-apps/systemd
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
-sys-boot/grub
 sys-devel/clang
 sys-fs/btrfs-progs
 sys-fs/dosfstools
-sys-kernel/dracut
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
