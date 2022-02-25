@@ -38,5 +38,12 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # iwd
 [ -d /etc/iwd/ ] && cp -r /etc/iwd etc/
 
-# else
+# world
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world
+
+# systemd-boot
+rm -rf boot/efi
+mkdir -p boot/efi
+sudo cp -r /boot/efi/loader boot/efi/
+sudo chown $USER:$USER -R boot/efi/loader
+rm boot/efi/loader/random-seed
