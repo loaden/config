@@ -35,5 +35,8 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # ccache
 [ -f /etc/ccache.conf ] && cp /etc/ccache.conf etc/
 
+# iwd
+[ -d /etc/iwd/ ] && cp -r /etc/iwd etc/
+
 # else
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world
