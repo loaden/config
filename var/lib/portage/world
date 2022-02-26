@@ -42,6 +42,7 @@ gui-apps/wlsunset
 gui-apps/wofi
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
+media-gfx/blender
 media-gfx/eog
 media-gfx/gimp
 media-gfx/imagemagick
