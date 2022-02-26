@@ -10,7 +10,7 @@ sudo systemctl preset-all --preset-mode=enable-only
 # 主机名
 read -p "Please input the hostname: " hostname
 sudo hostnamectl set-hostname $hostname
-[[ ! $(cat /etc/hosts | grep $hostname) ]] && sudo HOSTNAME=$hostname bash -c 'echo -e "\n127.0.0.1\t$HOSTNAME\n" >> /etc/hosts'
+[[ ! $(cat /etc/hosts | grep $hostname) ]] && sudo HOSTNAME=$hostname bash -c 'echo -e "\n127.0.0.1\t$HOSTNAME.me $HOSTNAME\n" >> /etc/hosts'
 
 # 时区
 sudo timedatectl set-timezone Asia/Shanghai
