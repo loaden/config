@@ -39,8 +39,7 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 [ -d /etc/iwd/ ] && cp -r /etc/iwd etc/
 
 # env
-mkdir -p etc/environment.d/
-cp /etc/environment.d/90-fcitx-env.conf etc/environment.d/
+cp /etc/environment etc/environment
 
 # world
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world

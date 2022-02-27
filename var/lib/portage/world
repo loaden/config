@@ -71,6 +71,7 @@ sys-apps/systemd
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
+sys-boot/efibootmgr
 sys-devel/clang
 sys-fs/btrfs-progs
 sys-fs/dosfstools
