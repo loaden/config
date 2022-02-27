@@ -29,11 +29,6 @@ export XDG_SESSION_DESKTOP=sway
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-export INPUT_METHOD=fcitx
-export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export SDL_IM_MODULE=fcitx
 export MOZ_DBUS_REMOTE=1
 
 [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ] && dbus-run-session sway
