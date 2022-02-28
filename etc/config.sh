@@ -82,25 +82,12 @@ sudo eselect fontconfig disable 80-delicious.conf
 sudo eselect fontconfig disable 90-synthetic.conf
 
 # 启用字体配置
+sudo eselect fontconfig enable 10-hinting-full.conf
 sudo eselect fontconfig enable 11-lcdfilter-default.conf
-# sudo eselect fontconfig enable 10-hinting-slight.conf
-# sudo eselect fontconfig enable 10-scale-bitmap-fonts.conf
-# sudo eselect fontconfig enable 20-unhint-small-vera.conf
-# sudo eselect fontconfig enable 30-metric-aliases.conf
-# sudo eselect fontconfig enable 40-nonlatin.conf
-# sudo eselect fontconfig enable 45-generic.conf
-# sudo eselect fontconfig enable 45-latin.conf
-sudo eselect fontconfig enable 49-sansserif.conf
+sudo eselect fontconfig enable 45-latin.conf
 sudo eselect fontconfig enable 50-user.conf
-# sudo eselect fontconfig enable 51-local.conf
-# sudo eselect fontconfig enable 60-generic.conf
 sudo eselect fontconfig enable 60-latin.conf
-# sudo eselect fontconfig enable 65-fonts-persian.conf
-# sudo eselect fontconfig enable 65-nonlatin.conf
-# sudo eselect fontconfig enable 69-unifont.conf
-# sudo eselect fontconfig enable 80-delicious.conf
-# sudo eselect fontconfig enable 90-synthetic.conf
-
+sudo eselect fontconfig enable 70-no-bitmaps.conf
 
 # 刷新字体缓存
 sudo -E fc-cache -rv
