@@ -1,9 +1,7 @@
 {
-    "window.titleBarStyle": "custom",
-    "editor.fontFamily": "'Monaco', 'Consolas', 'Source Code Pro', 'Monospace', 'Font Awesome', 'Sans'",
+    "editor.fontFamily": "'Monaco', 'Monospace', 'Consolas',  'Sans', 'Serif'",
     "editor.fontSize": 16,
     "editor.formatOnPaste": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "terminal.integrated.shell.windows": "cmd.exe",
@@ -60,5 +58,7 @@
     "gitlens.statusBar.enabled": false,
     "git.autofetch": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "none"
 }
