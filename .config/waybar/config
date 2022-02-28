@@ -48,7 +48,10 @@
         "on-click-middle": "close",
         "ignore-list": [
             "foot",
-            "钉钉"
+            "钉钉",
+            "QQ",
+            "Wine System Tray",
+            ""
         ]
     },
     "tray": {
@@ -110,11 +113,11 @@
         "interval": 5,
         "format": "{icon} {temperatureC}°C",
         "format-icons": [
-            "", // Icon: temperature-empty
-            "", // Icon: temperature-quarter
-            "", // Icon: temperature-half
-            "", // Icon: temperature-three-quarters
-            "" // Icon: temperature-full
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
         "tooltip": false
     },
@@ -136,11 +139,11 @@
         "format-charging": " {capacity}% ({time})",
         "format-plugged": "{icon}  {capacity}%",
         "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            "" // Icon: battery-empty
+            "",
+            "",
+            "",
+            "",
+            ""
         ]
     },
     "clock": {
