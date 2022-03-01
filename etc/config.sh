@@ -100,8 +100,10 @@ fc-match Serif
 FC_DEBUG=1024 fc-match | grep Loading
 fc-conflist | grep +
 fc-match --verbose sans-serif | grep -v 00
-FC_DEBUG=4 fc-match Monospace | grep -v 00 > log
-
+# FC_DEBUG=4 fc-match Monospace | grep -v 00 > log
+fc-match --sort
+fc-match --sort 'Monospace:lang=zh-cn'
+fc-match --sort 'Serif:lang=zh-cn'
 
 # 更新环境变量
 sudo env-update
