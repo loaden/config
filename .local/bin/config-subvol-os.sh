@@ -106,12 +106,12 @@ EOF
     [ -f /mnt/etc/resolv.conf.bak ] && mv /mnt/etc/resolv.conf.bak /mnt/etc/resolv.conf
 
     cat > /mnt/etc/fstab <<EOF
-# <file system>  <mount point>  <type>  <options>         <dump>  <pass>
-PARTLABEL=efi    /boot/efi      vfat    umask=0077        0       0
-PARTLABEL=btrfs  /              btrfs   noatime,subvol=@debian,compress=zstd:1,noautodefrag,discard=async  0  0
-PARTLABEL=btrfs  /home          btrfs   noatime,subvol=@home,compress=zstd:1,noautodefrag,discard=async    0  0
-PARTLABEL=btrfs  /swap          btrfs   subvol=@swap      0       0
-/swap/swapfile   none           swap    sw                0       0
+# <file system>  <mount point>  <type>  <options>      <dump>  <pass>
+PARTLABEL=efi    /boot/efi      vfat    umask=0077     0       0
+PARTLABEL=btrfs  /              btrfs   noatime,subvol=@debian,compress=zstd:1,discard=async,ssd  0  0
+PARTLABEL=btrfs  /home          btrfs   noatime,subvol=@home,compress=zstd:1,discard=async,ssd    0  0
+PARTLABEL=btrfs  /swap          btrfs   subvol=@swap   0       0
+/swap/swapfile   none           swap    sw             0       0
 EOF
     sed -i "s/debian/$i/" /mnt/etc/fstab
     [[ ${#i} != 6 ]] && nano /mnt/etc/fstab
