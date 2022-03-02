@@ -2,7 +2,7 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
-if [ `whoami` == "loaden" ]; then
+if [ `whoami` = "loaden" ]; then
     echo "当前用户loaden不可执行该脚本，危险！"
     exit 1
 fi
@@ -73,8 +73,6 @@ ln -s /home/loaden/.dev ~
 ln -s /home/loaden/.bash_profile ~
 ln -s /home/loaden/.bash_aliases ~
 ln -s /home/loaden/.config/fcitx5 ~/.config
-ln -s /home/loaden/.config/ibus ~/.config
-ln -s /home/loaden/.config/microsoft-edge* ~/.config/
 ln -s /home/loaden/.config/user-dirs.dirs ~/.config
 ln -s /home/loaden/.config/user-dirs.locale ~/.config
 ln -s /home/loaden/.local/bin ~/.local
