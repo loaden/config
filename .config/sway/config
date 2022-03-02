@@ -21,6 +21,9 @@ set $term foot
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi -I -m --show=drun --prompt="Hi..."
 
+# 字体
+font pango:sans-serif 10
+
 # 修正屏幕共享
 exec --no-startup-id dbus-update-activation-environment --all
 
