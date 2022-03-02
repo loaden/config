@@ -48,25 +48,27 @@ install_app net.agalwood.Motrix
 install_app org.atheme.audacious
 install_app org.blender.Blender
 install_app org.gimp.GIMP
-install_app org.kde.kdenlive
-install_app org.kde.krita
 install_app org.mozilla.firefox
+install_app org.shotcut.Shotcut
 
 read -p "任意键安装更多应用..." -n 1
+#install_app io.github.celluloid_player.Celluloid
+#install_app net.codeindustry.MasterPDFEditor
+#install_app org.geogebra.GeoGebra
+#install_app org.kde.kdenlive
+#install_app org.kde.krita
+#install_app org.stellarium.Stellarium
 install_app ch.openboard.OpenBoard
 install_app com.github.maoschanz.drawing
 install_app com.github.muriloventuroso.pdftricks
 install_app com.ozmartians.VidCutter
 install_app fr.handbrake.ghb
-#install_app io.github.celluloid_player.Celluloid
 install_app io.github.cudatext.CudaText-Qt5
 install_app io.photoflare.photoflare
-#install_app net.codeindustry.MasterPDFEditor
 install_app nl.hjdskes.gcolor3
 install_app org.ardour.Ardour
 install_app org.filezillaproject.Filezilla
 install_app org.freefilesync.FreeFileSync
-#install_app org.geogebra.GeoGebra
 install_app org.gnome.Boxes
 install_app org.gnome.meld
 install_app org.inkscape.Inkscape
@@ -74,4 +76,3 @@ install_app org.kde.gwenview
 install_app org.kde.index
 install_app org.ksnip.ksnip
 install_app org.remmina.Remmina
-#install_app org.stellarium.Stellarium
