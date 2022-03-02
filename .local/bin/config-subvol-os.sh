@@ -9,7 +9,6 @@ if [[ $EUID != 0 ]]; then
 fi
 
 dest_subvol="elementary debian ubuntu fedora arch"
-#dest_subvol=fedora
 efi_part=/dev/sda1
 btrfs_part=/dev/sda2
 
@@ -20,7 +19,7 @@ for i in $dest_subvol; do
     echo
     echo "Start config '$i'..."
 
-    mount -o subvol=$i $btrfs_part /mnt
+    mount -o subvol=@$i $btrfs_part /mnt
     mount $efi_part /mnt/boot/efi
     mount --bind /dev /mnt/dev
     mount --bind /dev/pts /mnt/dev/pts
@@ -28,9 +27,10 @@ for i in $dest_subvol; do
     mount --bind /sys /mnt/sys
     mount --bind /run /mnt/run
 
-    if [ `stat --format=%i /mnt/tmp` -ne 256 ]; then
+    if [[ `stat --format=%i /mnt/tmp` -eq 256 ]]; then
+        btrfs subvolume delete /mnt/tmp
         rm -rf /mnt/tmp
-        btrfs subvolume create /mnt/tmp
+        mkdir -pv /mnt/tmp
         chmod 1777 /mnt/tmp /mnt/var/tmp
     fi
 
@@ -106,13 +106,12 @@ EOF
     [ -f /mnt/etc/resolv.conf.bak ] && mv /mnt/etc/resolv.conf.bak /mnt/etc/resolv.conf
 
     cat > /mnt/etc/fstab <<EOF
-# <file system>  <mount point>  <type>  <options>       <dump>  <pass>
-LABEL=Btrfs      /              btrfs   noatime,subvol=debian,compress=zstd:1  0  0
-LABEL=Btrfs      /home          btrfs   noatime,subvol=home,compress=zstd:1    0  0
-LABEL=Btrfs      /swap          btrfs   subvol=swap                            0  0
-LABEL=EFI        /boot/efi      vfat    umask=0077 0 0
-tmpfs            /tmp           tmpfs   noatime,mode=1777 0 0
-/swap/swapfile   none           swap    sw 0 0
+# <file system>  <mount point>  <type>  <options>         <dump>  <pass>
+PARTLABEL=efi    /boot/efi      vfat    umask=0077        0       0
+PARTLABEL=btrfs  /              btrfs   noatime,subvol=@debian,compress=zstd:1,noautodefrag,discard=async  0  0
+PARTLABEL=btrfs  /home          btrfs   noatime,subvol=@home,compress=zstd:1,noautodefrag,discard=async    0  0
+PARTLABEL=btrfs  /swap          btrfs   subvol=@swap      0       0
+/swap/swapfile   none           swap    sw                0       0
 EOF
     sed -i "s/debian/$i/" /mnt/etc/fstab
     [[ ${#i} != 6 ]] && nano /mnt/etc/fstab
