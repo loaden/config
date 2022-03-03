@@ -59,6 +59,8 @@ rm -rf ~/Music
 rm -rf ~/Pictures
 rm -rf ~/Videos
 
+unlink ~/.bash_aliases
+unlink ~/.local/share/templates
 unlink ~/.config/Code
 mkdir -p ~/.config/Code/User
 ln -sf /home/loaden/.config/Code/User/*.json ~/.config/Code/User/
@@ -71,7 +73,6 @@ ln -s /home/loaden/.machines ~
 ln -s /home/loaden/.nspawn-deepinwine ~
 ln -s /home/loaden/.dev ~
 ln -s /home/loaden/.bash_profile ~
-ln -s /home/loaden/.bash_aliases ~
 ln -s /home/loaden/.config/fcitx5 ~/.config
 ln -s /home/loaden/.config/user-dirs.dirs ~/.config
 ln -s /home/loaden/.config/user-dirs.locale ~/.config
@@ -79,7 +80,6 @@ ln -s /home/loaden/.local/bin ~/.local
 ln -s /home/loaden/.local/share/fcitx5 ~/.local/share
 ln -s /home/loaden/.local/share/flatpak ~/.local/share
 ln -s /home/loaden/.local/share/fonts ~/.local/share
-ln -s /home/loaden/.local/share/templates ~/.local/share
 [ ! -d ~/云盘 ] && ln -s /home/loaden/云盘 ~
 ln -s /home/loaden/桌面 ~
 ln -s /home/loaden/下载 ~
