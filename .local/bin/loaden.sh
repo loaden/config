@@ -34,6 +34,7 @@ rm -rf ~/.config/ibus
 rm -rf ~/.config/microsoft-edge*
 rm -rf ~/.config/google-chrome*
 rm -rf ~/.config/uTools
+rm -rf ~/.config/fontconfig
 rm -rf ~/.config/user-dirs.dirs
 rm -rf ~/.config/user-dirs.locale
 rm -rf ~/.local/bin
@@ -76,6 +77,7 @@ ln -s /home/loaden/.bash_profile ~
 ln -s /home/loaden/.config/fcitx5 ~/.config
 ln -s /home/loaden/.config/user-dirs.dirs ~/.config
 ln -s /home/loaden/.config/user-dirs.locale ~/.config
+ln -s /home/loaden/.config/fontconfig ~/.config
 ln -s /home/loaden/.local/bin ~/.local
 ln -s /home/loaden/.local/share/fcitx5 ~/.local/share
 ln -s /home/loaden/.local/share/flatpak ~/.local/share

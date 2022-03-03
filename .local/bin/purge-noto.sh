@@ -5,4 +5,6 @@
 sudo apt purge sudo apt purge fonts-noto-extra -y
 sudo apt purge sudo apt purge fonts-noto-cjk-extra -y
 sudo apt purge sudo apt purge fonts-noto-ui-extra -y
+sudo apt purge sudo apt purge fonts-noto-cjk -y
+sudo apt purge sudo apt purge fonts-noto -y
 sudo apt autopurge -y
