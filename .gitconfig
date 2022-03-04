@@ -6,3 +6,5 @@
 	safecrlf = warn
 [gui]
 	spellingdictionary = en
+[pull]
+	rebase = false
