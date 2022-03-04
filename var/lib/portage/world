@@ -44,8 +44,10 @@ gui-wm/sway
 media-gfx/blender
 media-gfx/eog
 media-gfx/gimp
+media-gfx/gnome-font-viewer
 media-gfx/imagemagick
 media-gfx/imv
+media-libs/fontconfig
 media-sound/deadbeef
 media-sound/pavucontrol
 media-sound/playerctl
@@ -62,6 +64,8 @@ net-im/dingtalk
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
+net-print/hplip
+net-print/hplip-plugin
 net-wireless/iwd
 sci-calculators/galculator
 sys-apps/baobab
@@ -87,6 +91,5 @@ x11-themes/adwaita-qt
 x11-themes/papirus-icon-theme
 xfce-base/thunar
 xfce-extra/thunar-archive-plugin
-xfce-extra/thunar-media-tags-plugin
 xfce-extra/thunar-volman
 xfce-extra/tumbler
