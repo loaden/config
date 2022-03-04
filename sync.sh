@@ -41,9 +41,6 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # fstab
 cp -r /etc/fstab etc/
 
-# env
-cp /etc/environment etc/environment
-
 # world
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world
 
