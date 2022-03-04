@@ -21,7 +21,6 @@ app-shells/bash-completion
 app-text/evince
 app-text/tree
 dev-lang/rust-bin
-dev-libs/wayland
 dev-python/i3ipc
 dev-util/catfish
 dev-util/ccache
@@ -67,7 +66,6 @@ net-wireless/iwd
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/gnome-disk-utility
-sys-apps/systemd
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
