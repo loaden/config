@@ -35,6 +35,7 @@ for i in $dest_subvol; do
     fi
 
     cat > /mnt/config.sh <<EOF
+        source /etc/profile
         [[ -z "$(nmcli dev show | grep DNS)" ]] && echo "Cannot reach DNS resolv." && exit
 
         mv /etc/default/grub /etc/default/grub.bak
@@ -96,12 +97,20 @@ for i in $dest_subvol; do
 
         [ -d /boot/grub ] && grub-mkconfig -o /boot/grub/grub.cfg
         [ -d /boot/grub2 ] && grub2-mkconfig -o /boot/grub2/grub.cfg
+        
+        env
+        read
 EOF
 
     [ -f /mnt/etc/resolv.conf ] && cp /mnt/etc/resolv.conf /mnt/etc/resolv.conf.bak
     cp /etc/resolv.conf /mnt/etc/resolv.conf
     sleep 1
-    chroot /mnt /bin/bash /config.sh
+    chroot "/mnt" env -i             \
+    	HOME=/root                  \
+    	TERM="$TERM"                \
+    	PS1='(chroot) \u:\w\$ '     \
+    	PATH=/usr/bin:/usr/sbin     \
+    	/bin/bash -c "source /config.sh"
     rm -f /mnt/etc/resolv.conf
     [ -f /mnt/etc/resolv.conf.bak ] && mv /mnt/etc/resolv.conf.bak /mnt/etc/resolv.conf
 
