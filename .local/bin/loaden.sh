@@ -60,28 +60,30 @@ rm -rf ~/Music
 rm -rf ~/Pictures
 rm -rf ~/Videos
 
-unlink ~/.bash_aliases
-unlink ~/.local/share/templates
-unlink ~/.config/Code
+unlink ~/.bashrc >/dev/null 2>&1
+unlink ~/.bash_profile >/dev/null 2>&1
+unlink ~/.bash_aliases >/dev/null 2>&1
+unlink ~/.local/share/templates >/dev/null 2>&1
+unlink ~/.config/Code >/dev/null 2>&1
+
 mkdir -p ~/.config/Code/User
 ln -sf /home/loaden/.config/Code/User/*.json ~/.config/Code/User/
-
+ln -s /home/loaden/.vscode ~
+ln -s /home/loaden/.dev ~
 ln -s /home/loaden/.gitconfig ~
 ln -s /home/loaden/.ssh ~
+ln -s /home/loaden/.local/bin ~/.local
 ln -s /home/loaden/.var ~
-ln -s /home/loaden/.vscode ~
+ln -s /home/loaden/.local/share/flatpak ~/.local/share
 ln -s /home/loaden/.machines ~
 ln -s /home/loaden/.nspawn-deepinwine ~
-ln -s /home/loaden/.dev ~
-ln -s /home/loaden/.bash_profile ~
 ln -s /home/loaden/.config/fcitx5 ~/.config
+ln -s /home/loaden/.local/share/fcitx5 ~/.local/share
 ln -s /home/loaden/.config/user-dirs.dirs ~/.config
 ln -s /home/loaden/.config/user-dirs.locale ~/.config
 ln -s /home/loaden/.config/fontconfig ~/.config
-ln -s /home/loaden/.local/bin ~/.local
-ln -s /home/loaden/.local/share/fcitx5 ~/.local/share
-ln -s /home/loaden/.local/share/flatpak ~/.local/share
 ln -s /home/loaden/.local/share/fonts ~/.local/share
+
 [ ! -d ~/云盘 ] && ln -s /home/loaden/云盘 ~
 ln -s /home/loaden/桌面 ~
 ln -s /home/loaden/下载 ~
