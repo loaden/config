@@ -31,8 +31,8 @@ sudo eselect locale set zh_CN.utf8
 eselect locale list
 
 # 用户目录
-sudo emerge -avu xdg-user-dirs
-xdg-user-dirs-update --force
+sudo emerge -avu xdg-user-dirs-gtk
+xdg-user-dirs-gtk-update
 
 # 添加官方GURU源和中国用户源
 sudo emerge -avu eselect-repository
