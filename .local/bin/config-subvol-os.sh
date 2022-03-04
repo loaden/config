@@ -36,8 +36,6 @@ for i in $dest_subvol; do
 
     cat > /mnt/config.sh <<EOF
         source /etc/profile
-        [[ -z "$(nmcli dev show | grep DNS)" ]] && echo "Cannot reach DNS resolv." && exit
-
         mv /etc/default/grub /etc/default/grub.bak
 
         if [ -f /bin/apt ]; then
@@ -97,7 +95,7 @@ for i in $dest_subvol; do
 
         [ -d /boot/grub ] && grub-mkconfig -o /boot/grub/grub.cfg
         [ -d /boot/grub2 ] && grub2-mkconfig -o /boot/grub2/grub.cfg
-        
+
         env
         read
 EOF
