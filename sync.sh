@@ -38,6 +38,9 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # iwd
 [ -d /etc/iwd/ ] && cp -r /etc/iwd etc/
 
+# fstab
+cp -r /etc/fstab etc/
+
 # env
 cp /etc/environment etc/environment
 
