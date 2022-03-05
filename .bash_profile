@@ -29,8 +29,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export MOZ_DBUS_REMOTE=1
-export QT_STYLE_OVERRIDE=adwaita
-export GTK_USE_PORTAL=1
+export QT_STYLE_OVERRIDE=adwaita-dark
+export GTK_USE_PORTAL=0
 
 # Update systemd and D-Bus envs
 dbus-update-activation-environment --systemd --all
