@@ -5,7 +5,8 @@
 # 启动单元初始化配置
 sudo systemd-machine-id-setup
 sudo systemctl preset-all --preset-mode=enable-only
-# sudo systemctl --global enable pipewire.socket
+systemd-machine-id-setup
+systemctl --user preset-all --preset-mode=enable-only
 
 # 主机名
 if [ "$(hostname)" != "lucky" ]; then
@@ -17,7 +18,7 @@ if [ "$(hostname)" != "lucky" ]; then
 fi
 
 # 时区
-sudo timedatectl set-timezone Asia/Shanghai
+sudo timedatectl set-timezone Asia/Shanghaif
 sudo timedatectl set-local-rtc 0 --adjust-system-clock
 sudo timedatectl set-ntp 1
 sudo hwclock --utc --systohc
@@ -54,7 +55,7 @@ sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
 
 # 用户组
-sudo usermod -aG wheel,audio,video,plugdev,pcap $USER
+sudo usermod -aG wheel,audio,video,input,lpadmin,plugdev,pcap $USER
 
 # udisks 支持 NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
