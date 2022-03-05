@@ -54,7 +54,6 @@ media-video/ffmpeg
 media-video/handbrake
 media-video/mpv
 media-video/obs-studio
-media-video/shotcut
 media-video/vidcutter
 net-analyzer/traceroute
 net-analyzer/wireshark
@@ -72,7 +71,6 @@ sys-apps/baobab
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
-sys-apps/xdg-desktop-portal-gtk
 sys-auth/polkit
 sys-boot/efibootmgr
 sys-devel/clang
