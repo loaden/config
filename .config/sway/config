@@ -21,6 +21,12 @@ set $term foot
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi -I -m --show=drun --prompt="Hi..."
 
+# GTK+ applications take 20 seconds to start
+# This is due to GTK+ waiting for xdg-desktop-portal to start via D-Bus.
+# This times out because the D-Bus activated service doesn't know what WAYLAND_DISPLAY to connect to.
+# Alternatively, set GTK_USE_PORTAL=0 in your environment.
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # 字体
 font pango:sans-serif 10
 
