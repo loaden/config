@@ -23,12 +23,14 @@ if ! result=$( echo $PATH | grep "$HOME/.local/bin" ) ; then PATH="$HOME/.local/
 
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
-export INPUT_METHOD=ibus
-export XMODIFIERS=@im=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export SDL_IM_MODULE=ibus
+export INPUT_METHOD=fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
 export MOZ_DBUS_REMOTE=1
+export QT_STYLE_OVERRIDE=adwaita
+export GTK_USE_PORTAL=1
 
 # Update systemd and D-Bus envs
 dbus-update-activation-environment --systemd --all
