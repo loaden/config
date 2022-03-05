@@ -1,1 +1,1 @@
-dev-qt/qtgui X egl ibus vnc eglfs
+dev-qt/qtgui X egl eglfs vnc
