@@ -67,10 +67,12 @@ net-print/hplip
 net-print/hplip-plugin
 net-wireless/iwd
 sci-calculators/galculator
+sci-calculators/qalculate-gtk
 sys-apps/baobab
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
+sys-apps/xdg-desktop-portal-gtk
 sys-auth/polkit
 sys-boot/efibootmgr
 sys-devel/clang
