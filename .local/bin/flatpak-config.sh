@@ -32,8 +32,6 @@ if [ "$SYSTEM_INSTALL" == "1" ]; then
     sudo flatpak remote-modify --system flathub --prio=2
     sudo sed -i 's/.*url-is-set=.*/url-is-set=true/g' /var/lib/flatpak/repo/config
     [[ -z $(cat /var/lib/flatpak/repo/config | grep url-is-set=true ) ]] && sudo bash -c 'echo "url-is-set=true" >> /var/lib/flatpak/repo/config'
-    # Add fcitx 5 unstable repo
-    flatpak remote-add --system --if-not-exists fcitx5-unstable https://flatpak.fcitx-im.org/unstable-repo/fcitx5-unstable.flatpakrepo
 fi
 
 
