@@ -34,7 +34,8 @@ font pango:sans-serif 10
 default_border pixel
 
 # 输入法
-exec_always fcitx5 -d --replace
+exec_always --no-startup-id flatpak run org.fcitx.Fcitx5
+# exec_always fcitx5 -d --replace
 
 # 密码验证
 exec_always /usr/libexec/polkit-gnome-authentication-agent-1
