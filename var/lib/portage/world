@@ -1,6 +1,5 @@
 app-admin/eclean-kernel
 app-admin/sudo
-app-admin/system-config-printer
 app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
@@ -45,6 +44,7 @@ media-gfx/blender
 media-gfx/gimp
 media-gfx/imagemagick
 media-gfx/imv
+media-gfx/inkscape
 media-sound/deadbeef
 media-sound/pavucontrol
 media-sound/pulseaudio
@@ -64,6 +64,7 @@ net-wireless/iwd
 sci-calculators/galculator
 sci-calculators/qalculate-gtk
 sys-apps/baobab
+sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
