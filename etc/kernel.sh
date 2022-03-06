@@ -187,7 +187,9 @@ scripts/config  -e CONFIG_BTRFS_FS \
                 -e CONFIG_NETWORK_FILESYSTEMS \
                 -d CONFIG_FS_ENCRYPTION \
                 -d CONFIG_FS_VERITY \
-                -d CONFIG_MSDOS_FS
+                -m CONFIG_MSDOS_FS \
+                -m CONFIG_ISO9660_FS \
+                -m CONFIG_UDF_FS
 
 # 显卡
 scripts/config  -d CONFIG_DRM_NOUVEAU \

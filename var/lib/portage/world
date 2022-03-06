@@ -42,9 +42,7 @@ gui-apps/wofi
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
 media-gfx/blender
-media-gfx/eog
 media-gfx/gimp
-media-gfx/gnome-font-viewer
 media-gfx/imagemagick
 media-gfx/imv
 media-sound/deadbeef
@@ -53,8 +51,6 @@ media-sound/pulseaudio
 media-video/ffmpeg
 media-video/handbrake
 media-video/mpv
-media-video/obs-studio
-media-video/vidcutter
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
@@ -84,8 +80,9 @@ sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
+x11-libs/libXinerama
+x11-libs/libXv
 x11-misc/xdg-user-dirs-gtk
-x11-themes/adwaita-qt
 x11-themes/papirus-icon-theme
 xfce-base/thunar
 xfce-extra/thunar-archive-plugin
