@@ -31,3 +31,4 @@ install_app org.filezillaproject.Filezilla
 install_app org.kde.gwenview
 install_app org.ksnip.ksnip
 install_app org.ardour.Ardour
+install_app io.github.Icalingua.Icalingua

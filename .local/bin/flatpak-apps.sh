@@ -48,6 +48,7 @@ install_app org.blender.Blender
 install_app org.gimp.GIMP
 install_app org.mozilla.firefox
 install_app org.kde.kdenlive
+install_app io.github.Icalingua.Icalingua
 
 read -p "任意键安装更多应用..." -n 1
 #install_app io.github.celluloid_player.Celluloid
