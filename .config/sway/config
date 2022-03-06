@@ -58,6 +58,7 @@ bindsym $mod+Ctrl+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[p
 
 # 截图
 bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
+bindsym Alt+Shift+a exec grim -g "$(slurp)" - | wl-copy && notify-send "截图到剪贴板"
 bindsym $mod+Insert exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
     && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
     && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
