@@ -17,9 +17,7 @@ if [[ -n $(flatpak --system remote-list | grep appcenter) ]]; then
 fi
 
 if [[ -n $(flatpak remote-list | grep fcitx5-unstable) ]]; then
-    flatpak install -y fcitx5-unstable org.fcitx.Fcitx5
-    flatpak install -y fcitx5-unstable org.fcitx.Fcitx5.Addon.Lua
-    flatpak install -y fcitx5-unstable org.fcitx.Fcitx5.Addon.Rime
+    flatpak install fcitx5-unstable org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.Rime org.fcitx.Fcitx5.Addon.Lua
 fi
 
 if [[ -n $(flatpak --system remote-list | grep flathub) ]]; then

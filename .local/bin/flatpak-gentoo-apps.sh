@@ -2,6 +2,10 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
+if [[ -n $(flatpak remote-list | grep fcitx5-unstable) ]]; then
+    flatpak install fcitx5-unstable org.fcitx.Fcitx5 org.fcitx.Fcitx5.Addon.Rime org.fcitx.Fcitx5.Addon.Lua
+fi
+
 if [[ -n $(flatpak --system remote-list | grep flathub) ]]; then
     TARGET="--system"
 fi
