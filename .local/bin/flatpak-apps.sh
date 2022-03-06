@@ -49,13 +49,12 @@ install_app org.atheme.audacious
 install_app org.blender.Blender
 install_app org.gimp.GIMP
 install_app org.mozilla.firefox
-install_app org.shotcut.Shotcut
+install_app org.kde.kdenlive
 
 read -p "任意键安装更多应用..." -n 1
 #install_app io.github.celluloid_player.Celluloid
 #install_app net.codeindustry.MasterPDFEditor
 #install_app org.geogebra.GeoGebra
-#install_app org.kde.kdenlive
 #install_app org.kde.krita
 #install_app org.stellarium.Stellarium
 install_app ch.openboard.OpenBoard
