@@ -97,7 +97,7 @@ for i in $dest_subvol; do
         [ -d /boot/grub2 ] && grub2-mkconfig -o /boot/grub2/grub.cfg
 
         env
-        read
+        read -p "$i is done."
 EOF
 
     [ -f /mnt/etc/resolv.conf ] && cp /mnt/etc/resolv.conf /mnt/etc/resolv.conf.bak
