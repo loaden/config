@@ -98,7 +98,7 @@ for_window [app_id="qt5ct"] floating enable
 for_window [title="Open file..."] floating enable
 
 # 随机壁纸
-output * bg $(find $(xdg-user-dir PICTURES)/Wallpapers -type f | shuf -n1) fill
+output * bg $(find ~/.config/sway/wallpapers -type f | shuf -n1) fill
 
 ### Output configuration
 #

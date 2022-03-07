@@ -404,6 +404,9 @@ scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_CBC \
                 -e CONFIG_KEY_DH_OPERATIONS
 
+# 同步单位电脑配置
+scripts/config  -d CONFIG_AMD_MEM_ENCRYPT
+
 # 刷新
 scripts/config  --refresh
 
