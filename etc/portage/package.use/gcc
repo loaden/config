@@ -1,1 +1,1 @@
-sys-devel/gcc -zstd
+sys-devel/gcc lto objc
