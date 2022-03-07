@@ -8,40 +8,19 @@ if [ `whoami` = "loaden" ]; then
 fi
 
 rm -rf ~/.gitconfig
-rm -rf ~/.stalonetray.rc
 rm -rf ~/.deepinwine
 rm -rf ~/.ssh
-rm -rf ~/.var
 rm -rf ~/.vscode
 rm -rf ~/.machines
-rm -rf ~/.steam*
 rm -rf ~/.dev
-rm -rf ~/.tim
-rm -rf ~/.lightqq
-rm -rf ~/.wechat
-rm -rf ~/.minecraft
-rm -rf ~/.vnc
-rm -rf ~/.themes
-rm -rf ~/.kde*
-rm -rf ~/.kingsoft
-rm -rf ~/.bash_profile
-rm -rf ~/.bash_aliases
-rm -rf ~/.xsessionrc
 rm -rf ~/.nspawn-deepinwine
-rm -rf ~/.config/fcitx
 rm -rf ~/.config/fcitx5
-rm -rf ~/.config/ibus
-rm -rf ~/.config/microsoft-edge*
-rm -rf ~/.config/google-chrome*
-rm -rf ~/.config/uTools
 rm -rf ~/.config/fontconfig
 rm -rf ~/.config/user-dirs.dirs
 rm -rf ~/.config/user-dirs.locale
 rm -rf ~/.local/bin
 rm -rf ~/.local/share/fcitx5
-rm -rf ~/.local/share/flatpak
 rm -rf ~/.local/share/fonts
-rm -rf ~/.local/share/templates
 rm -rf ~/桌面
 rm -rf ~/下载
 rm -rf ~/模板
@@ -60,21 +39,22 @@ rm -rf ~/Music
 rm -rf ~/Pictures
 rm -rf ~/Videos
 
-unlink ~/.bashrc >/dev/null 2>&1
-unlink ~/.bash_profile >/dev/null 2>&1
-unlink ~/.bash_aliases >/dev/null 2>&1
-unlink ~/.local/share/templates >/dev/null 2>&1
-unlink ~/.config/Code >/dev/null 2>&1
+[ -L ~/.local/share/flatpak ] && rm -fv ~/.local/share/flatpak
+[ -L ~/.var ] && rm -fv 
+[ -L ~/.bashrc ] && cp /etc/skel/.bashrc ~/.bashrc
+[ -L ~/.bash_profile ] &&  cp /etc/skel/.bash_profile ~/.bash_profile
+[ -L ~/.bash_aliases ] && rm -fv ~/.bash_aliases
+[ -L ~/.local/share/templates ] && rm -fv ~/.local/share/templates
+[ -L ~/.config/Code ] && rm -fv ~/.config/Code
 
 mkdir -p ~/.config/Code/User
 ln -sf /home/loaden/.config/Code/User/*.json ~/.config/Code/User/
 ln -s /home/loaden/.vscode ~
+
 ln -s /home/loaden/.dev ~
 ln -s /home/loaden/.gitconfig ~
 ln -s /home/loaden/.ssh ~
 ln -s /home/loaden/.local/bin ~/.local
-ln -s /home/loaden/.var ~
-ln -s /home/loaden/.local/share/flatpak ~/.local/share
 ln -s /home/loaden/.machines ~
 ln -s /home/loaden/.nspawn-deepinwine ~
 ln -s /home/loaden/.config/fcitx5 ~/.config
