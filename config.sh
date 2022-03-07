@@ -86,13 +86,13 @@ sudo eselect fontconfig disable 80-delicious.conf
 sudo eselect fontconfig disable 90-synthetic.conf
 
 # 启用字体配置
-sudo eselect fontconfig enable 10-hinting-full.conf
+sudo eselect fontconfig enable 10-hinting-slight.conf
 sudo eselect fontconfig enable 11-lcdfilter-default.conf
 sudo eselect fontconfig enable 50-user.conf
 
 # 刷新字体缓存
 eselect fontconfig list
-sudo -E fc-cache -rv
+fc-cache -rv
 
 # 更新环境变量
 sudo env-update

@@ -3,7 +3,7 @@
 # QQ群：19346666、111601117
 
 # 刷新字体缓存
-sudo -E fc-cache -rv
+fc-cache -rv
 
 # 检查字体匹配
 fc-match Monospace
