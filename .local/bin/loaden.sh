@@ -40,7 +40,7 @@ rm -rf ~/Pictures
 rm -rf ~/Videos
 
 [ -L ~/.local/share/flatpak ] && rm -fv ~/.local/share/flatpak
-[ -L ~/.var ] && rm -fv 
+[ -L ~/.var ] && rm -fv ~/.var
 [ -L ~/.bashrc ] && cp /etc/skel/.bashrc ~/.bashrc
 [ -L ~/.bash_profile ] &&  cp /etc/skel/.bash_profile ~/.bash_profile
 [ -L ~/.bash_aliases ] && rm -fv ~/.bash_aliases
