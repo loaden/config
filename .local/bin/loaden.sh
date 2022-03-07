@@ -7,69 +7,69 @@ if [ `whoami` = "loaden" ]; then
     exit 1
 fi
 
-rm -rf ~/.gitconfig
-rm -rf ~/.deepinwine
-rm -rf ~/.ssh
-rm -rf ~/.vscode
-rm -rf ~/.machines
-rm -rf ~/.dev
-rm -rf ~/.nspawn-deepinwine
-rm -rf ~/.config/fcitx5
-rm -rf ~/.config/fontconfig
-rm -rf ~/.config/user-dirs.dirs
-rm -rf ~/.config/user-dirs.locale
-rm -rf ~/.local/bin
-rm -rf ~/.local/share/fcitx5
-rm -rf ~/.local/share/fonts
-rm -rf ~/桌面
-rm -rf ~/下载
-rm -rf ~/模板
-rm -rf ~/公共
-rm -rf ~/文档
-rm -rf ~/音乐
-rm -rf ~/图片
-rm -rf ~/视频
-rm -rf ~/公共的
-rm -rf ~/Desktop
-rm -rf ~/Downloads
-rm -rf ~/.Templates
-rm -rf ~/.Public
-rm -rf ~/Documents
-rm -rf ~/Music
-rm -rf ~/Pictures
-rm -rf ~/Videos
+rm -rfv ~/.gitconfig
+rm -rfv ~/.deepinwine
+rm -rfv ~/.ssh
+rm -rfv ~/.vscode
+rm -rfv ~/.machines
+rm -rfv ~/.dev
+rm -rfv ~/.nspawn-deepinwine
+rm -rfv ~/.config/fcitx5
+rm -rfv ~/.config/fontconfig
+rm -rfv ~/.config/user-dirs.dirs
+rm -rfv ~/.config/user-dirs.locale
+rm -rfv ~/.local/bin
+rm -rfv ~/.local/share/fcitx5
+rm -rfv ~/.local/share/fonts
+rm -rfv ~/桌面
+rm -rfv ~/下载
+rm -rfv ~/模板
+rm -rfv ~/公共
+rm -rfv ~/文档
+rm -rfv ~/音乐
+rm -rfv ~/图片
+rm -rfv ~/视频
+rm -rfv ~/公共的
+rm -rfv ~/Desktop
+rm -rfv ~/Downloads
+rm -rfv ~/.Templates
+rm -rfv ~/.Public
+rm -rfv ~/Documents
+rm -rfv ~/Music
+rm -rfv ~/Pictures
+rm -rfv ~/Videos
 
 [ -L ~/.local/share/flatpak ] && rm -fv ~/.local/share/flatpak
 [ -L ~/.var ] && rm -fv ~/.var
-[ -L ~/.bashrc ] && cp /etc/skel/.bashrc ~/.bashrc
-[ -L ~/.bash_profile ] &&  cp /etc/skel/.bash_profile ~/.bash_profile
+[ -L ~/.bashrc ] && cp -v /etc/skel/.bashrc ~/.bashrc
+[ -L ~/.bash_profile ] && cp -v /etc/skel/.bash_profile ~/.bash_profile
 [ -L ~/.bash_aliases ] && rm -fv ~/.bash_aliases
 [ -L ~/.local/share/templates ] && rm -fv ~/.local/share/templates
 [ -L ~/.config/Code ] && rm -fv ~/.config/Code
 
 mkdir -p ~/.config/Code/User
-ln -sf /home/loaden/.config/Code/User/*.json ~/.config/Code/User/
-ln -s /home/loaden/.vscode ~
+ln -sfv /home/loaden/.config/Code/User/*.json ~/.config/Code/User/
+ln -sv /home/loaden/.vscode ~
 
-ln -s /home/loaden/.dev ~
-ln -s /home/loaden/.gitconfig ~
-ln -s /home/loaden/.ssh ~
-ln -s /home/loaden/.local/bin ~/.local
-ln -s /home/loaden/.machines ~
-ln -s /home/loaden/.nspawn-deepinwine ~
-ln -s /home/loaden/.config/fcitx5 ~/.config
-ln -s /home/loaden/.local/share/fcitx5 ~/.local/share
-ln -s /home/loaden/.config/user-dirs.dirs ~/.config
-ln -s /home/loaden/.config/user-dirs.locale ~/.config
-ln -s /home/loaden/.config/fontconfig ~/.config
-ln -s /home/loaden/.local/share/fonts ~/.local/share
+ln -sv /home/loaden/.dev ~
+ln -sv /home/loaden/.gitconfig ~
+ln -sv /home/loaden/.ssh ~
+ln -sv /home/loaden/.local/bin ~/.local
+ln -sv /home/loaden/.machines ~
+ln -sv /home/loaden/.nspawn-deepinwine ~
+ln -sv /home/loaden/.config/fcitx5 ~/.config
+ln -sv /home/loaden/.local/share/fcitx5 ~/.local/share
+ln -sv /home/loaden/.config/user-dirs.dirs ~/.config
+ln -sv /home/loaden/.config/user-dirs.locale ~/.config
+ln -sv /home/loaden/.config/fontconfig ~/.config
+ln -sv /home/loaden/.local/share/fonts ~/.local/share
 
-[ ! -d ~/云盘 ] && ln -s /home/loaden/云盘 ~
-ln -s /home/loaden/桌面 ~
-ln -s /home/loaden/下载 ~
-ln -s /home/loaden/模板 ~
-ln -s /home/loaden/公共 ~
-ln -s /home/loaden/文档 ~
-ln -s /home/loaden/音乐 ~
-ln -s /home/loaden/图片 ~
-ln -s /home/loaden/视频 ~
+[ ! -d ~/云盘 ] && ln -sv /home/loaden/云盘 ~
+ln -sv /home/loaden/桌面 ~
+ln -sv /home/loaden/下载 ~
+ln -sv /home/loaden/模板 ~
+ln -sv /home/loaden/公共 ~
+ln -sv /home/loaden/文档 ~
+ln -sv /home/loaden/音乐 ~
+ln -sv /home/loaden/图片 ~
+ln -sv /home/loaden/视频 ~
