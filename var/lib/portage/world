@@ -4,7 +4,6 @@ app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
 app-backup/snapper
-app-editors/featherpad
 app-editors/mousepad
 app-editors/vscode
 app-eselect/eselect-repository
