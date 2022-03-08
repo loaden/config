@@ -32,13 +32,9 @@ esac
 # 启用Clang薄LTO优化
 if [ "$BUILD_WITH_CLANG" = "1" ]; then
     export LLVM=1
-    scripts/config  -e CONFIG_CC_IS_CLANG \
-                    -e CONFIG_LTO_CLANG \
-                    -e CONFIG_LTO_CLANG_THIN
+    scripts/config -e CONFIG_LTO_CLANG_THIN
 else
-    export LLVM=0
-    scripts/config  -d CONFIG_CC_IS_CLANG \
-                    -d CONFIG_LTO_CLANG
+    scripts/config --set-val CONFIG_CLANG_VERSION "0"
 fi
 
 # 通用设置
