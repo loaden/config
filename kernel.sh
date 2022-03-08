@@ -18,7 +18,7 @@ fi
 cd /usr/src/linux
 
 # 启用Clang编译内核
-export LLVM=1
+BUILD_WITH_CLANG=0
 
 # 初始本地配置
 read -p "是否生成本地配置？[y/N/old]" choice
@@ -30,11 +30,13 @@ N | n | '') true ;;
 esac
 
 # 启用Clang薄LTO优化
-if [ "$LLVM" = "1" ]; then
+if [ "$BUILD_WITH_CLANG" = "1" ]; then
+    export LLVM=1
     scripts/config  -e CONFIG_CC_IS_CLANG \
                     -e CONFIG_LTO_CLANG \
                     -e CONFIG_LTO_CLANG_THIN
 else
+    export LLVM=0
     scripts/config  -d CONFIG_CC_IS_CLANG \
                     -d CONFIG_LTO_CLANG
 fi
