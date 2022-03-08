@@ -14,6 +14,7 @@ rm -rfv ~/.bash_profile
 rm -rfv ~/.vscode
 rm -rfv ~/.machines
 rm -rfv ~/.dev
+rm -rfv ~/.mozilla
 rm -rfv ~/.nspawn-deepinwine
 rm -rfv ~/.config/fcitx5
 rm -rfv ~/.config/fontconfig
@@ -58,6 +59,7 @@ ln -sv /home/loaden/.vscode ~
 ln -sv /home/loaden/.dev ~
 ln -sv /home/loaden/.gitconfig ~
 ln -sv /home/loaden/.ssh ~
+ln -sv /home/loaden/.mozilla ~
 ln -sv /home/loaden/.bash_profile ~
 ln -sv /home/loaden/.local/bin ~/.local
 ln -sv /home/loaden/.machines ~
