@@ -29,6 +29,16 @@ N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
 esac
 
+# 启用Clang薄LTO优化
+if [ "$LLVM" = "1" ]; then
+    scripts/config  -e CONFIG_CC_IS_CLANG \
+                    -e CONFIG_LTO_CLANG \
+                    -e CONFIG_LTO_CLANG_THIN
+else
+    scripts/config  -d CONFIG_CC_IS_CLANG \
+                    -d CONFIG_LTO_CLANG
+fi
+
 # 通用设置
 scripts/config  -d CONFIG_LOCALVERSION_AUTO \
                 -d MICROCODE \
@@ -103,9 +113,6 @@ scripts/config  -e CONFIG_NO_HZ_IDLE \
 
 # Intel显卡需要
 scripts/config  -e CONFIG_CHECKPOINT_RESTORE
-
-# 启用Clang薄LTO优化
-scripts/config  -e CONFIG_LTO_CLANG_THIN
 
 # USB设备支持
 scripts/config  -e CONFIG_USB_HID \
@@ -189,7 +196,8 @@ scripts/config  -e CONFIG_BTRFS_FS \
                 -d CONFIG_FS_VERITY \
                 -m CONFIG_MSDOS_FS \
                 -m CONFIG_ISO9660_FS \
-                -m CONFIG_UDF_FS
+                -m CONFIG_UDF_FS \
+                -m CONFIG_CIFS
 
 # 显卡
 scripts/config  -d CONFIG_DRM_NOUVEAU \
