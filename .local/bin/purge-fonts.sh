@@ -2,6 +2,16 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
+if [ -f /usr/bin/pacman ]; then
+    sudo pacman -Rsc noto-fonts-cjk
+    sudo pacman -Rsc gnu-free-fonts
+    sudo pacman -S wqy-microhei --noconfirm --needed
+    exit
+elif [! /usr/bin/apt ]; then
+    echo Not dpkg system.
+    exit
+fi
+
 sudo apt purge fonts-noto-cjk* -y
 sudo apt purge fonts-noto-*
 sudo apt purge fonts-arphic-* -y
@@ -38,4 +48,3 @@ sudo apt purge -y fonts-arabeyes
 
 sudo apt install fonts-wqy-microhei -y
 sudo apt autopurge -y
-
