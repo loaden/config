@@ -19,6 +19,22 @@ sudo apt purge -y fonts-lklug-sinhala
 sudo apt purge -y fonts-tibetan-machine
 sudo apt purge -y fonts-pagul
 sudo apt purge -y fonts-lao
+sudo apt purge -y fonts-inter
+sudo apt purge fonts-dejavu-extra -y
+sudo apt purge fonts-dejavu-core
+sudo apt purge fonts-uni* -y
+sudo apt purge fonts-ipa* -y
+sudo apt purge -y fonts-font-awesome
+sudo apt purge -y fonts-farsiweb
+sudo apt purge -y lato
+sudo apt purge -y fonts-dzongkha
+sudo apt purge -y fonts-vlgothic
+sudo apt purge -y fonts-ukij-uyghur
+sudo apt purge -y fonts-khmeros
+sudo apt purge -y fonts-bpg-georgian
+sudo apt purge -y fonts-nanum
+sudo apt purge -y fonts-freefont-ttf
+sudo apt purge -y fonts-arabeyes
 
 sudo apt install fonts-wqy-microhei -y
 sudo apt autopurge -y
