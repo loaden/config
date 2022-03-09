@@ -58,9 +58,4 @@ sudo apt install mpv -y #视频播放器
 sudo apt install zstd -y #最快解压
 sudo apt install apt-file -y #搜索包
 
-#远程连接
-sudo apt install openssh-server -y
-sudo systemctl enable sshd.service
-sudo systemctl start sshd.service
-
 sudo apt autopurge -y
