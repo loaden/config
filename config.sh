@@ -95,5 +95,4 @@ eselect fontconfig list
 fc-cache -rv
 
 # 更新环境变量
-sudo env-update
-source /etc/profile
+sudo env-update && . /etc/profile
