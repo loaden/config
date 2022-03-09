@@ -29,11 +29,6 @@ install_app org.kde.kdenlive
 install_app ch.openboard.OpenBoard
 install_app org.filezillaproject.Filezilla
 install_app org.kde.gwenview
-install_app org.ksnip.ksnip
 install_app org.ardour.Ardour
-install_app io.github.Icalingua.Icalingua
-install_app org.geogebra.GeoGebra
-install_app org.stellarium.Stellarium
-install_app io.photoflare.photoflare
 install_app net.codeindustry.MasterPDFEditor
-install_app org.kde.krita
+install_app io.github.Icalingua.Icalingua
