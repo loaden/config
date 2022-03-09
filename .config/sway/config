@@ -91,6 +91,7 @@ exec_always {
 # 浮动窗口
 for_window [app_id="pavucontrol"] floating enable, resize set width 40 ppt height 30 ppt
 for_window [app_id="galculator"] floating enable
+for_window [app_id="xarchiver"] floating enable
 for_window [title="文件操作进度"] floating enable, resize set width 30 ppt height 20 ppt
 for_window [title="创建新归档文件"] floating enable
 for_window [class="Wine" instance="ecloud.exe"] floating enable
