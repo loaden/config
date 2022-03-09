@@ -92,7 +92,7 @@
     "keyboard-state": {
         "numlock": false,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon} {name}",
         "format-icons": {
             "locked": "",
             "unlocked": ""
