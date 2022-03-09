@@ -7,7 +7,7 @@ if [ -f /usr/bin/pacman ]; then
     sudo pacman -Rsc gnu-free-fonts
     sudo pacman -S wqy-microhei --noconfirm --needed
     exit
-elif [! /usr/bin/apt ]; then
+elif [ ! -f /usr/bin/apt ]; then
     echo Not dpkg system.
     exit
 fi
