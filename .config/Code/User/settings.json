@@ -60,5 +60,8 @@
     "security.workspace.trust.untrustedFiles": "open",
     "git.confirmSync": false,
     "window.titleBarStyle": "custom",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "terminal.external.linuxExec": "foot",
+    "terminal.explorerKind": "external",
+    "terminal.integrated.fontSize": 16
 }
