@@ -32,3 +32,4 @@ install_app org.kde.gwenview
 install_app org.ardour.Ardour
 install_app net.codeindustry.MasterPDFEditor
 install_app io.github.Icalingua.Icalingua
+install_app com.github.hluk.copyq
