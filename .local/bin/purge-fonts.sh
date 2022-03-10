@@ -27,8 +27,8 @@ sudo apt purge -y fonts-lklug-sinhala
 sudo apt purge -y fonts-tibetan-machine
 sudo apt purge -y fonts-pagul
 sudo apt purge -y fonts-lao
-sudo apt purge -y fonts-inter
 sudo apt purge fonts-dejavu-extra -y
+sudo apt purge fonts-dejavu-core
 sudo apt purge fonts-uni* -y
 sudo apt purge fonts-ipa* -y
 sudo apt purge -y fonts-font-awesome
@@ -46,4 +46,5 @@ sudo apt purge -y fonts-wqy-*
 
 sudo apt install fonts-wqy-microhei -y
 find /etc/fonts/conf.d/ -name "*wqy*" -exec sudo rm -v {} \;
+sudo apt purge fonts-inter -y #plymouth
 sudo apt autopurge -y
