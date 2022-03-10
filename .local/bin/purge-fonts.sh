@@ -44,5 +44,6 @@ sudo apt purge -y fonts-freefont-ttf
 sudo apt purge -y fonts-arabeyes
 sudo apt purge -y fonts-wqy-*
 
-sudo apt purge -y fonts-wqy-microhei -y
+sudo apt install fonts-wqy-microhei -y
+find /etc/fonts/conf.d/ -name "*wqy*" -exec sudo rm -v {} \;
 sudo apt autopurge -y
