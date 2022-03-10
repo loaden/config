@@ -20,7 +20,6 @@ if test $DEL_SYS_FONT_CONFS; then
         ! -name "*generic.conf" \
         ! -name "*user*"        \
         ! -name "*no-bitmaps*"  \
-        ! -name "*prefer.conf"  \
         -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \;
 fi
 
