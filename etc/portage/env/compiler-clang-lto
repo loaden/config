@@ -1,7 +1,8 @@
 CFLAGS="${CFLAGS} -flto=thin"
 CXXFLAGS="${CXXFLAGS} -flto=thin"
-# -O2 in LDFLAGS refers to binary size optimization during linking, it is NOT related to the -O levels of the compiler          
-LDFLAGS="${LDFLAGS} -Wl,-O2 -Wl,--as-needed"
+# -O2 in LDFLAGS refers to binary size optimization during linking
+# it is NOT related to the -O levels of the compiler          
+LDFLAGS="${LDFLAGS} -Wl,-O2"
 
 CC="clang"                         
 CXX="clang++"
