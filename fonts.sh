@@ -21,6 +21,7 @@ if test $DEL_SYS_FONT_CONFS; then
         ! -name "*user*"        \
         ! -name "*no-bitmaps*"  \
         ! -name "*prefer.conf"  \
+        ! -name "*wqy-micro*"   \
         -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \;
 fi
 

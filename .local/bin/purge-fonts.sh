@@ -5,7 +5,6 @@
 if [ -f /usr/bin/pacman ]; then
     sudo pacman -Rsc noto-fonts-cjk
     sudo pacman -Rsc gnu-free-fonts
-    sudo pacman -Rsc wqy-microhei
     exit
 elif [ ! -f /usr/bin/apt ]; then
     echo Not the dpkg system.
@@ -45,4 +44,5 @@ sudo apt purge -y fonts-freefont-ttf
 sudo apt purge -y fonts-arabeyes
 sudo apt purge -y fonts-wqy-*
 
+sudo apt purge -y fonts-wqy-microhei -y
 sudo apt autopurge -y
