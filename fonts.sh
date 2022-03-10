@@ -17,10 +17,10 @@ if test $DEL_SYS_FONT_CONFS; then
         ! -name "*lcdfilter*"   \
         ! -name "*sansserif*"   \
         ! -name "*latin*"       \
-        ! -name "*generic*"     \
+        ! -name "*generic.conf" \
         ! -name "*user*"        \
         ! -name "*no-bitmaps*"  \
-        ! -name "*zh-cn*"       \
+        ! -name "*prefer.conf"  \
         -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \;
 fi
 
