@@ -5,10 +5,10 @@
 if [ -f /usr/bin/pacman ]; then
     sudo pacman -Rsc noto-fonts-cjk
     sudo pacman -Rsc gnu-free-fonts
-    sudo pacman -S wqy-microhei --noconfirm --needed
+    sudo pacman -Rsc wqy-microhei
     exit
 elif [ ! -f /usr/bin/apt ]; then
-    echo Not dpkg system.
+    echo Not the dpkg system.
     exit
 fi
 
@@ -45,6 +45,6 @@ sudo apt purge -y fonts-bpg-georgian
 sudo apt purge -y fonts-nanum
 sudo apt purge -y fonts-freefont-ttf
 sudo apt purge -y fonts-arabeyes
+sudo apt purge -y fonts-wqy-*
 
-sudo apt install fonts-wqy-microhei -y
 sudo apt autopurge -y
