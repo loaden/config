@@ -1,4 +1,4 @@
-LDFLAGS="${LDFLAGS} -fuse-ld=lld -unwindlib=libunwind"
+LDFLAGS="${LDFLAGS} -fuse-ld=lld"
 
 CC="clang"
 CXX="clang++"
