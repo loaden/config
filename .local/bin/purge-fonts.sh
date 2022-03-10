@@ -19,7 +19,6 @@ sudo apt purge fonts-opendyslexic -y
 sudo apt purge fonts-deva* -y
 sudo apt purge fonts-mlym* -y
 sudo apt purge fonts-telu* -y
-sudo apt purge fonts-liberation* -y
 sudo apt purge fonts-lohit* -y
 sudo apt purge fonts-tlwg* -y
 sudo apt purge fonts-sil* -y
@@ -31,7 +30,6 @@ sudo apt purge -y fonts-pagul
 sudo apt purge -y fonts-lao
 sudo apt purge -y fonts-inter
 sudo apt purge fonts-dejavu-extra -y
-sudo apt purge fonts-dejavu-core
 sudo apt purge fonts-uni* -y
 sudo apt purge fonts-ipa* -y
 sudo apt purge -y fonts-font-awesome
