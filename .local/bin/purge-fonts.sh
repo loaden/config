@@ -4,7 +4,6 @@
 
 if [ -f /usr/bin/pacman ]; then
     sudo pacman -Rsc noto-fonts-cjk
-    sudo pacman -Rsc gnu-free-fonts
     exit
 elif [ ! -f /usr/bin/apt ]; then
     echo Not the dpkg system.
@@ -28,12 +27,11 @@ sudo apt purge -y fonts-tibetan-machine
 sudo apt purge -y fonts-pagul
 sudo apt purge -y fonts-lao
 sudo apt purge fonts-dejavu-extra -y
-sudo apt purge fonts-dejavu-core
 sudo apt purge fonts-uni* -y
 sudo apt purge fonts-ipa* -y
 sudo apt purge -y fonts-font-awesome
 sudo apt purge -y fonts-farsiweb
-sudo apt purge -y lato
+sudo apt purge -y fonts-lato
 sudo apt purge -y fonts-dzongkha
 sudo apt purge -y fonts-vlgothic
 sudo apt purge -y fonts-ukij-uyghur
@@ -44,8 +42,8 @@ sudo apt purge -y fonts-freefont-ttf
 sudo apt purge -y fonts-arabeyes
 sudo apt purge -y fonts-wqy-*
 
-sudo apt install fonts-wqy-microhei -y
+sudo apt install fonts-wqy-microhei fonts-liberation -y
 find /etc/fonts/conf.d/ -name "*wqy*" -exec sudo rm -v {} \;
-sudo apt purge fonts-inter -y #plymouth
+sudo apt install fonts-dejavu-core fonts-inter -y #plymouth
 sudo apt autopurge -y
 find /etc/fonts/conf.d/ -name "*.conf" | sort

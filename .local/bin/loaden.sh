@@ -61,6 +61,7 @@ ln -sv /home/loaden/.gitconfig ~
 ln -sv /home/loaden/.ssh ~
 ln -sv /home/loaden/.mozilla ~
 ln -sv /home/loaden/.bash_profile ~
+ln -sv /home/loaden/.bash_aliases ~
 ln -sv /home/loaden/.local/bin ~/.local
 ln -sv /home/loaden/.machines ~
 ln -sv /home/loaden/.nspawn-deepinwine ~

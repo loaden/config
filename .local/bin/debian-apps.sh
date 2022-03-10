@@ -13,6 +13,7 @@
 sudo apt install firefox firefox-locale-zh-hans -y # Firefox
 [ "$?" = "0" ] || sudo apt install firefox-esr firefox-esr-l10n-zh-cn -y
 sudo apt purge chromium -y
+sudo apt install fcitx5-rime -y
 sudo apt install apt-transport-https ca-certificates -y #https源
 sudo apt install audacious -y #音频播放器
 ###sudo apt install audacity -y #音频编辑器
