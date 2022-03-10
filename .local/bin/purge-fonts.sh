@@ -48,3 +48,4 @@ sudo apt install fonts-wqy-microhei -y
 find /etc/fonts/conf.d/ -name "*wqy*" -exec sudo rm -v {} \;
 sudo apt purge fonts-inter -y #plymouth
 sudo apt autopurge -y
+find /etc/fonts/conf.d/ -name "*.conf" | sort

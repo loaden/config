@@ -20,7 +20,7 @@ if test $DEL_SYS_FONT_CONFS; then
         ! -name "*generic.conf" \
         ! -name "*user*"        \
         ! -name "*no-bitmaps*"  \
-        -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \;
+        -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \; | sort
 fi
 
 # 刷新字体缓存
@@ -34,6 +34,7 @@ FC_DEBUG=1024 fc-match | grep Loading
 fc-conflist | grep +
 fc-match --verbose sans-serif | grep -v 00
 # FC_DEBUG=4 fc-match Monospace | grep -v 00 > log
+find /etc/fonts/conf.d/ -name "*.conf" | sort
 echo
 echo fc-match --sort 'serif:lang=zh-cn' ......
 fc-match --sort 'serif:lang=zh-cn'
