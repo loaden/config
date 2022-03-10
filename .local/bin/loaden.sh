@@ -11,6 +11,7 @@ rm -rfv ~/.gitconfig
 rm -rfv ~/.deepinwine
 rm -rfv ~/.ssh
 rm -rfv ~/.bash_profile
+rm -rfv ~/.bash_aliases
 rm -rfv ~/.vscode
 rm -rfv ~/.machines
 rm -rfv ~/.dev
@@ -46,9 +47,7 @@ rm -rfv ~/Videos
 
 [ -L ~/.bashrc ] && rm -fv ~/.bashrc && cp -fv /etc/skel/.bashrc ~/.bashrc
 [ -f /etc/skel/.bashrc ] && cp -fv /etc/skel/.bashrc ~/.bashrc
-[ -f /etc/skel/.profile ] && cp -fv /etc/skel/.profile ~/.profile
 
-[ -L ~/.bash_aliases ] && rm -fv ~/.bash_aliases
 [ -L ~/.local/share/templates ] && rm -fv ~/.local/share/templates
 [ -L ~/.config/Code ] && rm -fv ~/.config/Code
 
