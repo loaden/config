@@ -88,7 +88,12 @@ sudo eselect fontconfig disable 90-synthetic.conf
 # 启用字体配置
 sudo eselect fontconfig enable 10-hinting-slight.conf
 sudo eselect fontconfig enable 11-lcdfilter-default.conf
+sudo eselect fontconfig enable 40-nonlatin.conf
+sudo eselect fontconfig enable 45-latin.conf
+sudo eselect fontconfig enable 49-sansserif.conf
 sudo eselect fontconfig enable 50-user.conf
+sudo eselect fontconfig enable 60-latin.conf
+sudo eselect fontconfig enable 65-nonlatin.conf
 
 # 刷新字体缓存
 eselect fontconfig list
