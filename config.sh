@@ -64,7 +64,6 @@ sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,preal
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
 
 # 禁用字体配置
-sudo eselect fontconfig disable 10-hinting-full.conf
 sudo eselect fontconfig disable 10-hinting-slight.conf
 sudo eselect fontconfig disable 10-scale-bitmap-fonts.conf
 sudo eselect fontconfig disable 11-lcdfilter-default.conf
@@ -89,9 +88,11 @@ sudo eselect fontconfig disable 90-synthetic.conf
 sudo eselect fontconfig enable 10-hinting-slight.conf
 sudo eselect fontconfig enable 11-lcdfilter-default.conf
 sudo eselect fontconfig enable 40-nonlatin.conf
+sudo eselect fontconfig enable 45-generic.conf
 sudo eselect fontconfig enable 45-latin.conf
 sudo eselect fontconfig enable 49-sansserif.conf
 sudo eselect fontconfig enable 50-user.conf
+sudo eselect fontconfig enable 60-generic.conf
 sudo eselect fontconfig enable 60-latin.conf
 sudo eselect fontconfig enable 65-nonlatin.conf
 
