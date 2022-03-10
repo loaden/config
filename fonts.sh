@@ -2,6 +2,28 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
+# 有些发行版会安装一堆字体，于是存在一堆字体配置
+# 字体不是越多越好，字体配置更是如此
+read -p "是否删除系统中可能影响字体效果的配置？[y/N]" choice
+case $choice in
+    Y | y) DEL_SYS_FONT_CONFS=1 ;;
+    N | n | '') DEL_SYS_FONT_CONFS=0 ;;
+    *) echo 错误选择，程序意外退出！ && exit ;;
+esac
+if test $DEL_SYS_FONT_CONFS; then
+    sudo mkdir -pv /etc/fonts/conf.d.bak
+    find /etc/fonts/conf.d/ -name "*.conf"  \
+        ! -name "*hinting*"     \
+        ! -name "*lcdfilter*"   \
+        ! -name "*sansserif*"   \
+        ! -name "*latin*"       \
+        ! -name "*generic*"     \
+        ! -name "*user*"        \
+        ! -name "*no-bitmaps*"  \
+        ! -name "*zh-cn*"       \
+        -exec sudo mv -v {} /etc/fonts/conf.d.bak/ \;
+fi
+
 # 刷新字体缓存
 fc-cache -rv
 
