@@ -18,6 +18,7 @@ rm -rfv ~/.dev
 rm -rfv ~/.mozilla
 rm -rfv ~/.nspawn-deepinwine
 rm -rfv ~/.config/fcitx5
+rm -rfv ~/.config/aria2
 rm -rfv ~/.config/fontconfig
 rm -rfv ~/.config/user-dirs.dirs
 rm -rfv ~/.config/user-dirs.locale
@@ -65,6 +66,7 @@ ln -sv /home/loaden/.local/bin ~/.local
 ln -sv /home/loaden/.machines ~
 ln -sv /home/loaden/.nspawn-deepinwine ~
 ln -sv /home/loaden/.config/fcitx5 ~/.config
+ln -sv /home/loaden/.config/aria2 ~/.config
 ln -sv /home/loaden/.local/share/fcitx5 ~/.local/share
 ln -sv /home/loaden/.config/user-dirs.dirs ~/.config
 ln -sv /home/loaden/.config/user-dirs.locale ~/.config
