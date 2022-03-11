@@ -61,7 +61,5 @@
     "git.confirmSync": false,
     "window.titleBarStyle": "custom",
     "workbench.startupEditor": "none",
-    "terminal.external.linuxExec": "foot",
-    "terminal.explorerKind": "external",
     "terminal.integrated.fontSize": 16
 }
