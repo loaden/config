@@ -410,6 +410,12 @@ scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_CBC \
                 -e CONFIG_KEY_DH_OPERATIONS
 
+# Gentoo编译提示开启
+scripts/config  -m CONFIG_DM_CRYPT \
+                -m CRYPTO_DES3_EDE_X86_64 \
+                -m CONFIG_PKCS8_PRIVATE_KEY_PARSER \
+                -m CONFIG_NLS_UTF8
+
 # 同步单位电脑配置
 scripts/config  -d CONFIG_AMD_MEM_ENCRYPT
 
