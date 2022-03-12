@@ -19,10 +19,6 @@ export SDL_IM_MODULE=fcitx
 ! result=$( echo $PATH | grep "$HOME/.local/bin" ) && PATH="$HOME/.local/bin:$PATH"
 if ! result=$( echo $PATH | grep "$HOME/.local/bin" ) ; then PATH="$HOME/.local/bin:$PATH"; fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 if [ -f ~/.swayrc ]; then
     . ~/.swayrc
 fi

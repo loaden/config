@@ -73,6 +73,10 @@ ln -sv /home/loaden/.config/user-dirs.locale ~/.config
 ln -sv /home/loaden/.config/fontconfig ~/.config
 ln -sv /home/loaden/.local/share/fonts ~/.local/share
 
+if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
+    echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
+fi
+
 [ ! -d ~/云盘 ] && ln -sv /home/loaden/云盘 ~
 ln -sv /home/loaden/桌面 ~
 ln -sv /home/loaden/下载 ~
