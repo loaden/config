@@ -54,11 +54,13 @@ media-video/handbrake
 media-video/mpv
 net-analyzer/traceroute
 net-analyzer/wireshark
+net-dns/bind-tools
 net-im/dingtalk
 net-misc/anydesk
 net-misc/aria2
 net-misc/networkmanager
 net-misc/remmina
+net-misc/telnet-bsd
 net-print/hplip
 net-print/hplip-plugin
 net-wireless/iwd

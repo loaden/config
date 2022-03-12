@@ -1,1 +1,1 @@
-net-libs/nodejs -icu
+net-libs/nodejs -icu -system-icu
