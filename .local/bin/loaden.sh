@@ -17,6 +17,7 @@ rm -rfv ~/.machines
 rm -rfv ~/.dev
 rm -rfv ~/.mozilla
 rm -rfv ~/.nspawn-qq
+rm -rfv ~/.nspawn-deepinwine
 rm -rfv ~/.config/fcitx5
 rm -rfv ~/.config/aria2
 rm -rfv ~/.config/fontconfig
