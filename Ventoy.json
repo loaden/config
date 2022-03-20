@@ -1,0 +1,10 @@
+{
+    "control":[
+        { "VTOY_MAX_SEARCH_LEVEL": "0" },
+        { "VTOY_WIN11_BYPASS_CHECK": "1" },
+        { "VTOY_LINUX_REMOUNT": "1" },
+        { "VTOY_DEFAULT_SEARCH_ROOT": "/Ventoy" },
+        { "VTOY_DEFAULT_MENU_MODE": "1" },
+        { "VTOY_DEFAULT_IMAGE": "/WEPE.iso" }
+    ]
+}
