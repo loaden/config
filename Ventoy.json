@@ -1,10 +1,14 @@
 {
     "control":[
+        { "VTOY_DEFAULT_MENU_MODE": "1" },
         { "VTOY_MAX_SEARCH_LEVEL": "0" },
         { "VTOY_WIN11_BYPASS_CHECK": "1" },
         { "VTOY_LINUX_REMOUNT": "1" },
+        { "VTOY_MENU_TIMEOUT": "3" },
         { "VTOY_DEFAULT_SEARCH_ROOT": "/Ventoy" },
-        { "VTOY_DEFAULT_MENU_MODE": "1" },
-        { "VTOY_DEFAULT_IMAGE": "/WEPE.iso" }
-    ]
+        { "VTOY_DEFAULT_IMAGE": "/Ventoy/WEPE.iso" }
+    ],
+    "password":{
+        "bootpwd": "md5#08d4d138cd6bdbd1f1a9a6292076f8da"
+    }
 }
