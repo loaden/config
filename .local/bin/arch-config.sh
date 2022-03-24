@@ -18,7 +18,7 @@ sudo pacman -Syy
 sudo pacman -S reflector --noconfirm --needed
 sudo reflector --verbose -c CN --protocol https --sort rate --latest 10 --save /etc/pacman.d/mirrorlist
 sudo perl -0777 -pi -e 's/#\[multilib\]\n#Include = \/etc\/pacman.d\/mirrorlist/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/g' /etc/pacman.conf
-[[ ! $(cat /etc/pacman.conf | grep archlinuxcn) ]] && sudo bash -c 'echo -e "\n[archlinuxcn]\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf'
+[[ ! $(cat /etc/pacman.conf | grep archlinuxcn) ]] && sudo bash -c 'echo -e "\n[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf'
 sudo pacman -Syy
 sudo pacman -S archlinuxcn-keyring --noconfirm
 sudo pacman -S archlinux-keyring --noconfirm
