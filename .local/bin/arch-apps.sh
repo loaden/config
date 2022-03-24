@@ -8,7 +8,6 @@ sudo pacman -S bash-completion --noconfirm --needed #终端自动完成
 #sudo pacman -S cups ghostscript gsfonts hplip hplip-plugin --noconfirm --needed #打印机
 sudo pacman -S firefox firefox-i18n-zh-cn --noconfirm --needed #浏览器
 sudo pacman -S git --noconfirm --needed #版本管理
-sudo pacman -S gnome-disk-utility --noconfirm --needed #磁盘
 sudo pacman -S htop --noconfirm --needed #进程查看器
 sudo pacman -S inetutils --noconfirm --needed #telnet
 sudo pacman -S neofetch --noconfirm --needed #系统信息
@@ -23,6 +22,10 @@ sudo pacman -S gnome-tweaks --noconfirm --needed #优化
 # AUR软件
 yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
 yay -S dingtalk-bin --noconfirm --needed #钉钉
+
+# 扩展
+sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
+sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
 # 图标
 sudo pacman -S papirus-icon-theme
