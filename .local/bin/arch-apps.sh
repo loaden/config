@@ -18,10 +18,12 @@ sudo pacman -S mpv --noconfirm --needed #视频播放器
 sudo pacman -S traceroute --noconfirm --needed #路由跟踪
 sudo pacman -S yay base-devel --noconfirm --needed #AUR
 sudo pacman -S gnome-tweaks --noconfirm --needed #优化
+sudo pacman -S remmina libvncserver --noconfirm --needed #远程
 
 # AUR软件
 yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
-yay -S dingtalk-bin --noconfirm --needed #钉钉
+yay -S dingtalk-bin #钉钉
+yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
 
 # 扩展
 sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
