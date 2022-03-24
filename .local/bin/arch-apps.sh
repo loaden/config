@@ -22,7 +22,7 @@ sudo pacman -S remmina libvncserver --noconfirm --needed #远程
 
 # AUR软件
 yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
-yay -S dingtalk-bin #钉钉
+yay -S --noconfirm --needed dingtalk-bin #钉钉
 yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
 
 # 扩展
