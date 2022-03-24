@@ -30,7 +30,7 @@ sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
 sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
 # 图标
-sudo pacman -S papirus-icon-theme
+sudo pacman -S papirus-icon-theme --noconfirm --needed
 yay -S numix-icon-theme-git --noconfirm --needed
 
 # 远程连接
