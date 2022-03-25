@@ -20,11 +20,6 @@ echo "# Hi..." > etc/portage/package.use/zz-autounmask
 [ -d /etc/portage/ ] && cp -r /etc/portage/env/ etc/portage/
 [ -d /etc/portage/ ] && cp /etc/portage/package.env etc/portage/
 
-# dracut
-[ -d /etc/dracut.conf.d/ ] && rm -rf etc/dracut.conf.d/
-mkdir -p etc/dracut.conf.d/
-[ -d /etc/dracut.conf.d/ ] && cp -r /etc/dracut.conf.d/ etc/
-
 # kernel config
 [ -d /usr/src/linux/ ] && cp /usr/src/linux/.config usr/src/linux/
 [ -d /usr/src/linux/ ] && cp /usr/src/linux/.config.*.* usr/src/linux/
