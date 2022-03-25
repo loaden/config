@@ -58,6 +58,11 @@ sudo usermod -aG wheel,audio,video,input,lpadmin,plugdev,pcap $USER
 # udisks 支持 NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
+# 别名
+if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
+    echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
+fi
+
 # 允许弱密码
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
 

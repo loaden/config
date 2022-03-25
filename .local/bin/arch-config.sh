@@ -39,8 +39,14 @@ sudo chsh -s /bin/bash $USER
 
 # 重载UDEV规则
 sudo udevadm control --reloadacpid
+
 # udisks 支持 NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
+
+# 别名
+if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
+    echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
+fi
 
 # 刷新字体缓存
 fc-cache -rv
