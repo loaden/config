@@ -1,0 +1,8 @@
+[Match]
+Name=enp4s0
+
+[Network]
+Address=10.35.99.99/22
+Gateway=10.35.96.1
+DNS=10.35.96.2
+DNS=10.35.96.3

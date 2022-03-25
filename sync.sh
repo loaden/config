@@ -11,23 +11,23 @@ fi
 # portage
 [ -d /etc/portage/ ] && rm -rf etc/portage/
 mkdir -p etc/portage
-cp /etc/portage/make.conf etc/portage/
-cp -r /etc/portage/package.accept_keywords/ etc/portage/
+[ -d /etc/portage/ ] && cp /etc/portage/make.conf etc/portage/
+[ -d /etc/portage/ ] && cp -r /etc/portage/package.accept_keywords/ etc/portage/
 echo "# Hi..." > etc/portage/package.accept_keywords/zz-autounmask
-cp -r /etc/portage/package.mask/ etc/portage/
-cp -r /etc/portage/package.use/ etc/portage/
+[ -d /etc/portage/ ] && cp -r /etc/portage/package.mask/ etc/portage/
+[ -d /etc/portage/ ] && cp -r /etc/portage/package.use/ etc/portage/
 echo "# Hi..." > etc/portage/package.use/zz-autounmask
-cp -r /etc/portage/env/ etc/portage/
-cp /etc/portage/package.env etc/portage/
+[ -d /etc/portage/ ] && cp -r /etc/portage/env/ etc/portage/
+[ -d /etc/portage/ ] && cp /etc/portage/package.env etc/portage/
 
 # dracut
 [ -d /etc/dracut.conf.d/ ] && rm -rf etc/dracut.conf.d/
 mkdir -p etc/dracut.conf.d/
-cp -r /etc/dracut.conf.d/ etc/
+[ -d /etc/dracut.conf.d/ ] && cp -r /etc/dracut.conf.d/ etc/
 
 # kernel config
-cp /usr/src/linux/.config usr/src/linux/
-cp /usr/src/linux/.config.*.* usr/src/linux/
+[ -d /usr/src/linux/ ] && cp /usr/src/linux/.config usr/src/linux/
+[ -d /usr/src/linux/ ] && cp /usr/src/linux/.config.*.* usr/src/linux/
 
 # mnt kernel config
 [ -d /mnt/gentoo/ ] && cp /mnt/gentoo/usr/src/linux/.config.*.* usr/src/linux/
@@ -38,6 +38,11 @@ cp /usr/src/linux/.config.*.* usr/src/linux/
 # iwd
 [ -d /etc/iwd/ ] && cp -r /etc/iwd etc/
 
+# network
+[ -d /etc/systemd/ ] && rm -rf etc/systemd/
+mkdir -p etc/systemd/
+[ -d /etc/systemd/network ] && cp -r /etc/systemd/network etc/systemd/
+
 # fstab
 cp -r /etc/fstab etc/
 
@@ -45,7 +50,7 @@ cp -r /etc/fstab etc/
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world
 
 # systemd-boot
-rm -rf boot/efi
+[ -d /boot/efi/loader ] && rm -rf boot/efi
 mkdir -p boot/efi
 sudo cp -r /boot/efi/loader boot/efi/
 sudo chown $USER:$USER -R boot/efi/loader
