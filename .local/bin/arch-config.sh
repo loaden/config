@@ -54,7 +54,8 @@ fi
 fc-cache -rv
 
 # 重载UDEV规则
-sudo udevadm control --reloadacpid
+sudo udevadm control --reload
+sudo udevadm trigger
 
 # 搞定
 read -p "DONE!" -n 1
