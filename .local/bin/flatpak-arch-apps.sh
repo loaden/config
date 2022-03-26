@@ -15,7 +15,7 @@ function install_app()
     [ -z $1 ] && echo empty arg '$1' && return
 
     if [[ -z $(flatpak list --app |grep $1) ]]; then
-        flatpak install $TARGET $1
+        flatpak install $TARGET -y $1
     fi
 }
 

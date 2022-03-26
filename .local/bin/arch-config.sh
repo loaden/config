@@ -37,8 +37,10 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 # 配置默认终端
 sudo chsh -s /bin/bash $USER
 
-# 重载UDEV规则
-sudo udevadm control --reloadacpid
+# 电源管理
+sudo pacman -S --noconfirm --needed acpid thermald
+sudo systemctl enable acpid.service
+sudo systemctl enable thermald.service
 
 # udisks 支持 NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
@@ -50,6 +52,9 @@ fi
 
 # 刷新字体缓存
 fc-cache -rv
+
+# 重载UDEV规则
+sudo udevadm control --reloadacpid
 
 # 搞定
 read -p "DONE!" -n 1

@@ -44,10 +44,6 @@ sudo emaint --fix cleanresume
 # 配置默认终端
 sudo chsh -s /bin/bash $USER
 
-# 重载UDEV规则
-sudo udevadm control --reload
-sudo udevadm trigger
-
 # 电源管理
 sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
@@ -65,6 +61,10 @@ fi
 
 # 允许弱密码
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
+
+# 重载UDEV规则
+sudo udevadm control --reload
+sudo udevadm trigger
 
 # 禁用字体配置
 sudo eselect fontconfig disable 10-hinting-slight.conf
