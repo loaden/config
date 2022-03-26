@@ -25,4 +25,3 @@ install_app ch.openboard.OpenBoard
 install_app org.filezillaproject.Filezilla
 install_app org.ardour.Ardour
 install_app io.github.Icalingua.Icalingua
-install_app com.github.hluk.copyq
