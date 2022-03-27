@@ -78,7 +78,7 @@ if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
     echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
 fi
 
-[ ! -d ~/云盘 ] && ln -sv /home/loaden/云盘 ~
+[ ! -d ~/云盘 ] && [ -d /home/loaden/云盘 ] && ln -sv /home/loaden/云盘 ~
 ln -sv /home/loaden/桌面 ~
 ln -sv /home/loaden/下载 ~
 ln -sv /home/loaden/模板 ~
