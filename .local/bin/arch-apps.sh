@@ -25,6 +25,8 @@ sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
 sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
 # 主题
+sudo pacman -S --noconfirm --needed vimix-gtk-themes-git
+sudo pacman -S --noconfirm --needed zorin-desktop-themes
 sudo pacman -S --noconfirm --needed mojave-gtk-theme-git
 sudo pacman -S --noconfirm --needed mcmojave-circle-icon-theme-git
 sudo pacman -S --noconfirm --needed tela-icon-theme-git
