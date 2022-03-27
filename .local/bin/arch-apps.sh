@@ -20,22 +20,24 @@ sudo pacman -S yay base-devel --noconfirm --needed #AUR
 sudo pacman -S gnome-tweaks --noconfirm --needed #优化
 sudo pacman -S remmina libvncserver --noconfirm --needed #远程
 
-# AUR软件
-yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
-yay -S --noconfirm --needed dingtalk-bin #钉钉
-yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
-
 # 扩展
 sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
 sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
 # 主题
+sudo pacman -S mojave-gtk-theme-git --noconfirm --needed
+sudo pacman -S mcmojave-circle-icon-theme-git --noconfirm --needed
 sudo pacman -S tela-icon-theme-git --noconfirm --needed
 sudo pacman -S papirus-icon-theme --noconfirm --needed
 sudo pacman -S graphite-cursor-theme-git --noconfirm --needed
-yay -S numix-icon-theme-git --noconfirm --needed
 
 # 远程连接
 sudo pacman -S openssh --noconfirm #远程连接
 sudo systemctl enable sshd
 sudo systemctl start sshd
+
+# AUR软件
+yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
+yay -S --noconfirm --needed dingtalk-bin #钉钉
+yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
+yay -S com.tencent.weixin --noconfirm --needed #微信
