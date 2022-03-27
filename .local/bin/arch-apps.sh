@@ -32,7 +32,7 @@ sudo pacman -S papirus-icon-theme --noconfirm --needed
 sudo pacman -S graphite-cursor-theme-git --noconfirm --needed
 
 # 远程连接
-sudo pacman -S openssh --noconfirm #远程连接
+sudo pacman -S openssh --noconfirm --needed #远程连接
 sudo systemctl enable sshd
 sudo systemctl start sshd
 
