@@ -3,41 +3,41 @@
 
 # 桌面软件
 sudo pacman -Syy
-sudo pacman -S audacious --noconfirm --needed #音乐播放器
-sudo pacman -S bash-completion --noconfirm --needed #终端自动完成
-#sudo pacman -S cups ghostscript gsfonts hplip hplip-plugin --noconfirm --needed #打印机
-sudo pacman -S firefox firefox-i18n-zh-cn --noconfirm --needed #浏览器
-sudo pacman -S git --noconfirm --needed #版本管理
-sudo pacman -S htop --noconfirm --needed #进程查看器
-sudo pacman -S inetutils --noconfirm --needed #telnet
-sudo pacman -S neofetch --noconfirm --needed #系统信息
-sudo pacman -S fcitx5-im fcitx5-rime --noconfirm --needed #输入法
-sudo pacman -S gimp --noconfirm --needed #图像处理
-sudo pacman -S mpv --noconfirm --needed #视频播放器
-#sudo pacman -S simple-scan --noconfirm --needed #扫描仪
-sudo pacman -S traceroute --noconfirm --needed #路由跟踪
-sudo pacman -S yay base-devel --noconfirm --needed #AUR
-sudo pacman -S gnome-tweaks --noconfirm --needed #优化
-sudo pacman -S remmina libvncserver --noconfirm --needed #远程
+sudo pacman -S --noconfirm --needed audacious #音乐播放器
+sudo pacman -S --noconfirm --needed bash-completion #终端自动完成
+#sudo pacman -S --noconfirm --needed cups ghostscript gsfonts hplip hplip-plugin #打印机
+sudo pacman -S --noconfirm --needed firefox firefox-i18n-zh-cn #浏览器
+sudo pacman -S --noconfirm --needed git #版本管理
+sudo pacman -S --noconfirm --needed htop #进程查看器
+sudo pacman -S --noconfirm --needed inetutils #telnet
+sudo pacman -S --noconfirm --needed neofetch #装逼
+sudo pacman -S --noconfirm --needed fcitx5-im fcitx5-rime #输入法
+sudo pacman -S --noconfirm --needed gimp #图像处理
+sudo pacman -S --noconfirm --needed mpv #视频播放器
+#sudo pacman -S --noconfirm --needed simple-scan #扫描仪
+sudo pacman -S --noconfirm --needed traceroute #路由跟踪
+sudo pacman -S --noconfirm --needed yay base-devel #AUR
+sudo pacman -S --noconfirm --needed gnome-tweaks #优化
+sudo pacman -S --noconfirm --needed remmina libvncserver #远程
 
 # 扩展
 sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
 sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
 # 主题
-sudo pacman -S mojave-gtk-theme-git --noconfirm --needed
-sudo pacman -S mcmojave-circle-icon-theme-git --noconfirm --needed
-sudo pacman -S tela-icon-theme-git --noconfirm --needed
-sudo pacman -S papirus-icon-theme --noconfirm --needed
-sudo pacman -S graphite-cursor-theme-git --noconfirm --needed
+sudo pacman -S --noconfirm --needed mojave-gtk-theme-git
+sudo pacman -S --noconfirm --needed mcmojave-circle-icon-theme-git
+sudo pacman -S --noconfirm --needed tela-icon-theme-git
+sudo pacman -S --noconfirm --needed papirus-icon-theme
+sudo pacman -S --noconfirm --needed graphite-cursor-theme-git
 
 # 远程连接
-sudo pacman -S openssh --noconfirm --needed #远程连接
+sudo pacman -S --noconfirm --needed openssh #远程连接
 sudo systemctl enable sshd
 sudo systemctl start sshd
 
 # AUR软件
-yay -S visual-studio-code-bin --noconfirm --needed #Visual Studio Code
+yay -S --noconfirm --needed visual-studio-code-bin #Visual Studio Code
 yay -S --noconfirm --needed dingtalk-bin #钉钉
 yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
-yay -S com.tencent.weixin --noconfirm --needed #微信
+yay -S --noconfirm --needed com.tencent.weixin #微信
