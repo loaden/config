@@ -29,8 +29,10 @@ yay -S --noconfirm --needed wps-office wps-office-mui-zh-cn #WPS
 sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
 sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
 
-# 图标
+# 主题
+sudo pacman -S tela-icon-theme-git --noconfirm --needed
 sudo pacman -S papirus-icon-theme --noconfirm --needed
+sudo pacman -S graphite-cursor-theme-git --noconfirm --needed
 yay -S numix-icon-theme-git --noconfirm --needed
 
 # 远程连接
