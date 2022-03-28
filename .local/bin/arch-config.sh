@@ -45,17 +45,31 @@ sudo systemctl enable thermald.service
 # udisks 支持 NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$SUDO_UID,gid=$SUDO_GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
+# 重载UDEV规则
+sudo udevadm control --reload
+sudo udevadm trigger
+
 # 别名
 if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
     echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
 fi
 
+# 夜灯
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 4000
+gsettings set org.gnome.settings-daemon.plugins.color night-light-last-coordinates "(36.0649,120.3804)"
+
+# 文本编译器
+gsettings set org.gnome.gedit.preferences.editor use-default-font false
+gsettings set org.gnome.gedit.preferences.editor editor-font 'Monospace 12'
+gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+gsettings set org.gnome.gedit.preferences.editor tabs-size 4
+gsettings set org.gnome.gedit.preferences.editor insert-spaces true
+gsettings set org.gnome.gedit.preferences.editor search-highlighting true
+gsettings set org.gnome.gedit.plugins active-plugins ['spell', 'sort', 'quickhighlight', 'openlinks', 'filebrowser', 'docinfo']
+
 # 刷新字体缓存
 fc-cache -rv
-
-# 重载UDEV规则
-sudo udevadm control --reload
-sudo udevadm trigger
 
 # 搞定
 read -p "DONE!" -n 1
