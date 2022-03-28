@@ -56,7 +56,7 @@ fi
 
 # 夜灯
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 4000
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3000
 gsettings set org.gnome.settings-daemon.plugins.color night-light-last-coordinates "(36.0649,120.3804)"
 
 # 文本编译器
