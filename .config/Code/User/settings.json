@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'Monaco', 'Monospace', 'Consolas',  'Sans', 'Serif'",
+    "editor.fontFamily": "'Monospace', 'Consolas',  'Sans', 'Serif'",
     "editor.fontSize": 16,
     "editor.formatOnPaste": true,
     "files.trimTrailingWhitespace": true,
