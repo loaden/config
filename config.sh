@@ -4,8 +4,8 @@
 
 # 启动单元初始化配置
 sudo systemd-machine-id-setup
-# sudo systemctl preset-all --preset-mode=enable-only
-# systemctl preset-all --preset-mode=enable-only --user
+# sudo systemctl preset-all
+# systemctl preset-all --user
 
 # 主机名
 if [ "$(hostname)" != "lucky" ]; then
