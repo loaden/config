@@ -30,13 +30,14 @@ sudo eselect locale set zh_CN.utf8
 eselect locale list
 
 # 用户目录
-sudo emerge -avu xdg-user-dirs-gtk
-xdg-user-dirs-gtk-update
+sudo emerge -avu1 xdg-user-dirs
+xdg-user-dirs-update --force
 
 # 添加官方GURU源和中国用户源
 sudo emerge -avu eselect-repository
 sudo eselect repository enable guru
 sudo eselect repository enable gentoo-zh
+sudo emerge --sync
 
 # 清理未完成的安装任务
 sudo emaint --fix cleanresume
@@ -52,7 +53,7 @@ sudo systemctl enable thermald.service
 sudo usermod -aG wheel,audio,video,input,lpadmin,plugdev,pcap $USER
 
 # udisks 支持 NTFS3
-sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
+sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$SUDO_UID,gid=$SUDO_GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
 # 别名
 if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
