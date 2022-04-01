@@ -1,1 +1,1 @@
-media-libs/libcanberra alsa
+media-libs/libcanberra -udev
