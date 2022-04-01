@@ -4,8 +4,8 @@
 
 # 启动单元初始化配置
 sudo systemd-machine-id-setup
-# sudo systemctl preset-all
-# systemctl preset-all --user
+sudo systemctl preset-all --preset-mode=enable-only --now
+systemctl --user preset-all --now
 
 # 主机名
 if [ "$(hostname)" != "lucky" ]; then
@@ -63,6 +63,14 @@ fi
 
 # 允许弱密码
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
+
+# PipeWire替代PulseAudio
+sudo sed -i 's/.*autospawn =.*/autospawn = no/g' /etc/pulse/client.conf
+sudo sed -i 's/.*daemonize =.*/daemonize = no/g' /etc/pulse/daemon.conf
+systemctl --user disable --now pulseaudio
+systemctl --user enable --now pipewire pipewire-pulse
+systemctl --user daemon-reload
+LANG=C pactl info | grep "Server Name"
 
 # 重载UDEV规则
 sudo udevadm control --reload
