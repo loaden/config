@@ -62,3 +62,5 @@ ln -sv /home/loaden/文档 ~
 ln -sv /home/loaden/下载 ~
 
 xdg-user-dirs-update --force
+fc-cache -rv
+
