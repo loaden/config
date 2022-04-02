@@ -48,7 +48,6 @@ sys-apps/usb_modeswitch
 sys-boot/efibootmgr
 sys-devel/clang
 sys-kernel/dracut
-sys-kernel/gentoo-kernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
