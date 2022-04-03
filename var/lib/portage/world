@@ -21,6 +21,7 @@ dev-vcs/gitg
 gnome-base/gnome
 gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-tweaks
+gnome-extra/gnome-weather
 gui-apps/swappy
 gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
@@ -57,5 +58,7 @@ sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
 x11-misc/qt5ct
+x11-themes/arc-theme
+x11-themes/fluent-icon-theme
 x11-themes/papirus-icon-theme
 x11-themes/tela-icon-theme
