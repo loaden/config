@@ -22,9 +22,8 @@ sudo pacman -S --noconfirm --needed traceroute #路由跟踪
 sudo pacman -S --noconfirm --needed yay base-devel #AUR
 
 # 主题
-sudo pacman -S --noconfirm --needed vimix-gtk-themes-git
-sudo pacman -S --noconfirm --needed zorin-desktop-themes
 sudo pacman -S --noconfirm --needed mojave-gtk-theme-git
+sudo pacman -S --noconfirm --needed zorin-desktop-themes
 sudo pacman -S --noconfirm --needed tela-icon-theme-git
 sudo pacman -S --noconfirm --needed papirus-icon-theme
 sudo pacman -S --noconfirm --needed graphite-cursor-theme-git
