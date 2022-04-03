@@ -36,7 +36,6 @@ xdg-user-dirs-update --force
 
 # 添加官方GURU源和中国用户源
 sudo emerge -avu eselect-repository
-sudo eselect repository enable guru
 sudo eselect repository enable gentoo-zh
 sudo emerge --sync
 
