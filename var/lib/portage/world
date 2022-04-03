@@ -19,8 +19,6 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
-gnome-extra/gnome-shell-extension-appindicator
-gnome-extra/gnome-shell-extension-weather-in-the-clock
 gnome-extra/gnome-tweaks
 gui-apps/swappy
 gui-apps/wl-clipboard
