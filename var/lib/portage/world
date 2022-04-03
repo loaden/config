@@ -26,6 +26,7 @@ gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
 media-fonts/wqy-microhei
 media-gfx/blender
+media-gfx/flameshot
 media-gfx/gimp
 media-sound/audacious
 media-video/ffmpeg
