@@ -20,6 +20,7 @@ dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
 gnome-extra/gnome-tweaks
+gnome-extra/gnome-weather
 gui-apps/swappy
 gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
