@@ -61,5 +61,7 @@
     "git.confirmSync": false,
     "window.titleBarStyle": "custom",
     "workbench.startupEditor": "none",
-    "terminal.integrated.fontSize": 16
+    "terminal.integrated.fontSize": 16,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "GitHub Dark Default"
 }
