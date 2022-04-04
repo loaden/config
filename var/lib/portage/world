@@ -31,7 +31,6 @@ media-video/ffmpeg
 media-video/handbrake
 net-analyzer/traceroute
 net-analyzer/wireshark
-net-dns/bind-tools
 net-im/dingtalk
 net-im/wemeet
 net-misc/anydesk
