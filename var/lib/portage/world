@@ -21,8 +21,6 @@ dev-vcs/gitg
 gnome-base/gnome
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
-gui-apps/swappy
-gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
 media-fonts/wqy-microhei
 media-gfx/blender
@@ -39,8 +37,6 @@ net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
 net-misc/telnet-bsd
-net-print/hplip
-net-print/hplip-plugin
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
