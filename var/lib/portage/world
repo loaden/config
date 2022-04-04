@@ -26,6 +26,7 @@ gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
 media-fonts/wqy-microhei
 media-gfx/blender
+media-gfx/flameshot
 media-gfx/gimp
 media-sound/audacious
 media-video/ffmpeg
@@ -46,7 +47,6 @@ sys-apps/usb_modeswitch
 sys-boot/efibootmgr
 sys-devel/clang
 sys-kernel/dracut
-sys-kernel/gentoo-kernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
@@ -55,7 +55,10 @@ sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
-x11-drivers/nvidia-drivers
 x11-misc/qt5ct
+x11-terms/terminator
+x11-themes/adwaita-qt
+x11-themes/arc-theme
+x11-themes/fluent-icon-theme
 x11-themes/papirus-icon-theme
 x11-themes/tela-icon-theme
