@@ -101,7 +101,7 @@ for_window [title="DING"] floating enable
 for_window [app_id="qalculate-gtk"] floating enable
 
 # 随机壁纸
-output * bg $(find ~/.config/sway/wallpapers -type f | shuf -n1) fill
+output * bg $(find ~/.config/wallpapers -type f | shuf -n1) fill
 
 ### Output configuration
 #
