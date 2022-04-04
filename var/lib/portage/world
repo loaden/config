@@ -55,6 +55,7 @@ sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
+x11-drivers/nvidia-drivers
 x11-misc/qt5ct
 x11-terms/terminator
 x11-themes/adwaita-qt
