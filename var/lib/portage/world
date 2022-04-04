@@ -19,14 +19,14 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
-gnome-extra/gnome-shell-extension-appindicator
-gnome-extra/gnome-shell-extension-weather-in-the-clock
 gnome-extra/gnome-tweaks
+gnome-extra/gnome-weather
 gui-apps/swappy
 gui-apps/wl-clipboard
 gui-libs/xdg-desktop-portal-wlr
 media-fonts/wqy-microhei
 media-gfx/blender
+media-gfx/flameshot
 media-gfx/gimp
 media-sound/audacious
 media-video/ffmpeg
@@ -35,7 +35,6 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
 net-im/dingtalk
-net-im/wemeet
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
@@ -56,7 +55,10 @@ sys-power/thermald
 sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
-x11-drivers/nvidia-drivers
 x11-misc/qt5ct
+x11-terms/terminator
+x11-themes/adwaita-qt
+x11-themes/arc-theme
+x11-themes/fluent-icon-theme
 x11-themes/papirus-icon-theme
 x11-themes/tela-icon-theme
