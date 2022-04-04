@@ -58,6 +58,8 @@ sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
 x11-misc/qt5ct
+x11-terms/terminator
+x11-themes/adwaita-qt
 x11-themes/arc-theme
 x11-themes/fluent-icon-theme
 x11-themes/papirus-icon-theme
