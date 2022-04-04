@@ -1,1 +1,1 @@
->=media-libs/libcanberra-0.30-r5 alsa
+media-libs/libcanberra -udev

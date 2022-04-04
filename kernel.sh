@@ -212,6 +212,7 @@ scripts/config  -m CONFIG_BT \
                 -e CONFIG_BT_HCIBTUSB_BCM \
                 -e CONFIG_BT_HCIBTUSB_MTK \
                 -e CONFIG_BT_HCIBTUSB_RTL \
+                -e CONFIG_BT_HIDP \
                 -d CONFIG_BT_DEBUGFS
 
 # 网卡
@@ -353,7 +354,8 @@ scripts/config  -d CONFIG_NETFILTER_XTABLES \
                 -d CONFIG_MEDIA_TUNER_TEA5761 \
                 -d CONFIG_MEDIA_TUNER_TEA5767 \
                 -d CONFIG_SND_HRTIMER \
-                -d CONFIG_CRYPTO_USER \
+                -e CONFIG_CRYPTO_USER \
+                -m CONFIG_CRYPTO_USER_API_AEAD \
                 -d CONFIG_CRYPTO_LZO \
                 -d CONFIG_CRYPTO_842 \
                 -d CONFIG_CRYPTO_LZ4HC
@@ -441,8 +443,11 @@ esac
 
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install
-    find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp {} /boot/efi/EFI/gentoo/vmlinuz \; -print
+    find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp -fv {} /boot/efi/EFI/gentoo/vmlinuz \; -print
+    dracut
+    find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-* -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*
+    ls -lh /boot/initramfs*
     du -sh /lib/modules/*
 fi

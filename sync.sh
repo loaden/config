@@ -22,7 +22,7 @@ echo "# Hi..." > etc/portage/package.use/zz-autounmask
 
 # kernel config
 [ -d /usr/src/linux/ ] && cp /usr/src/linux/.config usr/src/linux/
-[ -d /usr/src/linux/ ] && cp /usr/src/linux/.config.*.* usr/src/linux/
+[ -d /usr/src/linux/ ] && find /usr/src/linux/ -maxdepth 1 -name ".config.*.*" -exec cp {} usr/src/linux/ \;
 
 # mnt kernel config
 [ -d /mnt/gentoo/ ] && cp /mnt/gentoo/usr/src/linux/.config.*.* usr/src/linux/
@@ -35,8 +35,8 @@ echo "# Hi..." > etc/portage/package.use/zz-autounmask
 
 # network
 [ -d /etc/systemd/ ] && rm -rf etc/systemd/
-mkdir -p etc/systemd/
-[ -d /etc/systemd/network ] && cp -r /etc/systemd/network etc/systemd/
+mkdir -p etc/systemd/network
+[ -f /etc/systemd/network/20-wired.network ] && cp -f /etc/systemd/network/20-wired.network etc/systemd/network/
 
 # fstab
 cp -r /etc/fstab etc/

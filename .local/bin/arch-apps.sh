@@ -21,15 +21,9 @@ sudo pacman -S --noconfirm --needed remmina libvncserver #远程
 sudo pacman -S --noconfirm --needed traceroute #路由跟踪
 sudo pacman -S --noconfirm --needed yay base-devel #AUR
 
-# 扩展
-sudo pacman -S --noconfirm --needed gnome-shell-extension-dash-to-dock
-sudo pacman -S --noconfirm --needed gnome-shell-extension-appindicator
-
 # 主题
-sudo pacman -S --noconfirm --needed vimix-gtk-themes-git
-sudo pacman -S --noconfirm --needed zorin-desktop-themes
 sudo pacman -S --noconfirm --needed mojave-gtk-theme-git
-sudo pacman -S --noconfirm --needed mcmojave-circle-icon-theme-git
+sudo pacman -S --noconfirm --needed zorin-desktop-themes
 sudo pacman -S --noconfirm --needed tela-icon-theme-git
 sudo pacman -S --noconfirm --needed papirus-icon-theme
 sudo pacman -S --noconfirm --needed graphite-cursor-theme-git
