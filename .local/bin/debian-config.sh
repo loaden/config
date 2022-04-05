@@ -2,16 +2,13 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
-source `dirname ${BASH_SOURCE[0]}`/debian-apps.sh
-
-sudo apt install gnome-shell-extension-dashtodock -y
-sudo apt install gnome-shell-extension-top-icons-plus -y
+sudo apt install acpid thermald -y
 sudo apt install gnome-tweaks -y
+sudo systemctl enable acpid.service
+sudo systemctl enable thermald.service
 
 sudo apt purge anthy* -y
 sudo apt purge evolution -y
-sudo apt purge fcitx* -y
-sudo apt purge firefox* -y
 sudo apt purge gnome-games -y
 sudo apt purge hdate-applet -y
 sudo apt purge ibus-mozc ibus-m17n ibus-hangul -y
@@ -26,3 +23,5 @@ sudo apt purge transmission* -y
 sudo apt purge xiterm+thai -y
 sudo apt purge xterm -y
 sudo apt autopurge -y
+
+source `dirname ${BASH_SOURCE[0]}`/debian-apps.sh
