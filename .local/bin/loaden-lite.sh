@@ -12,6 +12,7 @@ rm -rfv ~/下载
 rm -rfv ~/.bash_aliases
 rm -rfv ~/.bash_profile
 rm -rfv ~/.config/aria2
+rm -rfv ~/.config/wallpapers
 rm -rfv ~/.config/fcitx5
 rm -rfv ~/.deepinwine
 rm -rfv ~/.dev
@@ -43,6 +44,7 @@ ln -sv /home/loaden/.vscode ~
 ln -sv /home/loaden/.bash_aliases ~
 ln -sv /home/loaden/.bash_profile ~
 ln -sv /home/loaden/.config/aria2 ~/.config
+ln -sv /home/loaden/.config/wallpapers ~/.config
 ln -sv /home/loaden/.config/fcitx5 ~/.config
 ln -sv /home/loaden/.dev ~
 ln -sv /home/loaden/.gitconfig ~
@@ -63,4 +65,3 @@ ln -sv /home/loaden/下载 ~
 
 xdg-user-dirs-update --force
 fc-cache -rv
-
