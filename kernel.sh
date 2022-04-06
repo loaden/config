@@ -444,7 +444,7 @@ esac
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install
     find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp -fv {} /boot/efi/EFI/gentoo/vmlinuz \; -print
-    dracut
+    dracut --force
     find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-* -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*
