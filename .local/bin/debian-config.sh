@@ -8,8 +8,10 @@ sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
 
 sudo apt purge anthy* -y
+sudo apt purge goldendict -y
 sudo apt purge evolution -y
 sudo apt purge gnome-games -y
+sudo apt purge gnome-music -y
 sudo apt purge hdate-applet -y
 sudo apt purge ibus-mozc ibus-m17n ibus-hangul -y
 sudo apt purge libreoffice-common -y
@@ -22,6 +24,6 @@ sudo apt purge synaptic -y
 sudo apt purge transmission* -y
 sudo apt purge xiterm+thai -y
 sudo apt purge xterm -y
-sudo apt autopurge -y
 
 source `dirname ${BASH_SOURCE[0]}`/debian-apps.sh
+sudo apt autopurge -y

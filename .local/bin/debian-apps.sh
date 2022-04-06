@@ -61,5 +61,3 @@ sudo apt install unar -y #解压缩
 #sudo apt install vokoscreen -y #录屏
 #sudo apt install x11vnc -y #远程桌面
 sudo apt install zstd -y #最快解压
-
-sudo apt autopurge -y
