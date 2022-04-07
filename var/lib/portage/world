@@ -22,7 +22,6 @@ gnome-base/gnome
 gnome-extra/gnome-calculator
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
-gui-libs/xdg-desktop-portal-wlr
 media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
