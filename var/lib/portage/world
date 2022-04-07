@@ -29,6 +29,7 @@ media-gfx/gimp
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
+media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
