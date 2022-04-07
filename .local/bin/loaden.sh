@@ -17,7 +17,7 @@ rm -rfv ~/.machines
 rm -rfv ~/.dev
 rm -rfv ~/.mozilla
 rm -rfv ~/.nspawn-qq
-rm -rfv ~/.nspawn-deepinwine
+rm -rfv ~/.config/wallpapers
 rm -rfv ~/.config/fcitx5
 rm -rfv ~/.config/aria2
 rm -rfv ~/.config/fontconfig
@@ -54,6 +54,7 @@ ln -sv /home/loaden/.bash_aliases ~
 ln -sv /home/loaden/.local/bin ~/.local
 ln -sv /home/loaden/.machines ~
 ln -sv /home/loaden/.nspawn-qq ~
+ln -sv /home/loaden/.config/wallpapers ~/.config
 ln -sv /home/loaden/.config/fcitx5 ~/.config
 ln -sv /home/loaden/.config/aria2 ~/.config
 ln -sv /home/loaden/.local/share/fcitx5 ~/.local/share
@@ -70,4 +71,3 @@ ln -sv /home/loaden/文档 ~
 
 xdg-user-dirs-update --force
 fc-cache -rv
-
