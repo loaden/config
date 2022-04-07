@@ -239,8 +239,8 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_UA101 \
                 -m CONFIG_SND_USB_USX2Y \
                 -m CONFIG_SND_USB_US122L \
+                -m CONFIG_VIDEO_V4L2 \
                 -e CONFIG_VIDEO_V4L2_SUBDEV_API \
-                -d CONFIG_VIDEO_V4L2_SUBDEV_API \
                 -d CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
                 -d CONFIG_MEDIA_RADIO_SUPPORT \
                 -d CONFIG_MEDIA_TEST_SUPPORT \
