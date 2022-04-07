@@ -19,6 +19,7 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
+gnome-extra/gnome-calculator
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
 gui-libs/xdg-desktop-portal-wlr
@@ -31,6 +32,7 @@ media-video/ffmpeg
 media-video/handbrake
 net-analyzer/traceroute
 net-analyzer/wireshark
+net-dns/bind-tools
 net-im/dingtalk
 net-im/wemeet
 net-misc/anydesk
