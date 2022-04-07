@@ -33,6 +33,9 @@ font pango:sans-serif 10
 # 不显示标题
 default_border pixel
 
+# 窗口间隙
+gaps inner 4
+
 # 输入法
 # exec_always --no-startup-id flatpak run org.fcitx.Fcitx5
 exec_always fcitx5 -d --replace
