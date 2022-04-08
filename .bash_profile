@@ -16,7 +16,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM=wayland
 
 ! result=$( echo $PATH | grep "$HOME/.local/bin" ) && PATH="$HOME/.local/bin:$PATH"
 if ! result=$( echo $PATH | grep "$HOME/.local/bin" ) ; then PATH="$HOME/.local/bin:$PATH"; fi
