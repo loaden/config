@@ -181,6 +181,7 @@ scripts/config  -e CONFIG_BTRFS_FS \
                 -e CONFIG_BTRFS_FS_POSIX_ACL \
                 -m CONFIG_EXT4_FS \
                 -e CONFIG_EXT4_FS_POSIX_ACL \
+                -d CONFIG_EXT4_FS_SECURITY \
                 -e CONFIG_AUTOFS_FS \
                 -m CONFIG_FUSE_FS \
                 -e CONFIG_VFAT_FS \
