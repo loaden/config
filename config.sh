@@ -54,7 +54,7 @@ sudo systemctl enable thermald.service
 sudo usermod -aG wheel,audio,video,input,lpadmin,plugdev,pcap $USER
 
 # udisks 支持 NTFS3
-sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$SUDO_UID,gid=$SUDO_GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
+sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
 # 别名
 if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
