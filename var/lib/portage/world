@@ -11,6 +11,7 @@ app-office/wps-office
 app-pda/usbmuxd
 app-portage/eix
 app-portage/gentoolkit
+app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
 dev-lang/rust-bin
@@ -26,6 +27,7 @@ media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
 media-gfx/gimp
+media-gfx/simple-scan
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
