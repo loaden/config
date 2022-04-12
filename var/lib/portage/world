@@ -31,6 +31,7 @@ media-gfx/simple-scan
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
+media-video/mpv
 media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
@@ -44,6 +45,7 @@ net-misc/remmina
 net-misc/telnet-bsd
 net-print/hplip
 net-print/hplip-plugin
+net-proxy/v2rayA
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
