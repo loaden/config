@@ -205,16 +205,12 @@ scripts/config  -d CONFIG_DRM_NOUVEAU \
 
 # 蓝牙
 scripts/config  -m CONFIG_BT \
-                -m CONFIG_BT_INTEL \
-                -m CONFIG_BT_BCM \
-                -m CONFIG_BT_RTL \
-                -m CONFIG_BT_HCIBTUSB \
-                -e CONFIG_BT_HCIBTUSB_AUTOSUSPEND \
-                -e CONFIG_BT_HCIBTUSB_BCM \
-                -e CONFIG_BT_HCIBTUSB_MTK \
-                -e CONFIG_BT_HCIBTUSB_RTL \
                 -e CONFIG_BT_HIDP \
-                -d CONFIG_BT_DEBUGFS
+                -d CONFIG_RFCOMM \
+                -d CONFIG_BT_BNEP \
+                -e CONFIG_BT_HCIBTUSB \
+                -e CONFIG_BT_HCIUART \
+                -e CONFIG_UHID
 
 # 网卡
 scripts/config  -m CONFIG_MT76_CORE \
@@ -421,6 +417,14 @@ scripts/config  -m CONFIG_DM_CRYPT \
 
 # 同步单位电脑配置
 scripts/config  -d CONFIG_AMD_MEM_ENCRYPT
+
+# v2ray
+scripts/config  -e CONFIG_NET_IPIP \
+                -e CONFIG_NET_IP_TUNNEL \
+                -e CONFIG_INET_TUNNEL \
+                -m CONFIG_NETFILTER_XTABLES \
+                -e CONFIG_NETFILTER_XTABLES_COMPAT \
+                -m CONFIG_IP_NF_IPTABLES
 
 # 刷新
 scripts/config  --refresh
