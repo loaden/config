@@ -34,12 +34,6 @@ eselect locale list
 sudo emerge -avu1 xdg-user-dirs
 xdg-user-dirs-update --force
 
-# 添加官方GURU源和中国用户源
-sudo emerge -avu eselect-repository
-sudo eselect repository enable gentoo-zh
-sudo eselect repository enable guru
-sudo emerge --sync
-
 # 清理未完成的安装任务
 sudo emaint --fix cleanresume
 
@@ -75,6 +69,12 @@ LANG=C pactl info | grep "Server Name"
 # 重载UDEV规则
 sudo udevadm control --reload
 sudo udevadm trigger
+
+# 添加官方GURU源和中国用户源
+sudo emerge -avu eselect-repository
+sudo eselect repository enable gentoo-zh
+sudo eselect repository enable guru
+sudo emerge-webrsync
 
 # 禁用字体配置
 sudo eselect fontconfig disable 10-hinting-slight.conf
