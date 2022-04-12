@@ -36,6 +36,7 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
 net-im/dingtalk
+net-im/wechat-uos
 net-im/wemeet
 net-misc/anydesk
 net-misc/aria2
@@ -46,6 +47,7 @@ net-print/hplip-plugin
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
+sys-apps/usbutils
 sys-boot/efibootmgr
 sys-devel/clang
 sys-kernel/dracut
