@@ -46,7 +46,6 @@ media-gfx/gimp
 media-gfx/imagemagick
 media-gfx/imv
 media-gfx/inkscape
-media-sound/deadbeef
 media-sound/pavucontrol
 media-sound/pulseaudio
 media-video/ffmpeg
@@ -58,12 +57,10 @@ net-dns/bind-tools
 net-im/dingtalk
 net-misc/anydesk
 net-misc/aria2
-net-misc/networkmanager
 net-misc/remmina
 net-misc/telnet-bsd
 net-print/hplip
 net-print/hplip-plugin
-net-wireless/iwd
 sci-calculators/galculator
 sci-calculators/qalculate-gtk
 sys-apps/baobab
@@ -76,6 +73,7 @@ sys-boot/efibootmgr
 sys-devel/clang
 sys-fs/btrfs-progs
 sys-fs/dosfstools
+sys-kernel/dracut
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
