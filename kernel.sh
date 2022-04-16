@@ -133,23 +133,6 @@ scripts/config  -d CONFIG_PARAVIRT \
                 -d CONFIG_DEBUG_BOOT_PARAMS \
                 -d CONFIG_KALLSYMS_ALL
 
-# sys-kernel/gentoo-kernel-bin内核localmodconfig
-scripts/config  -d CONFIG_NETFILTER_XTABLES \
-                -d CONFIG_MTD \
-                -d CONFIG_MAC_EMUMOUSEBTN \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_IPMI_HANDLER \
-                -d CONFIG_VIDEO_IR_I2C \
-                -d CONFIG_MEDIA_TUNER_TEA5761 \
-                -d CONFIG_MEDIA_TUNER_TEA5767 \
-                -d CONFIG_SND_HRTIMER \
-                -e CONFIG_CRYPTO_USER \
-                -m CONFIG_CRYPTO_USER_API_AEAD \
-                -d CONFIG_CRYPTO_LZO \
-                -d CONFIG_CRYPTO_842 \
-                -d CONFIG_CRYPTO_LZ4HC
-
 # 与Arch内核配置对比
 scripts/config  -d CONFIG_KEXEC_JUMP \
                 -d CONFIG_PM_GENERIC_DOMAINS \
@@ -203,7 +186,7 @@ scripts/config  -d CONFIG_LOCALVERSION_AUTO \
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
                 -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD
 
-# 驱动
+# 禁用驱动
 scripts/config  -d CONFIG_BLK_DEV_NVME \
                 -d CONFIG_INPUT_JOYDEV \
                 -d CONFIG_INPUT_JOYSTICK \
@@ -362,13 +345,6 @@ scripts/config  -m CONFIG_BT \
                 -e CONFIG_BT_HCIUART \
                 -e CONFIG_UHID
 
-# 无线网卡
-scripts/config  -m CONFIG_MT76_CORE \
-                -m CONFIG_MT76_USB \
-                -m CONFIG_MT76x02_LIB \
-                -m CONFIG_MT76x02_USB \
-                -m CONFIG_MT76x2U
-
 # 摄像头
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -e CONFIG_MEDIA_SUPPORT_FILTER \
@@ -391,7 +367,11 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -d CONFIG_MEDIA_TEST_SUPPORT \
                 -d CONFIG_MEDIA_PCI_SUPPORT
 
-# iwd
+# 手机USB网络共享
+scripts/config  -m CONFIG_USB_NET_DRIVERS \
+                -m CONFIG_USB_USBNET
+
+# 无线网络iwd
 scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_USER_API_HASH \
                 -e CONFIG_CRYPTO_HMAC \
@@ -406,18 +386,9 @@ scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_CBC \
                 -e CONFIG_KEY_DH_OPERATIONS
 
-# Gentoo编译提示开启
-scripts/config  -m CONFIG_DM_CRYPT \
-                -m CRYPTO_DES3_EDE_X86_64 \
-                -m CONFIG_PKCS8_PRIVATE_KEY_PARSER \
-                -m CONFIG_NLS_UTF8
-
-# 手机USB网络共享
-scripts/config  -e CONFIG_NET_IPIP \
-                -e CONFIG_NET_IP_TUNNEL \
-                -e CONFIG_IP_MROUTE \
-                -e CONFIG_INET_TUNNEL \
-                -m CONFIG_USB_NET_DRIVERS
+# 无线网卡
+scripts/config  -e CONFIG_WLAN_VENDOR_MEDIATEK \
+                -m CONFIG_MT76x2U
 
 # v2ray
 scripts/config  -e CONFIG_NET_IPIP \
@@ -425,6 +396,12 @@ scripts/config  -e CONFIG_NET_IPIP \
                 -e CONFIG_INET_TUNNEL \
                 -m CONFIG_IP_NF_IPTABLES \
                 -e CONFIG_IP_NF_FILTER
+
+# Gentoo编译提示开启
+scripts/config  -m CONFIG_DM_CRYPT \
+                -m CRYPTO_DES3_EDE_X86_64 \
+                -m CONFIG_PKCS8_PRIVATE_KEY_PARSER \
+                -m CONFIG_NLS_UTF8
 
 # 刷新
 scripts/config  --refresh
@@ -434,7 +411,9 @@ scripts/config  --refresh
 make menuconfig
 
 # 对比选项
+echo scripts/diffconfig .config.bak .config
 scripts/diffconfig .config.bak .config
+echo scripts/diffconfig .config.old .config
 scripts/diffconfig .config.old .config
 
 # 输出配置文件大小
