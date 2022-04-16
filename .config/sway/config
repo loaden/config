@@ -52,6 +52,9 @@ exec_always mako
 # 自动平铺
 exec_always $(killall -9 python3 -q || /bin/true) && python3 ~/.config/sway/autotiling.py
 
+# 截图
+bindsym $mod+Ctrl+f exec flameshot gui
+
 # 保护视力
 set $sunset $$(killall -9 wlsunset -q || /bin/true) && wlsunset -T 5500 -t 4000 -l 37.4 -L 118.0
 exec_always $sunset
