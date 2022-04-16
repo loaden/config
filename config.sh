@@ -72,8 +72,8 @@ systemctl --user daemon-reload
 LANG=C pactl info | grep "Server Name"
 
 # 蓝牙
-sudo systemctl enable bluetooth --now
-bluetoothctl list
+# sudo systemctl enable bluetooth --now
+# bluetoothctl list
 
 # 重载UDEV规则
 sudo udevadm control --reload
