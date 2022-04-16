@@ -83,7 +83,6 @@ sudo udevadm trigger
 sudo emerge -avu eselect-repository
 sudo eselect repository enable gentoo-zh >/dev/null
 sudo eselect repository enable guru >/dev/null
-sudo emerge-webrsync
 
 # 禁用字体配置
 sudo eselect fontconfig disable 10-hinting-slight.conf >/dev/null 2>&1
