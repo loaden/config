@@ -34,11 +34,14 @@ font pango:sans-serif 10
 default_border pixel
 
 # 窗口间隙
-gaps inner 4
+gaps inner 2
 
 # 输入法
 # exec_always --no-startup-id flatpak run org.fcitx.Fcitx5
 exec_always fcitx5 -d --replace
+
+# 鼠标点击切换焦点
+focus_follows_mouse no
 
 # 密码验证
 exec_always /usr/libexec/polkit-gnome-authentication-agent-1
