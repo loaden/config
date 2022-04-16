@@ -56,19 +56,6 @@ bindsym $mod+n exec $sunset
 bindsym $mod+Shift+n exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -t 4500 -s $(date "+%H:%M")
 bindsym $mod+Shift+d exec $(killall -9 wlsunset -q || /bin/true) && wlsunset -T 6000 -t 5999 -S $(date "+%H:%M")
 
-# 单击取色到剪贴板
-bindsym $mod+Ctrl+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
-
-# 截图
-bindsym Ctrl+Alt+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy && notify-send "截图到剪贴板"
-bindsym Alt+Shift+a exec grim -g "$(slurp)" - | wl-copy && notify-send "截图到剪贴板"
-bindsym $mod+Insert exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
-    && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
-    && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
-bindsym $mod+Print exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
-    && wl-copy < $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png') \
-    && notify-send "截图" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H%M%S.png')
-
 # 媒体控制
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -101,7 +88,6 @@ for_window [class="Wine" instance="ecloud.exe"] floating enable
 for_window [app_id="qt5ct"] floating enable
 for_window [title="Open file..."] floating enable
 for_window [title="DING"] floating enable
-for_window [app_id="qalculate-gtk"] floating enable
 
 # 随机壁纸
 output * bg $(find ~/.config/wallpapers -type f | shuf -n1) fill
