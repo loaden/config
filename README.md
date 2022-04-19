@@ -9,26 +9,29 @@
 	+ 磁盘分区，推荐btrfs子卷安装，例如：@gentoo
 	+ 挂载根分区： ``mount -o subvol=@gentoo /dev/sda2 /mnt/gentoo`` ，千万别直接挂到/mnt，因为minimal安装镜像的各种工具实际在/mnt/livecd下，不能覆盖。
 	+ 解压stage3文件到/mnt/gentoo，解压参数必须满足官方维基要求。
-	+ 建议写个脚本挂载分区，因为优化内核编译时，可能要多次进入livecd。一定要手动编译内核，不要用genkernel自动编译，那样就索然无味了。
+	+ 建议写个脚本挂载分区（参考本仓库根目录下的chroot.sh），因为优化内核编译时，可能要多次进入livecd。一定要手动编译内核，不要用genkernel自动编译，那样就索然无味了。
 	+ 根文件系统和EFI分区的vfat文件系统不能编译成模块（当启用内核模块压缩时），必须内核内置，否则无法挂载。exFAT和NTFS可以编译成模块按需加载。
 	+ USB输入设备（比如键盘和鼠标）或其他USB设备，必须启用 ``(CONFIG_HID_GENERIC and CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD)`` ，否则不可用。
 	+ 官方维基指南中很多配置都是写给自家的OpenRC的，systemd用户可以无视。很多配置可以以后再说，不用急着配。
-	+ systemd用户需要执行一次： ``systemd-machine-id-setup`` 创建机器 ID，这个 ID 会被 systemd 日志和 systemd-networkd 用到。再执行一次： ``systemctl preset-all --preset-mode=enable-only`` 激活一些默认应处于启用状态的 systemd 单元，其中许多单元都是基础系统功能所必需的。
+	+ systemd用户需要执行一次： ``systemd-machine-id-setup`` 创建机器 ID，这个 ID 会被 systemd 日志和 systemd-networkd 用到。再执行一次： ``systemctl preset-all --preset-mode=enable-only`` 激活一些默认应处于启用状态的 systemd 单元，其中许多单元都是基础系统功能所必需的，登录桌面后执行：``systemctl --user preset-all``启用部分用户态服务，例如PipeWire，具体配置请参考本仓库根目录下的config.sh。
 	+ ``make -j3 && make modules_install && make install``
 	+ ``genkernel --kernel-config=.config --compress-initramfs-type=zstd --install initramfs``
+	+ initramfs还可以用``dracut --force``来生成，具体配置请参考本仓库根目录下的kernel.sh。
 	+ 目前根分区如果是btrfs格式，则必须使用initramfs，建议dracut生成最小化的initramfs。
 	+ 引导直接： ``emerge grub`` ，然后grub-install、grub-mkconfig就行了。
+	+ 引导建议了解下systemd-boot，我用着bootctl挺爽的。
 
 ## Linux内核编译钻研
 
 ### 钻研一：快速配置硬件驱动
 
 + 尝试一： ``make localmodconfig`` 和 ``make localyesconfig`` ，大概意思就是系统自动检测现有内核加载了哪些模块，然后在内核源码的config设置里将已加载的模块自动标记为“M”或“*”，没加载的模块自动去除选择。思路：
-1. 先安装一个硬件驱动支持好的通用发行版如 Ubuntu、Garuda 等；
+1. 先安装一个硬件驱动支持好的通用发行版如 Arch、Debian、Ubuntu 等，或者，先安装 gentoo-kernel-bin 二进制内核；
 2. 从 <http://kernel.org> 下载一份内核源码；
 3. 将所有以后用到的硬件设备全部插到电脑上激活使用一遍(包括蓝牙、wifi、鼠标、u盘、拓展坞、摄像头等)，让通用发行版的内核加载这些设备的驱动；
 4. 解压下载来的内核源码，执行 ``make localmodconfig`` 命令，完成后再执行 ``make menuconfig`` 命令，然后“save”你的内核配置，于是你就得到了一份专属于自己电脑的.config内核配置文件了。
 5. 参考文档： ``make help``
+6. 欢迎参考本仓库根目录下的kernel.sh，如有更好的办法，欢迎分享。
 
 + 尝试二：尝试 ``make menuconfig all`` 编译，使用一遍所有硬件，通过 ``lsmod | awk '{if($3>0) print $_ }'`` 找出 used 大于0的驱动模块，并认为是当前电脑必备的模块。
 + 查看内核编译配置区别： ``scripts/diffconfig .config .config.bak``
@@ -68,3 +71,4 @@
 + 禁用“Security options - Enable different security models”：牺牲内核安全性换取性能。
 + 关闭“Kernel hacking - Kernel debugging”内核调试。
 + 参考链接： <https://zhuanlan.zhihu.com/p/164910411>
++ 本优化的脚本基本上汇总在本仓库根目录下的kernel.sh了。
