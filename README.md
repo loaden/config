@@ -2,9 +2,9 @@
 
 + 参考官方维基为主： <https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn>
 + 与官方维基对应的安装要点与补充：
-	+ 安装镜像下载地址： <https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/autobuilds/current-install-amd64-minimal/>
+	+ 安装镜像下载地址： <https://mirrors.bfsu.edu.cn/gentoo/releases/amd64/autobuilds/current-install-amd64-minimal/>
 		+ 选择install-amd64-minimal-*-.iso，放到Ventoy制作好的启动盘里。
-		+ 可以提前下载stage3：stage3-amd64-systemd-*.tar.xz，也可以进入安装shell后用links下载，推荐后者： ``links mirrors.tuna.tsinghua.edu.cn/gentoo``
+		+ 可以提前下载stage3：stage3-amd64-systemd-*.tar.xz，也可以进入安装shell后用links下载，推荐后者： ``links mirrors.bfsu.edu.cn/gentoo``
 	+ UEFI模式进入安装shell后联网： ``net-setup`` ，会有图形界面，按提示操作。
 	+ 磁盘分区，推荐btrfs子卷安装，例如：@gentoo
 	+ 挂载根分区： ``mount -o subvol=@gentoo /dev/sda2 /mnt/gentoo`` ，千万别直接挂到/mnt，因为minimal安装镜像的各种工具实际在/mnt/livecd下，不能覆盖。
