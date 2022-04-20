@@ -37,6 +37,34 @@ else
     scripts/config --set-val CONFIG_CLANG_VERSION "0"
 fi
 
+# 基础
+scripts/config  -e CONFIG_WATCH_QUEUE \
+                -d CONFIG_USELIB \
+                -e CONFIG_IRQ_TIME_ACCOUNTING \
+                -e CONFIG_HAVE_SCHED_AVG_IRQ \
+                -e CONFIG_PSI \
+                -e CONFIG_UCLAMP_TASK \
+                -e CONFIG_NUMA_BALANCING \
+                -e CONFIG_MEMCG \
+                -e CONFIG_MEMCG_SWAP \
+                -e CONFIG_MEMCG_KMEM \
+                -e CONFIG_BOOT_CONFIG \
+                -e CONFIG_X86_X2APIC \
+                -e CONFIG_X86_CPU_RESCTRL \
+                -e CONFIG_X86_INTEL_LPSS \
+                -d CONFIG_X86_AMD_PLATFORM_DEVICE \
+                -m CONFIG_PERF_EVENTS_INTEL_UNCORE \
+                -m CONFIG_PERF_EVENTS_INTEL_RAPL \
+                -m CONFIG_PERF_EVENTS_INTEL_CSTATE \
+                -d CONFIG_PERF_EVENTS_AMD_UNCORE \
+                -e CONFIG_X86_SGX \
+                -e CONFIG_CPU_FREQ_STAT \
+                -e CONFIG_INTEL_IDLE \
+                -e CONFIG_MODULE_SIG_FORMAT \
+                -e CONFIG_MODULE_SIG \
+                -e CONFIG_MODULE_SIG_ALL \
+                -d CONFIG_IP_PNP
+
 # 精简
 scripts/config  -d CONFIG_PARAVIRT \
                 -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
