@@ -37,6 +37,139 @@ else
     scripts/config --set-val CONFIG_CLANG_VERSION "0"
 fi
 
+# 精简
+scripts/config  -d CONFIG_PARAVIRT \
+                -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
+                -d CONFIG_PVH \
+                -d CONFIG_JAILHOUSE_GUEST \
+                -d CONFIG_ACRN_GUEST \
+                -d CONFIG_NET_FC \
+                -d CONFIG_NET_VENDOR_3COM \
+                -d CONFIG_NET_VENDOR_ADAPTEC \
+                -d CONFIG_NET_VENDOR_AGERE \
+                -d CONFIG_NET_VENDOR_ALACRITECH \
+                -d CONFIG_NET_VENDOR_ALTEON \
+                -d CONFIG_NET_VENDOR_AMAZON \
+                -d CONFIG_NET_VENDOR_AMD \
+                -d CONFIG_NET_VENDOR_AQUANTIA \
+                -d CONFIG_NET_VENDOR_ARC \
+                -d CONFIG_NET_VENDOR_ATHEROS \
+                -d CONFIG_NET_VENDOR_BROADCOM \
+                -d CONFIG_NET_VENDOR_BROCADE \
+                -d CONFIG_NET_VENDOR_CADENCE \
+                -d CONFIG_NET_VENDOR_CAVIUM \
+                -d CONFIG_NET_VENDOR_CHELSIO \
+                -d CONFIG_NET_VENDOR_CISCO \
+                -d CONFIG_NET_VENDOR_CORTINA \
+                -d CONFIG_NET_VENDOR_DEC \
+                -d CONFIG_NET_VENDOR_DLINK \
+                -d CONFIG_NET_VENDOR_EMULEX \
+                -d CONFIG_NET_VENDOR_EZCHIP \
+                -d CONFIG_NET_VENDOR_GOOGLE \
+                -d CONFIG_NET_VENDOR_HUAWEI \
+                -d CONFIG_NET_VENDOR_INTEL \
+                -d CONFIG_NET_VENDOR_MICROSOFT \
+                -d CONFIG_NET_VENDOR_LITEX \
+                -d CONFIG_NET_VENDOR_MARVELL \
+                -d CONFIG_NET_VENDOR_MELLANOX \
+                -d CONFIG_NET_VENDOR_MICREL \
+                -d CONFIG_NET_VENDOR_MICROCHIP \
+                -d CONFIG_NET_VENDOR_MICROSEMI \
+                -d CONFIG_NET_VENDOR_MYRI \
+                -d CONFIG_NET_VENDOR_NATSEMI \
+                -d CONFIG_NET_VENDOR_NETERION \
+                -d CONFIG_NET_VENDOR_NETRONOME \
+                -d CONFIG_NET_VENDOR_NI \
+                -d CONFIG_NET_VENDOR_NVIDIA \
+                -d CONFIG_NET_VENDOR_OKI \
+                -d CONFIG_NET_VENDOR_PACKET_ENGINES \
+                -d CONFIG_NET_VENDOR_PENSANDO \
+                -d CONFIG_NET_VENDOR_QLOGIC \
+                -d CONFIG_NET_VENDOR_QUALCOMM \
+                -d CONFIG_NET_VENDOR_RDC \
+                -d CONFIG_NET_VENDOR_RENESAS \
+                -d CONFIG_NET_VENDOR_ROCKER \
+                -d CONFIG_NET_VENDOR_SAMSUNG \
+                -d CONFIG_NET_VENDOR_SEEQ \
+                -d CONFIG_NET_VENDOR_SOLARFLARE \
+                -d CONFIG_NET_VENDOR_SILAN \
+                -d CONFIG_NET_VENDOR_SIS \
+                -d CONFIG_NET_VENDOR_SMSC \
+                -d CONFIG_NET_VENDOR_SOCIONEXT \
+                -d CONFIG_NET_VENDOR_STMICRO \
+                -d CONFIG_NET_VENDOR_SUN \
+                -d CONFIG_NET_VENDOR_SYNOPSYS \
+                -d CONFIG_NET_VENDOR_TEHUTI \
+                -d CONFIG_NET_VENDOR_TI \
+                -d CONFIG_NET_VENDOR_VIA \
+                -d CONFIG_NET_VENDOR_WIZNET \
+                -d CONFIG_NET_VENDOR_XILINX \
+                -d CONFIG_WLAN_VENDOR_MICROCHIP \
+                -d CONFIG_WLAN_VENDOR_RALINK \
+                -d CONFIG_WLAN_VENDOR_REALTEK \
+                -d CONFIG_WLAN_VENDOR_RSI \
+                -d CONFIG_WLAN_VENDOR_ST \
+                -d CONFIG_WLAN_VENDOR_TI \
+                -d CONFIG_WLAN_VENDOR_ZYDAS \
+                -d CONFIG_WLAN_VENDOR_QUANTENNA \
+                -d CONFIG_ISDN \
+                -d CONFIG_VIRT_DRIVERS \
+                -d CONFIG_STAGING \
+                -d CONFIG_DEBUG_INFO \
+                -d CONFIG_BOOT_PRINTK_DELAY \
+                -d CONFIG_SCHED_STACK_END_CHECK \
+                -d CONFIG_DEBUG_SHIRQ \
+                -d CONFIG_SOFTLOCKUP_DETECTOR \
+                -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_DETECT_HUNG_TASK \
+                -d CONFIG_DEBUG_SHIRQ \
+                -d CONFIG_SOFTLOCKUP_DETECTOR \
+                -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_DETECT_HUNG_TASK \
+                -d CONFIG_SCHEDSTATS \
+                -d CONFIG_DEBUG_LIST \
+                -d CONFIG_LATENCYTOP \
+                -d CONFIG_X86_DECODER_SELFTEST \
+                -d CONFIG_DEBUG_BOOT_PARAMS \
+                -d CONFIG_KALLSYMS_ALL
+
+# 与Arch内核配置对比
+scripts/config  -d CONFIG_KEXEC_JUMP \
+                -d CONFIG_PM_GENERIC_DOMAINS \
+                -d CONFIG_KVM_INTEL \
+                -d CONFIG_KVM_XEN \
+                -d CONFIG_HMM_MIRROR \
+                -d CONFIG_WLAN_VENDOR_ADMTEK \
+                -d CONFIG_WLAN_VENDOR_ATH \
+                -d CONFIG_WLAN_VENDOR_ATMEL \
+                -d CONFIG_WLAN_VENDOR_BROADCOM \
+                -d CONFIG_WLAN_VENDOR_CISCO \
+                -d CONFIG_WLAN_VENDOR_INTEL \
+                -d CONFIG_WLAN_VENDOR_INTERSIL \
+                -d CONFIG_WLAN_VENDOR_MARVELL \
+                -d CONFIG_MFD_INTEL_PMC_BXT \
+                -m CONFIG_CEC_CORE \
+                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+                -d CONFIG_MEDIA_TUNER \
+                -d CONFIG_DRM_DEBUG_MM \
+                -d CONFIG_DRM_RADEON \
+                -d CONFIG_DRM_AMDGPU \
+                -d CONFIG_DRM_VIRTIO_GPU \
+                -d CONFIG_SND_SEQUENCER \
+                -d CONFIG_VIRTIO_MENU \
+                -d CONFIG_VHOST_MENU \
+                -d CONFIG_ACPI_WMI \
+                -d CONFIG_X86_PLATFORM_DRIVERS_DELL \
+                -d CONFIG_RCU_TRACE \
+                -e CONFIG_V4L_PLATFORM_DRIVERS \
+                -e CONFIG_V4L_MEM2MEM_DRIVERS \
+                -d CONFIG_VGA_SWITCHEROO \
+                -e CONFIG_INIT_STACK_NONE \
+                -d CONFIG_INIT_STACK_ALL_ZERO \
+                -m CONFIG_I2C_ALGOBIT \
+                -e CONFIG_MEDIA_ATTACH \
+                -e CONFIG_USB_XHCI_PCI
+
 # 通用设置
 scripts/config  -d CONFIG_LOCALVERSION_AUTO \
                 -d MICROCODE \
@@ -53,7 +186,7 @@ scripts/config  -d CONFIG_LOCALVERSION_AUTO \
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
                 -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD
 
-# 驱动
+# 禁用驱动
 scripts/config  -d CONFIG_BLK_DEV_NVME \
                 -d CONFIG_INPUT_JOYDEV \
                 -d CONFIG_INPUT_JOYSTICK \
@@ -205,25 +338,12 @@ scripts/config  -d CONFIG_DRM_NOUVEAU \
 
 # 蓝牙
 scripts/config  -m CONFIG_BT \
-                -m CONFIG_BT_INTEL \
-                -m CONFIG_BT_BCM \
-                -m CONFIG_BT_RTL \
-                -m CONFIG_BT_HCIBTUSB \
-                -e CONFIG_BT_HCIBTUSB_AUTOSUSPEND \
-                -e CONFIG_BT_HCIBTUSB_BCM \
-                -e CONFIG_BT_HCIBTUSB_MTK \
-                -e CONFIG_BT_HCIBTUSB_RTL \
                 -e CONFIG_BT_HIDP \
-                -d CONFIG_BT_DEBUGFS
-
-# 网卡
-scripts/config  -m CONFIG_MT76_CORE \
-                -e CONFIG_MT76_LEDS \
-                -m CONFIG_MT76_USB \
-                -m CONFIG_MT76x02_LIB \
-                -m CONFIG_MT76x02_USB \
-                -m CONFIG_MT76x2_COMMON \
-                -m CONFIG_MT76x2U
+                -d CONFIG_RFCOMM \
+                -d CONFIG_BT_BNEP \
+                -e CONFIG_BT_HCIBTUSB \
+                -e CONFIG_BT_HCIUART \
+                -e CONFIG_UHID
 
 # 摄像头
 scripts/config  -m CONFIG_MEDIA_SUPPORT \
@@ -240,165 +360,18 @@ scripts/config  -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_UA101 \
                 -m CONFIG_SND_USB_USX2Y \
                 -m CONFIG_SND_USB_US122L \
+                -m CONFIG_VIDEO_V4L2 \
                 -e CONFIG_VIDEO_V4L2_SUBDEV_API \
-                -d CONFIG_VIDEO_V4L2_SUBDEV_API \
                 -d CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
                 -d CONFIG_MEDIA_RADIO_SUPPORT \
                 -d CONFIG_MEDIA_TEST_SUPPORT \
                 -d CONFIG_MEDIA_PCI_SUPPORT
 
-# 精简
-scripts/config  -d CONFIG_PARAVIRT \
-                -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
-                -d CONFIG_PVH \
-                -d CONFIG_JAILHOUSE_GUEST \
-                -d CONFIG_ACRN_GUEST \
-                -d CONFIG_NET_FC \
-                -d CONFIG_NET_VENDOR_3COM \
-                -d CONFIG_NET_VENDOR_ADAPTEC \
-                -d CONFIG_NET_VENDOR_AGERE \
-                -d CONFIG_NET_VENDOR_ALACRITECH \
-                -d CONFIG_NET_VENDOR_ALTEON \
-                -d CONFIG_NET_VENDOR_AMAZON \
-                -d CONFIG_NET_VENDOR_AMD \
-                -d CONFIG_NET_VENDOR_AQUANTIA \
-                -d CONFIG_NET_VENDOR_ARC \
-                -d CONFIG_NET_VENDOR_ATHEROS \
-                -d CONFIG_NET_VENDOR_BROADCOM \
-                -d CONFIG_NET_VENDOR_BROCADE \
-                -d CONFIG_NET_VENDOR_CADENCE \
-                -d CONFIG_NET_VENDOR_CAVIUM \
-                -d CONFIG_NET_VENDOR_CHELSIO \
-                -d CONFIG_NET_VENDOR_CISCO \
-                -d CONFIG_NET_VENDOR_CORTINA \
-                -d CONFIG_NET_VENDOR_DEC \
-                -d CONFIG_NET_VENDOR_DLINK \
-                -d CONFIG_NET_VENDOR_EMULEX \
-                -d CONFIG_NET_VENDOR_EZCHIP \
-                -d CONFIG_NET_VENDOR_GOOGLE \
-                -d CONFIG_NET_VENDOR_HUAWEI \
-                -d CONFIG_NET_VENDOR_INTEL \
-                -d CONFIG_NET_VENDOR_MICROSOFT \
-                -d CONFIG_NET_VENDOR_LITEX \
-                -d CONFIG_NET_VENDOR_MARVELL \
-                -d CONFIG_NET_VENDOR_MELLANOX \
-                -d CONFIG_NET_VENDOR_MICREL \
-                -d CONFIG_NET_VENDOR_MICROCHIP \
-                -d CONFIG_NET_VENDOR_MICROSEMI \
-                -d CONFIG_NET_VENDOR_MYRI \
-                -d CONFIG_NET_VENDOR_NATSEMI \
-                -d CONFIG_NET_VENDOR_NETERION \
-                -d CONFIG_NET_VENDOR_NETRONOME \
-                -d CONFIG_NET_VENDOR_NI \
-                -d CONFIG_NET_VENDOR_NVIDIA \
-                -d CONFIG_NET_VENDOR_OKI \
-                -d CONFIG_NET_VENDOR_PACKET_ENGINES \
-                -d CONFIG_NET_VENDOR_PENSANDO \
-                -d CONFIG_NET_VENDOR_QLOGIC \
-                -d CONFIG_NET_VENDOR_QUALCOMM \
-                -d CONFIG_NET_VENDOR_RDC \
-                -d CONFIG_NET_VENDOR_RENESAS \
-                -d CONFIG_NET_VENDOR_ROCKER \
-                -d CONFIG_NET_VENDOR_SAMSUNG \
-                -d CONFIG_NET_VENDOR_SEEQ \
-                -d CONFIG_NET_VENDOR_SOLARFLARE \
-                -d CONFIG_NET_VENDOR_SILAN \
-                -d CONFIG_NET_VENDOR_SIS \
-                -d CONFIG_NET_VENDOR_SMSC \
-                -d CONFIG_NET_VENDOR_SOCIONEXT \
-                -d CONFIG_NET_VENDOR_STMICRO \
-                -d CONFIG_NET_VENDOR_SUN \
-                -d CONFIG_NET_VENDOR_SYNOPSYS \
-                -d CONFIG_NET_VENDOR_TEHUTI \
-                -d CONFIG_NET_VENDOR_TI \
-                -d CONFIG_NET_VENDOR_VIA \
-                -d CONFIG_NET_VENDOR_WIZNET \
-                -d CONFIG_NET_VENDOR_XILINX \
-                -d CONFIG_WLAN_VENDOR_MICROCHIP \
-                -d CONFIG_WLAN_VENDOR_RALINK \
-                -d CONFIG_WLAN_VENDOR_REALTEK \
-                -d CONFIG_WLAN_VENDOR_RSI \
-                -d CONFIG_WLAN_VENDOR_ST \
-                -d CONFIG_WLAN_VENDOR_TI \
-                -d CONFIG_WLAN_VENDOR_ZYDAS \
-                -d CONFIG_WLAN_VENDOR_QUANTENNA \
-                -d CONFIG_ISDN \
-                -d CONFIG_VIRT_DRIVERS \
-                -d CONFIG_STAGING \
-                -d CONFIG_DEBUG_INFO \
-                -d CONFIG_BOOT_PRINTK_DELAY \
-                -d CONFIG_SCHED_STACK_END_CHECK \
-                -d CONFIG_DEBUG_SHIRQ \
-                -d CONFIG_SOFTLOCKUP_DETECTOR \
-                -d CONFIG_HARDLOCKUP_DETECTOR \
-                -d CONFIG_DETECT_HUNG_TASK \
-                -d CONFIG_DEBUG_SHIRQ \
-                -d CONFIG_SOFTLOCKUP_DETECTOR \
-                -d CONFIG_HARDLOCKUP_DETECTOR \
-                -d CONFIG_DETECT_HUNG_TASK \
-                -d CONFIG_SCHEDSTATS \
-                -d CONFIG_DEBUG_LIST \
-                -d CONFIG_LATENCYTOP \
-                -d CONFIG_X86_DECODER_SELFTEST \
-                -d CONFIG_DEBUG_BOOT_PARAMS \
-                -d CONFIG_KALLSYMS_ALL
+# 手机USB网络共享
+scripts/config  -m CONFIG_USB_NET_DRIVERS \
+                -m CONFIG_USB_USBNET
 
-# sys-kernel/gentoo-kernel-bin内核localmodconfig
-scripts/config  -d CONFIG_NETFILTER_XTABLES \
-                -d CONFIG_IP_NF_IPTABLES \
-                -d CONFIG_MTD \
-                -d CONFIG_MAC_EMUMOUSEBTN \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_IPMI_HANDLER \
-                -d CONFIG_VIDEO_IR_I2C \
-                -d CONFIG_MEDIA_TUNER_TEA5761 \
-                -d CONFIG_MEDIA_TUNER_TEA5767 \
-                -d CONFIG_SND_HRTIMER \
-                -e CONFIG_CRYPTO_USER \
-                -m CONFIG_CRYPTO_USER_API_AEAD \
-                -d CONFIG_CRYPTO_LZO \
-                -d CONFIG_CRYPTO_842 \
-                -d CONFIG_CRYPTO_LZ4HC
-
-# 再次与Arch内核配置对比
-scripts/config  -d CONFIG_KEXEC_JUMP \
-                -d CONFIG_PM_GENERIC_DOMAINS \
-                -d CONFIG_KVM_INTEL \
-                -d CONFIG_KVM_XEN \
-                -d CONFIG_HMM_MIRROR \
-                -d CONFIG_WLAN_VENDOR_ADMTEK \
-                -d CONFIG_WLAN_VENDOR_ATH \
-                -d CONFIG_WLAN_VENDOR_ATMEL \
-                -d CONFIG_WLAN_VENDOR_BROADCOM \
-                -d CONFIG_WLAN_VENDOR_CISCO \
-                -d CONFIG_WLAN_VENDOR_INTEL \
-                -d CONFIG_WLAN_VENDOR_INTERSIL \
-                -d CONFIG_WLAN_VENDOR_MARVELL \
-                -d CONFIG_MFD_INTEL_PMC_BXT \
-                -m CONFIG_CEC_CORE \
-                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
-                -d CONFIG_MEDIA_TUNER \
-                -d CONFIG_DRM_DEBUG_MM \
-                -d CONFIG_DRM_RADEON \
-                -d CONFIG_DRM_AMDGPU \
-                -d CONFIG_DRM_VIRTIO_GPU \
-                -d CONFIG_SND_SEQUENCER \
-                -d CONFIG_VIRTIO_MENU \
-                -d CONFIG_VHOST_MENU \
-                -d CONFIG_ACPI_WMI \
-                -d CONFIG_X86_PLATFORM_DRIVERS_DELL \
-                -d CONFIG_RCU_TRACE \
-                -e CONFIG_V4L_PLATFORM_DRIVERS \
-                -e CONFIG_V4L_MEM2MEM_DRIVERS \
-                -d CONFIG_VGA_SWITCHEROO \
-                -e CONFIG_INIT_STACK_NONE \
-                -d CONFIG_INIT_STACK_ALL_ZERO \
-                -m CONFIG_I2C_ALGOBIT \
-                -e CONFIG_MEDIA_ATTACH \
-                -e CONFIG_USB_XHCI_PCI
-
-# iwd
+# 无线网络iwd
 scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_USER_API_HASH \
                 -e CONFIG_CRYPTO_HMAC \
@@ -413,14 +386,22 @@ scripts/config  -e CONFIG_CRYPTO_USER_API_SKCIPHER \
                 -e CONFIG_CRYPTO_CBC \
                 -e CONFIG_KEY_DH_OPERATIONS
 
+# 无线网卡
+scripts/config  -e CONFIG_WLAN_VENDOR_MEDIATEK \
+                -m CONFIG_MT76x2U
+
+# v2ray
+scripts/config  -e CONFIG_NET_IPIP \
+                -e CONFIG_NET_IP_TUNNEL \
+                -e CONFIG_INET_TUNNEL \
+                -m CONFIG_IP_NF_IPTABLES \
+                -e CONFIG_IP_NF_FILTER
+
 # Gentoo编译提示开启
 scripts/config  -m CONFIG_DM_CRYPT \
                 -m CRYPTO_DES3_EDE_X86_64 \
                 -m CONFIG_PKCS8_PRIVATE_KEY_PARSER \
                 -m CONFIG_NLS_UTF8
-
-# 同步单位电脑配置
-scripts/config  -d CONFIG_AMD_MEM_ENCRYPT
 
 # 刷新
 scripts/config  --refresh
@@ -430,7 +411,10 @@ scripts/config  --refresh
 make menuconfig
 
 # 对比选项
+echo scripts/diffconfig .config.bak .config
 scripts/diffconfig .config.bak .config
+echo scripts/diffconfig .config.old .config
+scripts/diffconfig .config.old .config
 
 # 输出配置文件大小
 ls -lh .config
@@ -445,7 +429,7 @@ esac
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install
     find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp -fv {} /boot/efi/EFI/gentoo/vmlinuz \; -print
-    dracut
+    dracut --force
     find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-* -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*

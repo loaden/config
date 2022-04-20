@@ -11,6 +11,7 @@ app-office/wps-office
 app-pda/usbmuxd
 app-portage/eix
 app-portage/gentoolkit
+app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
 dev-lang/rust-bin
@@ -19,9 +20,10 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
+gnome-extra/gnome-calculator
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
-gui-libs/xdg-desktop-portal-wlr
+gui-apps/grim
 media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
@@ -29,6 +31,8 @@ media-gfx/gimp
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
+media-video/mpv
+media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
@@ -39,6 +43,7 @@ net-misc/telnet-bsd
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
+sys-apps/usbutils
 sys-boot/efibootmgr
 sys-devel/clang
 sys-kernel/dracut
