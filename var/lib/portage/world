@@ -23,6 +23,7 @@ gnome-base/gnome
 gnome-extra/gnome-calculator
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
+gui-apps/grim
 media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
@@ -35,17 +36,13 @@ media-video/mpv
 media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
-net-dns/bind-tools
 net-im/dingtalk
-net-im/wechat-uos
-net-im/wemeet
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
 net-misc/telnet-bsd
 net-print/hplip
 net-print/hplip-plugin
-net-proxy/v2rayA
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
