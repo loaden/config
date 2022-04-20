@@ -72,8 +72,8 @@ systemctl --user daemon-reload
 LANG=C pactl info | grep "Server Name"
 
 # 蓝牙
-sudo systemctl enable bluetooth --now
-bluetoothctl list
+# sudo systemctl enable bluetooth --now
+# bluetoothctl list
 
 # 重载UDEV规则
 sudo udevadm control --reload
@@ -83,7 +83,6 @@ sudo udevadm trigger
 sudo emerge -avu eselect-repository
 sudo eselect repository enable gentoo-zh >/dev/null
 sudo eselect repository enable guru >/dev/null
-sudo emerge-webrsync
 
 # 禁用字体配置
 sudo eselect fontconfig disable 10-hinting-slight.conf >/dev/null 2>&1
