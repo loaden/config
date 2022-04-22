@@ -49,6 +49,7 @@ sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-boot/efibootmgr
 sys-devel/clang
+sys-fs/dosfstools
 sys-kernel/dracut
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
