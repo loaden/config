@@ -21,9 +21,9 @@ cd /usr/src/linux
 BUILD_WITH_CLANG=0
 
 # 初始本地配置
-read -p "是否生成本地配置？[y/N/old]" choice
+read -p "是否生成默认配置？[y/N/old]" choice
 case $choice in
-YES | yes | Y | y) make localmodconfig && sleep 1 ;;
+YES | yes | Y | y) make defconfig && sleep 1 ;;
 OLD | old | O | o) make oldconfig && sleep 1 ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
@@ -279,7 +279,6 @@ scripts/config  -e CONFIG_USB_HID \
                 -m CONFIG_USB_STORAGE \
                 -m CONFIG_TYPEC \
                 -d CONFIG_USB_SERIAL \
-                -d CONFIG_USB_OHCI_HCD \
                 -m CONFIG_QRTR \
                 -e CONFIG_USB_UAS
 
