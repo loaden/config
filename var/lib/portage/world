@@ -65,6 +65,7 @@ sys-boot/efibootmgr
 sys-devel/clang
 sys-fs/dosfstools
 sys-kernel/dracut
+sys-kernel/gentoo-kernel-bin
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
