@@ -47,7 +47,6 @@ media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
-net-im/wechat-uos
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
@@ -75,6 +74,7 @@ sys-process/htop
 www-client/firefox
 x11-apps/xlsclients
 x11-misc/qt5ct
+x11-misc/xdg-user-dirs
 x11-terms/terminator
 x11-themes/adwaita-qt
 x11-themes/arc-theme
