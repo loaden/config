@@ -21,9 +21,9 @@ cd /usr/src/linux
 BUILD_WITH_CLANG=0
 
 # 初始本地配置
-read -p "是否生成默认配置？[y/N/old]" choice
+read -p "是否生成本地配置？[y/N/old]" choice
 case $choice in
-YES | yes | Y | y) make defconfig && make localmodconfig && sleep 1 ;;
+YES | yes | Y | y) make localmodconfig && sleep 1 ;;
 OLD | old | O | o) make oldconfig && sleep 1 ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
@@ -37,73 +37,45 @@ else
     scripts/config --set-val CONFIG_CLANG_VERSION "0"
 fi
 
-# 选择gentoo-kernel-bin内核启动
-# 先执行make defconfig后执行make localmodconfig，根据提示添加缺失的内核模块
+# 通用设置
 scripts/config  \
-                -m CONFIG_CEC_CORE \
-                -m CONFIG_CRYPTO_CRC32C_INTEL \
-                -m CONFIG_CRYPTO_CRC32_PCLMUL \
-                -m CONFIG_CRYPTO_CRCT10DIF_PCLMUL \
-                -m CONFIG_CRYPTO_GHASH_CLMUL_NI_INTEL \
-                -m CONFIG_EEPROM_AT24 \
-                -m CONFIG_FUSE_FS \
-                -m CONFIG_HID_LOGITECH_DJ \
-                -m CONFIG_HID_LOGITECH_HIDPP \
-                -m CONFIG_INPUT_JOYDEV \
-                -m CONFIG_INPUT_PCSPKR \
-                -m CONFIG_INTEL_MEI \
-                -m CONFIG_INTEL_MEI_HDCP \
-                -m CONFIG_INTEL_MEI_ME \
-                -m CONFIG_INTEL_POWERCLAMP \
-                -m CONFIG_INTEL_RAPL \
-                -m CONFIG_INTEL_RAPL_CORE \
-                -m CONFIG_IRQ_BYPASS_MANAGER \
-                -m CONFIG_ITCO_WDT \
-                -m CONFIG_KVM \
-                -m CONFIG_KVM_GUEST \
-                -m CONFIG_KVM_INTEL \
-                -m CONFIG_KVM_XFER_TO_GUEST_WORK \
-                -m CONFIG_LEDS_TRIGGER_AUDIO \
-                -m CONFIG_LPC_ICH \
-                -m CONFIG_MEDIA_SUPPORT \
-                -m CONFIG_MFD_INTEL_PMC_BXT \
-                -m CONFIG_PARPORT \
-                -m CONFIG_PARPORT_PC \
-                -m CONFIG_PPDEV \
-                -m CONFIG_RAS_CEC \
-                -m CONFIG_SENSORS_CORETEMP \
-                -m CONFIG_SND_HDA_CODEC_REALTEK \
-                -m CONFIG_SND_HDA_GENERIC \
-                -m CONFIG_SND_RAWMIDI \
-                -m CONFIG_SND_USB_AUDIO \
-                -m CONFIG_SND_USB_UA101 \
-                -m CONFIG_SND_USB_US122L \
-                -m CONFIG_SND_USB_USX2Y \
-                -m CONFIG_USB_NET_CDCETHER \
-                -m CONFIG_USB_NET_RNDIS_HOST \
-                -m CONFIG_USB_USBNET \
-                -m CONFIG_USB_VIDEO_CLASS \
-                -m CONFIG_VIDEOBUF2_CORE \
-                -m CONFIG_VIDEOBUF2_MEMOPS \
-                -m CONFIG_VIDEOBUF2_V4L2 \
-                -m CONFIG_VIDEOBUF2_VMALLOC \
-                -m CONFIG_VIDEO_V4L2 \
+                --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
+                -d CONFIG_HYPERVISOR_GUEST \
+                -d CONFIG_LOCALVERSION_AUTO \
+                -d CONFIG_MODULE_FORCE_LOAD \
+                -d CONFIG_PRINTK_INDEX \
+                -d CONFIG_X86_X32 \
+                -d MICROCODE \
+                -e CONFIG_CHECKPOINT_RESTORE \
+                -e CONFIG_HIBERNATION \
+                -e CONFIG_IKCONFIG_PROC \
+                -m CONFIG_IKCONFIG \
 
-# 精简模块与驱动
+# Gentoo配置
+scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
+                -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD \
+
+# 精简：模块与驱动
 scripts/config  \
                 -d CONFIG_ACRN_GUEST \
+                -d CONFIG_ANDROID
                 -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
                 -d CONFIG_BOOT_PRINTK_DELAY \
+                -d CONFIG_CHROME_PLATFORMS \
                 -d CONFIG_DEBUG_BOOT_PARAMS \
                 -d CONFIG_DEBUG_INFO \
                 -d CONFIG_DEBUG_LIST \
                 -d CONFIG_DEBUG_SHIRQ \
                 -d CONFIG_DETECT_HUNG_TASK \
                 -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_INPUT_JOYDEV \
+                -d CONFIG_INPUT_JOYSTICK \
+                -d CONFIG_INPUT_TOUCHSCREEN \
                 -d CONFIG_ISDN \
                 -d CONFIG_JAILHOUSE_GUEST \
                 -d CONFIG_KALLSYMS_ALL \
                 -d CONFIG_LATENCYTOP \
+                -d CONFIG_MELLANOX_PLATFORM \
                 -d CONFIG_NET_FC \
                 -d CONFIG_NET_VENDOR_3COM \
                 -d CONFIG_NET_VENDOR_ADAPTEC \
@@ -171,6 +143,7 @@ scripts/config  \
                 -d CONFIG_SCHED_STACK_END_CHECK \
                 -d CONFIG_SOFTLOCKUP_DETECTOR \
                 -d CONFIG_STAGING \
+                -d CONFIG_SURFACE_PLATFORMS \
                 -d CONFIG_VIRT_DRIVERS \
                 -d CONFIG_WLAN_VENDOR_MICROCHIP \
                 -d CONFIG_WLAN_VENDOR_QUANTENNA \
@@ -181,25 +154,54 @@ scripts/config  \
                 -d CONFIG_WLAN_VENDOR_TI \
                 -d CONFIG_WLAN_VENDOR_ZYDAS \
                 -d CONFIG_X86_DECODER_SELFTEST \
-                -e CONFIG_X86_PLATFORM_DEVICES \
 
-# 通用设置
-scripts/config  \
-                --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
-                -d CONFIG_HYPERVISOR_GUEST \
-                -d CONFIG_LOCALVERSION_AUTO \
-                -d CONFIG_MODULE_FORCE_LOAD \
-                -d CONFIG_PRINTK_INDEX \
-                -d CONFIG_X86_X32 \
-                -d MICROCODE \
-                -e CONFIG_HIBERNATION \
-                -e CONFIG_IKCONFIG_PROC \
-                -m CONFIG_IKCONFIG \
 
-# Gentoo配置
+# 精简：与gentoo-kernel-bin内核localmodconfig对比
 scripts/config  \
-                -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
-                -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD \
+                -d CONFIG_CRYPTO_842 \
+                -d CONFIG_CRYPTO_LZ4HC \
+                -d CONFIG_CRYPTO_LZO \
+                -d CONFIG_CRYPTO_USER \
+                -d CONFIG_INPUT_MOUSEDEV \
+                -d CONFIG_IPMI_HANDLER \
+                -d CONFIG_IP_NF_IPTABLES \
+                -d CONFIG_MAC_EMUMOUSEBTN \
+                -d CONFIG_MEDIA_TUNER_TEA5761 \
+                -d CONFIG_MEDIA_TUNER_TEA5767 \
+                -d CONFIG_MTD \
+                -d CONFIG_NETFILTER_XTABLES \
+                -d CONFIG_SND_HRTIMER \
+                -d CONFIG_VIDEO_IR_I2C \
+
+# 精简：与Arch内核localmodconfig对比
+scripts/config  \
+                -d CONFIG_ACPI_WMI \
+                -d CONFIG_DRM_AMDGPU \
+                -d CONFIG_DRM_DEBUG_MM \
+                -d CONFIG_DRM_RADEON \
+                -d CONFIG_DRM_VIRTIO_GPU \
+                -d CONFIG_HMM_MIRROR \
+                -d CONFIG_INIT_STACK_ALL_ZERO \
+                -d CONFIG_KEXEC_JUMP \
+                -d CONFIG_KVM_INTEL \
+                -d CONFIG_KVM_XEN \
+                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+                -d CONFIG_MEDIA_TUNER \
+                -d CONFIG_MFD_INTEL_PMC_BXT \
+                -d CONFIG_PM_GENERIC_DOMAINS \
+                -d CONFIG_RCU_TRACE \
+                -d CONFIG_SND_SEQUENCER \
+                -d CONFIG_VGA_SWITCHEROO \
+                -d CONFIG_VHOST_MENU \
+                -d CONFIG_VIRTIO_MENU \
+                -d CONFIG_WLAN_VENDOR_ADMTEK \
+                -d CONFIG_WLAN_VENDOR_ATH \
+                -d CONFIG_WLAN_VENDOR_ATMEL \
+                -d CONFIG_WLAN_VENDOR_BROADCOM \
+                -d CONFIG_WLAN_VENDOR_CISCO \
+                -d CONFIG_WLAN_VENDOR_INTEL \
+                -d CONFIG_WLAN_VENDOR_INTERSIL \
+                -d CONFIG_WLAN_VENDOR_MARVELL \
 
 # 精简内核调试
 scripts/config  \
@@ -248,9 +250,6 @@ scripts/config  \
                 -e CONFIG_PREEMPT \
                 -e CONFIG_SCHED_AUTOGROUP \
                 -e CONFIG_TICK_CPU_ACCOUNTING \
-
-# Intel显卡需要
-scripts/config  -e CONFIG_CHECKPOINT_RESTORE \
 
 # BPF调整
 scripts/config  \
@@ -306,9 +305,7 @@ scripts/config  \
                 -e CONFIG_X86_INTEL_TSX_MODE_ON \
 
 # 苹果手机
-scripts/config  \
-                -m CONFIG_APPLE_MFI_FASTCHARGE \
-                -m CONFIG_USB_IPHETH \
+scripts/config  -m CONFIG_USB_IPHETH \
                 -m USB_NET_DRIVERS \
 
 # 文件系统
@@ -335,8 +332,7 @@ scripts/config  \
                 -m CONFIG_UDF_FS \
 
 # 显卡
-scripts/config  \
-                -d CONFIG_DRM_NOUVEAU \
+scripts/config  -d CONFIG_DRM_NOUVEAU \
                 -m CONFIG_DRM_I915 \
                 -m CONFIG_DRM_SIMPLEDRM \
 
@@ -357,37 +353,9 @@ scripts/config  \
                 -d CONFIG_MEDIA_RADIO_SUPPORT \
                 -d CONFIG_MEDIA_TEST_SUPPORT \
                 -e CONFIG_MEDIA_CAMERA_SUPPORT \
-                -e CONFIG_MEDIA_PLATFORM_SUPPORT \
-                -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
-                -e CONFIG_MEDIA_SUPPORT_FILTER \
                 -e CONFIG_MEDIA_USB_SUPPORT \
-                -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
-                -e CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
-                -e CONFIG_VIDEO_V4L2_SUBDEV_API \
-                -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_AUDIO \
-                -m CONFIG_SND_USB_UA101 \
-                -m CONFIG_SND_USB_US122L \
-                -m CONFIG_SND_USB_USX2Y \
-                -m CONFIG_USB_VIDEO_CLASS \
-                -m CONFIG_VIDEO_DEV \
                 -m CONFIG_VIDEO_V4L2 \
-
-# 无线网络iwd
-scripts/config  \
-                -e CONFIG_CRYPTO_AES \
-                -e CONFIG_CRYPTO_CBC \
-                -e CONFIG_CRYPTO_CMAC \
-                -e CONFIG_CRYPTO_DES \
-                -e CONFIG_CRYPTO_ECB \
-                -e CONFIG_CRYPTO_HMAC \
-                -e CONFIG_CRYPTO_MD4 \
-                -e CONFIG_CRYPTO_MD5 \
-                -e CONFIG_CRYPTO_SHA256 \
-                -e CONFIG_CRYPTO_SHA512 \
-                -e CONFIG_CRYPTO_USER_API_HASH \
-                -e CONFIG_CRYPTO_USER_API_SKCIPHER \
-                -e CONFIG_KEY_DH_OPERATIONS \
 
 # 无线网卡
 scripts/config  \
@@ -395,8 +363,7 @@ scripts/config  \
                 -m CONFIG_MT76x2U \
 
 # 手机USB网络共享
-scripts/config  \
-                -m CONFIG_USB_NET_DRIVERS \
+scripts/config  -m CONFIG_USB_NET_DRIVERS \
                 -m CONFIG_USB_USBNET \
 
 # USB设备支持
