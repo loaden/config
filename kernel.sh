@@ -208,6 +208,68 @@ scripts/config  \
                 -d CONFIG_WLAN_VENDOR_TI \
                 -d CONFIG_WLAN_VENDOR_ZYDAS \
                 -d CONFIG_X86_DECODER_SELFTEST \
+                -d CONFIG_UCLAMP_TASK \
+                -d CONFIG_CGROUP_RDMA \
+                -d CONFIG_SLAB_MERGE_DEFAULT \
+                -d CONFIG_X86_EXTENDED_PLATFORM \
+                -d CONFIG_PERF_EVENTS_AMD_UNCORE \
+                -d CONFIG_AMD_MEM_ENCRYPT \
+                -d CONFIG_LEGACY_VSYSCALL_EMULATE \
+                -d CONFIG_PM_TEST_SUSPEND \
+                -d CONFIG_ACPI_DEBUG \
+                -d CONFIG_CPU_IDLE_GOV_TEO \
+                -d CONFIG_MODULE_FORCE_UNLOAD \
+                -d CONFIG_MODULE_SRCVERSION_ALL \
+                -d CONFIG_MODULE_SIG \
+                -d CONFIG_OSF_PARTITION \
+                -d CONFIG_UNIXWARE_DISKLABEL \
+                -d CONFIG_SGI_PARTITION \
+                -d CONFIG_SUN_PARTITION \
+                -d CONFIG_KARMA_PARTITION \
+                -d CONFIG_BINFMT_MISC \
+                -d CONFIG_PAGE_IDLE_FLAG \
+                -d CONFIG_PACKET_DIAG \
+                -d CONFIG_UNIX_DIAG \
+                -d CONFIG_IP_FIB_TRIE_STATS \
+                -d CONFIG_IPV6_MIP6 \
+                -d CONFIG_NET_SCH_DEFAULT \
+                -d CONFIG_NET_CLS_CGROUP \
+                -d CONFIG_DNS_RESOLVER \
+                -d CONFIG_NETLINK_DIAG \
+                -d CONFIG_PCIE_DW_PLAT_HOST \
+                -d CONFIG_PCI_MESON \
+                -d CONFIG_CXL_BUS \
+                -d CONFIG_GOOGLE_FIRMWARE \
+                -d CONFIG_CDROM \
+                -d CONFIG_INTEL_MEI \
+                -d CONFIG_BLK_DEV_SR \
+                -d CONFIG_ATA_PIIX \
+                -d CONFIG_BLK_DEV_MD \
+                -d CONFIG_BLK_DEV_DM \
+                -d CONFIG_MOUSE_PS2 \
+                -d CONFIG_SERIO \
+                -d CONFIG_SERIAL_8250_FINTEK \
+                -d CONFIG_SERIAL_8250_DW \
+                -d CONFIG_HW_RANDOM \
+                -d CONFIG_I2C_MUX \
+                -d CONFIG_SPI_AMD \
+                -d CONFIG_SPI_SLAVE \
+                -d CONFIG_PINCTRL_AMD \
+                -d CONFIG_POWER_RESET_RESTART \
+                -d CONFIG_WATCHDOG_PRETIMEOUT_GOV \
+                -d CONFIG_LOGO \
+                -d CONFIG_AUXDISPLAY \
+                -d CONFIG_X86_PLATFORM_DRIVERS_DELL \
+                -d CONFIG_SOC_TI \
+                -d CONFIG_PM_DEVFREQ \
+                -d CONFIG_PM_DEVFREQ \
+                -d CONFIG_LIBNVDIMM \
+                -d  \
+                -d  \
+                -d  \
+                -d  \
+                -d  \
+                -d  \
 
 # 精简内核调试
 scripts/config  \
