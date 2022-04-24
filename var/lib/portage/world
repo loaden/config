@@ -62,6 +62,7 @@ sys-apps/usbutils
 sys-auth/polkit
 sys-boot/efibootmgr
 sys-devel/clang
+sys-fs/btrfs-progs
 sys-fs/dosfstools
 sys-kernel/dracut
 sys-kernel/gentoo-kernel-bin

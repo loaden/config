@@ -23,7 +23,7 @@ BUILD_WITH_CLANG=0
 # 初始本地配置
 read -p "是否生成本地配置？[y/N/old]" choice
 case $choice in
-YES | yes | Y | y) make localmodconfig && sleep 1 ;;
+YES | yes | Y | y) mv .config .config.bak && make localmodconfig && sleep 1 ;;
 OLD | old | O | o) make oldconfig && sleep 1 ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
@@ -40,8 +40,8 @@ fi
 # 通用设置
 scripts/config  \
                 --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
+                --set-str CONFIG_LOCALVERSION "" \
                 -d CONFIG_HYPERVISOR_GUEST \
-                -d CONFIG_LOCALVERSION_AUTO \
                 -d CONFIG_MODULE_FORCE_LOAD \
                 -d CONFIG_PRINTK_INDEX \
                 -d CONFIG_X86_X32 \
@@ -55,28 +55,65 @@ scripts/config  \
 scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
                 -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD \
 
-# 精简：模块与驱动
+# 精简
 scripts/config  \
+                -d CONFIG_ACPI_WMI \
                 -d CONFIG_ACRN_GUEST \
-                -d CONFIG_ANDROID
+                -d CONFIG_AGP_INTEL \
+                -d CONFIG_ANDROID \
                 -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
+                -d CONFIG_AX88796B_PHY \
                 -d CONFIG_BOOT_PRINTK_DELAY \
+                -d CONFIG_CFG80211 \
                 -d CONFIG_CHROME_PLATFORMS \
+                -d CONFIG_CRYPTO_842 \
+                -d CONFIG_CRYPTO_LIB_ARC4 \
+                -d CONFIG_CRYPTO_LZ4HC \
+                -d CONFIG_CRYPTO_LZO \
+                -d CONFIG_CRYPTO_USER \
                 -d CONFIG_DEBUG_BOOT_PARAMS \
                 -d CONFIG_DEBUG_INFO \
                 -d CONFIG_DEBUG_LIST \
                 -d CONFIG_DEBUG_SHIRQ \
                 -d CONFIG_DETECT_HUNG_TASK \
+                -d CONFIG_DRM_AMDGPU \
+                -d CONFIG_DRM_DEBUG_MM \
+                -d CONFIG_DRM_RADEON \
+                -d CONFIG_DRM_VIRTIO_GPU \
+                -d CONFIG_FB_INTEL \
                 -d CONFIG_HARDLOCKUP_DETECTOR \
+                -d CONFIG_HMM_MIRROR \
+                -d CONFIG_I2C_MUX \
+                -d CONFIG_INET_TUNNEL \
+                -d CONFIG_INIT_STACK_ALL_ZERO \
                 -d CONFIG_INPUT_JOYDEV \
                 -d CONFIG_INPUT_JOYSTICK \
+                -d CONFIG_INPUT_MOUSEDEV \
                 -d CONFIG_INPUT_TOUCHSCREEN \
+                -d CONFIG_INPUT_UINPUT \
+                -d CONFIG_IPMI_HANDLER \
+                -d CONFIG_IP_NF_IPTABLES \
                 -d CONFIG_ISDN \
                 -d CONFIG_JAILHOUSE_GUEST \
                 -d CONFIG_KALLSYMS_ALL \
+                -d CONFIG_KEXEC_JUMP \
+                -d CONFIG_KEY_DH_OPERATIONS \
+                -d CONFIG_KVM_INTEL \
+                -d CONFIG_KVM_XEN \
                 -d CONFIG_LATENCYTOP \
+                -d CONFIG_MAC_EMUMOUSEBTN \
+                -d CONFIG_MANAGER_SBS \
+                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+                -d CONFIG_MEDIA_TUNER \
+                -d CONFIG_MEDIA_TUNER_TEA5761 \
+                -d CONFIG_MEDIA_TUNER_TEA5767 \
                 -d CONFIG_MELLANOX_PLATFORM \
+                -d CONFIG_MFD_INTEL_PMC_BXT \
+                -d CONFIG_MTD \
+                -d CONFIG_NETFILTER_XTABLES \
                 -d CONFIG_NET_FC \
+                -d CONFIG_NET_IPIP \
+                -d CONFIG_NET_IP_TUNNEL \
                 -d CONFIG_NET_VENDOR_3COM \
                 -d CONFIG_NET_VENDOR_ADAPTEC \
                 -d CONFIG_NET_VENDOR_AGERE \
@@ -138,13 +175,30 @@ scripts/config  \
                 -d CONFIG_NET_VENDOR_WIZNET \
                 -d CONFIG_NET_VENDOR_XILINX \
                 -d CONFIG_PARAVIRT \
+                -d CONFIG_PM_GENERIC_DOMAINS \
                 -d CONFIG_PVH \
+                -d CONFIG_RCU_TRACE \
                 -d CONFIG_SCHEDSTATS \
                 -d CONFIG_SCHED_STACK_END_CHECK \
+                -d CONFIG_SND_HRTIMER \
+                -d CONFIG_SND_SEQUENCER \
                 -d CONFIG_SOFTLOCKUP_DETECTOR \
                 -d CONFIG_STAGING \
                 -d CONFIG_SURFACE_PLATFORMS \
+                -d CONFIG_VGA_SWITCHEROO \
+                -d CONFIG_VHOST_MENU \
+                -d CONFIG_VIDEO_IR_I2C \
+                -d CONFIG_VIRTIO_MENU \
                 -d CONFIG_VIRT_DRIVERS \
+                -d CONFIG_WEXT_CORE \
+                -d CONFIG_WLAN_VENDOR_ADMTEK \
+                -d CONFIG_WLAN_VENDOR_ATH \
+                -d CONFIG_WLAN_VENDOR_ATMEL \
+                -d CONFIG_WLAN_VENDOR_BROADCOM \
+                -d CONFIG_WLAN_VENDOR_CISCO \
+                -d CONFIG_WLAN_VENDOR_INTEL \
+                -d CONFIG_WLAN_VENDOR_INTERSIL \
+                -d CONFIG_WLAN_VENDOR_MARVELL \
                 -d CONFIG_WLAN_VENDOR_MICROCHIP \
                 -d CONFIG_WLAN_VENDOR_QUANTENNA \
                 -d CONFIG_WLAN_VENDOR_RALINK \
@@ -154,54 +208,6 @@ scripts/config  \
                 -d CONFIG_WLAN_VENDOR_TI \
                 -d CONFIG_WLAN_VENDOR_ZYDAS \
                 -d CONFIG_X86_DECODER_SELFTEST \
-
-
-# 精简：与gentoo-kernel-bin内核localmodconfig对比
-scripts/config  \
-                -d CONFIG_CRYPTO_842 \
-                -d CONFIG_CRYPTO_LZ4HC \
-                -d CONFIG_CRYPTO_LZO \
-                -d CONFIG_CRYPTO_USER \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_IPMI_HANDLER \
-                -d CONFIG_IP_NF_IPTABLES \
-                -d CONFIG_MAC_EMUMOUSEBTN \
-                -d CONFIG_MEDIA_TUNER_TEA5761 \
-                -d CONFIG_MEDIA_TUNER_TEA5767 \
-                -d CONFIG_MTD \
-                -d CONFIG_NETFILTER_XTABLES \
-                -d CONFIG_SND_HRTIMER \
-                -d CONFIG_VIDEO_IR_I2C \
-
-# 精简：与Arch内核localmodconfig对比
-scripts/config  \
-                -d CONFIG_ACPI_WMI \
-                -d CONFIG_DRM_AMDGPU \
-                -d CONFIG_DRM_DEBUG_MM \
-                -d CONFIG_DRM_RADEON \
-                -d CONFIG_DRM_VIRTIO_GPU \
-                -d CONFIG_HMM_MIRROR \
-                -d CONFIG_INIT_STACK_ALL_ZERO \
-                -d CONFIG_KEXEC_JUMP \
-                -d CONFIG_KVM_INTEL \
-                -d CONFIG_KVM_XEN \
-                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
-                -d CONFIG_MEDIA_TUNER \
-                -d CONFIG_MFD_INTEL_PMC_BXT \
-                -d CONFIG_PM_GENERIC_DOMAINS \
-                -d CONFIG_RCU_TRACE \
-                -d CONFIG_SND_SEQUENCER \
-                -d CONFIG_VGA_SWITCHEROO \
-                -d CONFIG_VHOST_MENU \
-                -d CONFIG_VIRTIO_MENU \
-                -d CONFIG_WLAN_VENDOR_ADMTEK \
-                -d CONFIG_WLAN_VENDOR_ATH \
-                -d CONFIG_WLAN_VENDOR_ATMEL \
-                -d CONFIG_WLAN_VENDOR_BROADCOM \
-                -d CONFIG_WLAN_VENDOR_CISCO \
-                -d CONFIG_WLAN_VENDOR_INTEL \
-                -d CONFIG_WLAN_VENDOR_INTERSIL \
-                -d CONFIG_WLAN_VENDOR_MARVELL \
 
 # 精简内核调试
 scripts/config  \
@@ -278,6 +284,22 @@ scripts/config  \
                 -e CONFIG_SYSFS \
                 -e CONFIG_TIMERFD \
 
+# iwd需要
+scripts/config  \
+                -e CONFIG_CRYPTO_AES \
+                -e CONFIG_CRYPTO_CBC \
+                -e CONFIG_CRYPTO_CMAC \
+                -e CONFIG_CRYPTO_DES \
+                -e CONFIG_CRYPTO_ECB \
+                -e CONFIG_CRYPTO_HMAC \
+                -e CONFIG_CRYPTO_MD4 \
+                -e CONFIG_CRYPTO_MD5 \
+                -e CONFIG_CRYPTO_SHA256 \
+                -e CONFIG_CRYPTO_SHA512 \
+                -e CONFIG_CRYPTO_USER_API_HASH \
+                -e CONFIG_CRYPTO_USER_API_SKCIPHER \
+                -e CONFIG_KEY_DH_OPERATIONS \
+
 # 虚拟机需要
 scripts/config  \
                 -e CONFIG_VIRTUALIZATION \
@@ -353,14 +375,32 @@ scripts/config  \
                 -d CONFIG_MEDIA_RADIO_SUPPORT \
                 -d CONFIG_MEDIA_TEST_SUPPORT \
                 -e CONFIG_MEDIA_CAMERA_SUPPORT \
+                -e CONFIG_MEDIA_PLATFORM_SUPPORT \
+                -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
+                -e CONFIG_MEDIA_SUPPORT_FILTER \
                 -e CONFIG_MEDIA_USB_SUPPORT \
+                -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
+                -e CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
+                -e CONFIG_VIDEO_V4L2_SUBDEV_API \
+                -m CONFIG_MEDIA_SUPPORT \
                 -m CONFIG_SND_USB_AUDIO \
+                -m CONFIG_SND_USB_UA101 \
+                -m CONFIG_SND_USB_US122L \
+                -m CONFIG_SND_USB_USX2Y \
+                -m CONFIG_USB_VIDEO_CLASS \
+                -m CONFIG_VIDEO_DEV \
                 -m CONFIG_VIDEO_V4L2 \
 
 # 无线网卡
 scripts/config  \
+                -e CONFIG_MT76_LEDS \
                 -e CONFIG_WLAN_VENDOR_MEDIATEK \
+                -m CONFIG_MT76_CORE \
+                -m CONFIG_MT76_USB \
+                -m CONFIG_MT76x02_LIB \
+                -m CONFIG_MT76x02_USB \
                 -m CONFIG_MT76x2U \
+                -m CONFIG_MT76x2_COMMON \
 
 # 手机USB网络共享
 scripts/config  -m CONFIG_USB_NET_DRIVERS \
@@ -402,7 +442,7 @@ esac
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install
     find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp -fv {} /boot/efi/EFI/gentoo/vmlinuz \; -print
-    dracut --force
+    dracut --force /boot/initramfs-$(grep 'Kernel Configuration' .config | cut -d ' ' -f 3).img
     find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-* -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*

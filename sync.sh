@@ -44,6 +44,9 @@ cp -r /etc/fstab etc/
 # world
 [ -f /var/lib/portage/world ] && sudo cat /var/lib/portage/world > var/lib/portage/world
 
+# dracut
+[ -d /etc/dracut.conf.d ] && cp -r /etc/dracut.conf.d etc/
+
 # systemd-boot
 [ -d /boot/efi/loader ] && rm -rf boot/efi
 mkdir -p boot/efi
