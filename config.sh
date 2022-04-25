@@ -66,10 +66,14 @@ sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
 # PipeWire替代PulseAudio
 sudo sed -i 's/.*autospawn =.*/autospawn = no/g' /etc/pulse/client.conf
 sudo sed -i 's/.*daemonize =.*/daemonize = no/g' /etc/pulse/daemon.conf
-systemctl --user disable --now pulseaudio
-systemctl --user enable --now pipewire pipewire-pulse
+systemctl --user disable --now pulseaudio.service pulseaudio.socket
+systemctl --user enable --now pipewire.socket pipewire-pulse.socket
 systemctl --user daemon-reload
 LANG=C pactl info | grep "Server Name"
+
+# PipeWire更换session服务
+systemctl --user disable pipewire-media-session.service
+systemctl --user --force enable wireplumber.service
 
 # 蓝牙
 # sudo systemctl enable bluetooth --now

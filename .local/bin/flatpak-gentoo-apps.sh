@@ -19,7 +19,6 @@ function install_app()
     fi
 }
 
-install_app ch.openboard.OpenBoard
 install_app io.github.Icalingua.Icalingua
 install_app net.agalwood.Motrix
 install_app org.ardour.Ardour

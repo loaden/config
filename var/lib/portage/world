@@ -7,6 +7,7 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-i18n/fcitx5-meta
 app-misc/neofetch
+app-office/libreoffice-bin
 app-office/wps-office
 app-pda/usbmuxd
 app-portage/eix
@@ -14,6 +15,7 @@ app-portage/gentoolkit
 app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
+app-text/tree
 dev-lang/rust-bin
 dev-util/ccache
 dev-util/meld
@@ -28,6 +30,8 @@ media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
 media-gfx/gimp
+media-gfx/simple-scan
+media-libs/gst-plugins-good
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
@@ -40,13 +44,20 @@ net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
 net-misc/telnet-bsd
+net-print/hplip
+net-print/hplip-plugin
+sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
+sys-auth/polkit
 sys-boot/efibootmgr
 sys-devel/clang
+sys-fs/btrfs-progs
+sys-fs/dosfstools
 sys-kernel/dracut
+sys-kernel/gentoo-kernel-bin
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
@@ -57,6 +68,7 @@ www-client/firefox
 x11-apps/xlsclients
 x11-drivers/nvidia-drivers
 x11-misc/qt5ct
+x11-misc/xdg-user-dirs
 x11-terms/terminator
 x11-themes/adwaita-qt
 x11-themes/arc-theme
