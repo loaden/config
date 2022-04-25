@@ -14,6 +14,7 @@ app-portage/gentoolkit
 app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
+app-text/tree
 dev-lang/rust-bin
 dev-util/ccache
 dev-util/meld
@@ -47,10 +48,12 @@ sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/usb_modeswitch
 sys-apps/usbutils
+sys-auth/polkit
 sys-boot/efibootmgr
 sys-devel/clang
 sys-fs/dosfstools
 sys-kernel/dracut
+sys-kernel/gentoo-kernel-bin
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-libs/zlib
