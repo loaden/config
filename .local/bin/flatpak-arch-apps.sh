@@ -19,9 +19,8 @@ function install_app()
     fi
 }
 
-install_app net.agalwood.Motrix
-install_app org.kde.kdenlive
-install_app ch.openboard.OpenBoard
-install_app org.filezillaproject.Filezilla
-install_app org.ardour.Ardour
 install_app io.github.Icalingua.Icalingua
+install_app net.agalwood.Motrix
+install_app org.ardour.Ardour
+install_app org.filezillaproject.Filezilla
+install_app org.kde.kdenlive
