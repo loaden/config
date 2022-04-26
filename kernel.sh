@@ -611,7 +611,7 @@ set_module \
 # 刷新
 scripts/config  --refresh
 
-exit
+
 # # #
 # 图形界面调整编译选项
 # 一定要保存配置
@@ -620,8 +620,6 @@ make menuconfig
 # 对比选项
 echo scripts/diffconfig .config.bak .config
 scripts/diffconfig .config.bak .config
-echo scripts/diffconfig .config.old .config
-scripts/diffconfig .config.old .config
 
 # 输出配置文件大小
 ls -lh .config
