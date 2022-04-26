@@ -40,6 +40,7 @@ media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
+net-im/wechat-uos
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
@@ -49,6 +50,7 @@ net-print/hplip-plugin
 sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
+sys-apps/gptfdisk
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
