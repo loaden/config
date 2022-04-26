@@ -99,7 +99,7 @@ function set_string()
 function set_value()
 {
     if [[ -n "$(grep $1 $PWD/.config)" ]]; then
-        scripts/config --set-var $1 $2
+        scripts/config --set-var $1 "$2"
         sed -i "s/# $1 is not set/$1=$2/g" $PWD/.config
         sed -i "s/.*$1=.*/$1=$2/g" $PWD/.config
     else
@@ -608,6 +608,7 @@ set_module \
     CONFIG_USB_STORAGE \
 
 
+# # #
 # 刷新
 scripts/config  --refresh
 
