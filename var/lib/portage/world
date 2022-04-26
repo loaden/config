@@ -9,6 +9,7 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-i18n/fcitx5-meta
 app-misc/neofetch
+app-office/libreoffice-bin
 app-office/wps-office
 app-pda/usbmuxd
 app-portage/eix
@@ -37,8 +38,7 @@ media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
 media-gfx/gimp
-media-gfx/imagemagick
-media-gfx/imv
+media-libs/gst-plugins-good
 media-sound/audacious
 media-video/ffmpeg
 media-video/handbrake
@@ -47,6 +47,7 @@ media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
+net-im/wechat-uos
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
@@ -57,6 +58,7 @@ sci-calculators/galculator
 sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
+sys-apps/gptfdisk
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit

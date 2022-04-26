@@ -37,459 +37,590 @@ else
     scripts/config --set-val CONFIG_CLANG_VERSION "0"
 fi
 
+# 自定义配置
+if [[ -z "$(grep 'Custom Configuration' $PWD/.config)" ]]; then
+    echo -e "\n# Custom Configuration" >> $PWD/.config
+fi
+
+# 启用
+function set_enable()
+{
+    for arg in $*; do
+        if [[ -n "$(grep $arg $PWD/.config)" ]]; then
+            scripts/config -e $arg
+            sed -i 's/# $arg is not set/$arg=y/g' $PWD/.config
+            sed -i 's/$arg=m/$arg=y/g' $PWD/.config
+        else
+            echo "$arg=y" >> $PWD/.config
+        fi
+    done
+}
+
+# 禁用
+function set_disable()
+{
+    for arg in $*; do
+        if [[ -n "$(grep $arg $PWD/.config)" ]]; then
+            scripts/config -d $arg
+            sed -i 's/$arg=.*/# $arg is not set/g' $PWD/.config
+        else
+            echo "# $arg is not set" >> $PWD/.config
+        fi
+    done
+}
+
+# 模块
+function set_module()
+{
+    for arg in $*; do
+        if [[ -n "$(grep $arg $PWD/.config)" ]]; then
+            scripts/config -m $arg
+            sed -i 's/# $arg is not set/$arg=m/g' $PWD/.config
+            sed -i 's/$arg=y/$arg=m/g' $PWD/.config
+        else
+            echo "$arg=m" >> $PWD/.config
+        fi
+    done
+}
+
+# 字符串
+function set_string()
+{
+    if [[ -n "$(grep $1 $PWD/.config)" ]]; then
+        scripts/config --set-str $1 "$2"
+        sed -i "s/# $1 is not set/$1=\"$2\"/g" $PWD/.config
+        sed -i "s/.*$1=.*/$1=\"$2\"/g" $PWD/.config
+    else
+        echo "$1=\"$2\"" >> $PWD/.config
+    fi
+}
+
+# 数字
+function set_value()
+{
+    if [[ -n "$(grep $1 $PWD/.config)" ]]; then
+        scripts/config --set-var $1 "$2"
+        sed -i "s/# $1 is not set/$1=$2/g" $PWD/.config
+        sed -i "s/.*$1=.*/$1=$2/g" $PWD/.config
+    else
+        echo "$1=$2" >> $PWD/.config
+    fi
+}
+
+
 # 通用设置
-scripts/config  \
-                --set-str CONFIG_DEFAULT_HOSTNAME "(none)" \
-                --set-str CONFIG_LOCALVERSION "" \
-                -d CONFIG_HYPERVISOR_GUEST \
-                -d CONFIG_MODULE_FORCE_LOAD \
-                -d CONFIG_PRINTK_INDEX \
-                -d CONFIG_X86_X32 \
-                -d MICROCODE \
-                -e CONFIG_CHECKPOINT_RESTORE \
-                -e CONFIG_HIBERNATION \
-                -e CONFIG_IKCONFIG_PROC \
-                -m CONFIG_IKCONFIG \
+set_string CONFIG_DEFAULT_HOSTNAME "(none)"
+set_string CONFIG_LOCALVERSION ""
+
+set_disable \
+    CONFIG_HYPERVISOR_GUEST \
+    CONFIG_MODULE_FORCE_LOAD \
+    CONFIG_PRINTK_INDEX \
+
+set_enable \
+    CONFIG_CHECKPOINT_RESTORE \
+    CONFIG_HIBERNATION \
+    CONFIG_IKCONFIG_PROC \
+
+set_module \
+    CONFIG_IKCONFIG \
+
 
 # Gentoo配置
-scripts/config  -d CONFIG_GENTOO_LINUX_INIT_SCRIPT \
-                -e CONFIG_GENTOO_LINUX_INIT_SYSTEMD \
+set_disable \
+    CONFIG_GENTOO_LINUX_INIT_SCRIPT
+set_enable \
+    CONFIG_GENTOO_LINUX_INIT_SYSTEMD
+
 
 # 精简
-scripts/config  \
-                -d CONFIG_ACPI_WMI \
-                -d CONFIG_ACRN_GUEST \
-                -d CONFIG_AGP_INTEL \
-                -d CONFIG_ANDROID \
-                -d CONFIG_ARCH_CPUIDLE_HALTPOLL \
-                -d CONFIG_AX88796B_PHY \
-                -d CONFIG_BOOT_PRINTK_DELAY \
-                -d CONFIG_CFG80211 \
-                -d CONFIG_CHROME_PLATFORMS \
-                -d CONFIG_CRYPTO_842 \
-                -d CONFIG_CRYPTO_LIB_ARC4 \
-                -d CONFIG_CRYPTO_LZ4HC \
-                -d CONFIG_CRYPTO_LZO \
-                -d CONFIG_CRYPTO_USER \
-                -d CONFIG_DEBUG_BOOT_PARAMS \
-                -d CONFIG_DEBUG_INFO \
-                -d CONFIG_DEBUG_LIST \
-                -d CONFIG_DEBUG_SHIRQ \
-                -d CONFIG_DETECT_HUNG_TASK \
-                -d CONFIG_DRM_AMDGPU \
-                -d CONFIG_DRM_DEBUG_MM \
-                -d CONFIG_DRM_RADEON \
-                -d CONFIG_DRM_VIRTIO_GPU \
-                -d CONFIG_FB_INTEL \
-                -d CONFIG_HARDLOCKUP_DETECTOR \
-                -d CONFIG_HMM_MIRROR \
-                -d CONFIG_I2C_MUX \
-                -d CONFIG_INET_TUNNEL \
-                -d CONFIG_INIT_STACK_ALL_ZERO \
-                -d CONFIG_INPUT_JOYDEV \
-                -d CONFIG_INPUT_JOYSTICK \
-                -d CONFIG_INPUT_MOUSEDEV \
-                -d CONFIG_INPUT_TOUCHSCREEN \
-                -d CONFIG_INPUT_UINPUT \
-                -d CONFIG_IPMI_HANDLER \
-                -d CONFIG_IP_NF_IPTABLES \
-                -d CONFIG_ISDN \
-                -d CONFIG_JAILHOUSE_GUEST \
-                -d CONFIG_KALLSYMS_ALL \
-                -d CONFIG_KEXEC_JUMP \
-                -d CONFIG_KEY_DH_OPERATIONS \
-                -d CONFIG_KVM_INTEL \
-                -d CONFIG_KVM_XEN \
-                -d CONFIG_LATENCYTOP \
-                -d CONFIG_MAC_EMUMOUSEBTN \
-                -d CONFIG_MANAGER_SBS \
-                -d CONFIG_MEDIA_ANALOG_TV_SUPPORT \
-                -d CONFIG_MEDIA_TUNER \
-                -d CONFIG_MEDIA_TUNER_TEA5761 \
-                -d CONFIG_MEDIA_TUNER_TEA5767 \
-                -d CONFIG_MELLANOX_PLATFORM \
-                -d CONFIG_MFD_INTEL_PMC_BXT \
-                -d CONFIG_MTD \
-                -d CONFIG_NETFILTER_XTABLES \
-                -d CONFIG_NET_FC \
-                -d CONFIG_NET_IPIP \
-                -d CONFIG_NET_IP_TUNNEL \
-                -d CONFIG_NET_VENDOR_3COM \
-                -d CONFIG_NET_VENDOR_ADAPTEC \
-                -d CONFIG_NET_VENDOR_AGERE \
-                -d CONFIG_NET_VENDOR_ALACRITECH \
-                -d CONFIG_NET_VENDOR_ALTEON \
-                -d CONFIG_NET_VENDOR_AMAZON \
-                -d CONFIG_NET_VENDOR_AMD \
-                -d CONFIG_NET_VENDOR_AQUANTIA \
-                -d CONFIG_NET_VENDOR_ARC \
-                -d CONFIG_NET_VENDOR_ATHEROS \
-                -d CONFIG_NET_VENDOR_BROADCOM \
-                -d CONFIG_NET_VENDOR_BROCADE \
-                -d CONFIG_NET_VENDOR_CADENCE \
-                -d CONFIG_NET_VENDOR_CAVIUM \
-                -d CONFIG_NET_VENDOR_CHELSIO \
-                -d CONFIG_NET_VENDOR_CISCO \
-                -d CONFIG_NET_VENDOR_CORTINA \
-                -d CONFIG_NET_VENDOR_DEC \
-                -d CONFIG_NET_VENDOR_DLINK \
-                -d CONFIG_NET_VENDOR_EMULEX \
-                -d CONFIG_NET_VENDOR_EZCHIP \
-                -d CONFIG_NET_VENDOR_GOOGLE \
-                -d CONFIG_NET_VENDOR_HUAWEI \
-                -d CONFIG_NET_VENDOR_INTEL \
-                -d CONFIG_NET_VENDOR_LITEX \
-                -d CONFIG_NET_VENDOR_MARVELL \
-                -d CONFIG_NET_VENDOR_MELLANOX \
-                -d CONFIG_NET_VENDOR_MICREL \
-                -d CONFIG_NET_VENDOR_MICROCHIP \
-                -d CONFIG_NET_VENDOR_MICROSEMI \
-                -d CONFIG_NET_VENDOR_MICROSOFT \
-                -d CONFIG_NET_VENDOR_MYRI \
-                -d CONFIG_NET_VENDOR_NATSEMI \
-                -d CONFIG_NET_VENDOR_NETERION \
-                -d CONFIG_NET_VENDOR_NETRONOME \
-                -d CONFIG_NET_VENDOR_NI \
-                -d CONFIG_NET_VENDOR_NVIDIA \
-                -d CONFIG_NET_VENDOR_OKI \
-                -d CONFIG_NET_VENDOR_PACKET_ENGINES \
-                -d CONFIG_NET_VENDOR_PENSANDO \
-                -d CONFIG_NET_VENDOR_QLOGIC \
-                -d CONFIG_NET_VENDOR_QUALCOMM \
-                -d CONFIG_NET_VENDOR_RDC \
-                -d CONFIG_NET_VENDOR_RENESAS \
-                -d CONFIG_NET_VENDOR_ROCKER \
-                -d CONFIG_NET_VENDOR_SAMSUNG \
-                -d CONFIG_NET_VENDOR_SEEQ \
-                -d CONFIG_NET_VENDOR_SILAN \
-                -d CONFIG_NET_VENDOR_SIS \
-                -d CONFIG_NET_VENDOR_SMSC \
-                -d CONFIG_NET_VENDOR_SOCIONEXT \
-                -d CONFIG_NET_VENDOR_SOLARFLARE \
-                -d CONFIG_NET_VENDOR_STMICRO \
-                -d CONFIG_NET_VENDOR_SUN \
-                -d CONFIG_NET_VENDOR_SYNOPSYS \
-                -d CONFIG_NET_VENDOR_TEHUTI \
-                -d CONFIG_NET_VENDOR_TI \
-                -d CONFIG_NET_VENDOR_VIA \
-                -d CONFIG_NET_VENDOR_WIZNET \
-                -d CONFIG_NET_VENDOR_XILINX \
-                -d CONFIG_PARAVIRT \
-                -d CONFIG_PM_GENERIC_DOMAINS \
-                -d CONFIG_PVH \
-                -d CONFIG_RCU_TRACE \
-                -d CONFIG_SCHEDSTATS \
-                -d CONFIG_SCHED_STACK_END_CHECK \
-                -d CONFIG_SND_HRTIMER \
-                -d CONFIG_SND_SEQUENCER \
-                -d CONFIG_SOFTLOCKUP_DETECTOR \
-                -d CONFIG_STAGING \
-                -d CONFIG_SURFACE_PLATFORMS \
-                -d CONFIG_VGA_SWITCHEROO \
-                -d CONFIG_VHOST_MENU \
-                -d CONFIG_VIDEO_IR_I2C \
-                -d CONFIG_VIRTIO_MENU \
-                -d CONFIG_VIRT_DRIVERS \
-                -d CONFIG_WEXT_CORE \
-                -d CONFIG_WLAN_VENDOR_ADMTEK \
-                -d CONFIG_WLAN_VENDOR_ATH \
-                -d CONFIG_WLAN_VENDOR_ATMEL \
-                -d CONFIG_WLAN_VENDOR_BROADCOM \
-                -d CONFIG_WLAN_VENDOR_CISCO \
-                -d CONFIG_WLAN_VENDOR_INTEL \
-                -d CONFIG_WLAN_VENDOR_INTERSIL \
-                -d CONFIG_WLAN_VENDOR_MARVELL \
-                -d CONFIG_WLAN_VENDOR_MICROCHIP \
-                -d CONFIG_WLAN_VENDOR_QUANTENNA \
-                -d CONFIG_WLAN_VENDOR_RALINK \
-                -d CONFIG_WLAN_VENDOR_REALTEK \
-                -d CONFIG_WLAN_VENDOR_RSI \
-                -d CONFIG_WLAN_VENDOR_ST \
-                -d CONFIG_WLAN_VENDOR_TI \
-                -d CONFIG_WLAN_VENDOR_ZYDAS \
-                -d CONFIG_X86_DECODER_SELFTEST \
-                -d CONFIG_UCLAMP_TASK \
-                -d CONFIG_CGROUP_RDMA \
-                -d CONFIG_SLAB_MERGE_DEFAULT \
-                -d CONFIG_X86_EXTENDED_PLATFORM \
-                -d CONFIG_PERF_EVENTS_AMD_UNCORE \
-                -d CONFIG_AMD_MEM_ENCRYPT \
-                -d CONFIG_LEGACY_VSYSCALL_EMULATE \
-                -d CONFIG_PM_TEST_SUSPEND \
-                -d CONFIG_ACPI_DEBUG \
-                -d CONFIG_CPU_IDLE_GOV_TEO \
-                -d CONFIG_MODULE_FORCE_UNLOAD \
-                -d CONFIG_MODULE_SRCVERSION_ALL \
-                -d CONFIG_MODULE_SIG \
-                -d CONFIG_OSF_PARTITION \
-                -d CONFIG_UNIXWARE_DISKLABEL \
-                -d CONFIG_SGI_PARTITION \
-                -d CONFIG_SUN_PARTITION \
-                -d CONFIG_KARMA_PARTITION \
-                -d CONFIG_BINFMT_MISC \
-                -d CONFIG_PAGE_IDLE_FLAG \
-                -d CONFIG_PACKET_DIAG \
-                -d CONFIG_UNIX_DIAG \
-                -d CONFIG_IP_FIB_TRIE_STATS \
-                -d CONFIG_IPV6_MIP6 \
-                -d CONFIG_NET_SCH_DEFAULT \
-                -d CONFIG_NET_CLS_CGROUP \
-                -d CONFIG_DNS_RESOLVER \
-                -d CONFIG_NETLINK_DIAG \
-                -d CONFIG_PCIE_DW_PLAT_HOST \
-                -d CONFIG_PCI_MESON \
-                -d CONFIG_CXL_BUS \
-                -d CONFIG_GOOGLE_FIRMWARE \
-                -d CONFIG_CDROM \
-                -d CONFIG_INTEL_MEI \
-                -d CONFIG_BLK_DEV_SR \
-                -d CONFIG_ATA_PIIX \
-                -d CONFIG_BLK_DEV_MD \
-                -d CONFIG_BLK_DEV_DM \
-                -d CONFIG_MOUSE_PS2 \
-                -d CONFIG_SERIO \
-                -d CONFIG_SERIAL_8250_FINTEK \
-                -d CONFIG_SERIAL_8250_DW \
-                -d CONFIG_HW_RANDOM \
-                -d CONFIG_I2C_MUX \
-                -d CONFIG_SPI_AMD \
-                -d CONFIG_SPI_SLAVE \
-                -d CONFIG_PINCTRL_AMD \
-                -d CONFIG_POWER_RESET_RESTART \
-                -d CONFIG_WATCHDOG_PRETIMEOUT_GOV \
-                -d CONFIG_LOGO \
-                -d CONFIG_AUXDISPLAY \
-                -d CONFIG_X86_PLATFORM_DRIVERS_DELL \
-                -d CONFIG_SOC_TI \
-                -d CONFIG_PM_DEVFREQ \
-                -d CONFIG_PM_DEVFREQ \
-                -d CONFIG_LIBNVDIMM \
-                -d  \
-                -d  \
-                -d  \
-                -d  \
-                -d  \
-                -d  \
+set_disable \
+    CONFIG_ACPI_WMI \
+    CONFIG_ACRN_GUEST \
+    CONFIG_AGP_INTEL \
+    CONFIG_ANDROID \
+    CONFIG_ARCH_CPUIDLE_HALTPOLL \
+    CONFIG_AX88796B_PHY \
+    CONFIG_BOOT_PRINTK_DELAY \
+    CONFIG_CFG80211 \
+    CONFIG_CHROME_PLATFORMS \
+    CONFIG_CRYPTO_842 \
+    CONFIG_CRYPTO_LIB_ARC4 \
+    CONFIG_CRYPTO_LZ4HC \
+    CONFIG_CRYPTO_LZO \
+    CONFIG_CRYPTO_USER \
+    CONFIG_DEBUG_BOOT_PARAMS \
+    CONFIG_DEBUG_INFO \
+    CONFIG_DEBUG_LIST \
+    CONFIG_DEBUG_SHIRQ \
+    CONFIG_DETECT_HUNG_TASK \
+    CONFIG_DRM_AMDGPU \
+    CONFIG_DRM_DEBUG_MM \
+    CONFIG_DRM_RADEON \
+    CONFIG_DRM_VIRTIO_GPU \
+    CONFIG_FB_INTEL \
+    CONFIG_HARDLOCKUP_DETECTOR \
+    CONFIG_HMM_MIRROR \
+    CONFIG_I2C_MUX \
+    CONFIG_INET_TUNNEL \
+    CONFIG_INIT_STACK_ALL_ZERO \
+    CONFIG_INPUT_JOYDEV \
+    CONFIG_INPUT_JOYSTICK \
+    CONFIG_INPUT_MOUSEDEV \
+    CONFIG_INPUT_TOUCHSCREEN \
+    CONFIG_INPUT_UINPUT \
+    CONFIG_IPMI_HANDLER \
+    CONFIG_IP_NF_IPTABLES \
+    CONFIG_ISDN \
+    CONFIG_JAILHOUSE_GUEST \
+    CONFIG_KALLSYMS_ALL \
+    CONFIG_KEXEC_JUMP \
+    CONFIG_KEY_DH_OPERATIONS \
+    CONFIG_KVM_INTEL \
+    CONFIG_KVM_XEN \
+    CONFIG_LATENCYTOP \
+    CONFIG_MAC_EMUMOUSEBTN \
+    CONFIG_MANAGER_SBS \
+    CONFIG_MEDIA_ANALOG_TV_SUPPORT \
+    CONFIG_MEDIA_TUNER \
+    CONFIG_MEDIA_TUNER_TEA5761 \
+    CONFIG_MEDIA_TUNER_TEA5767 \
+    CONFIG_MELLANOX_PLATFORM \
+    CONFIG_MFD_INTEL_PMC_BXT \
+    CONFIG_MTD \
+    CONFIG_NETFILTER_XTABLES \
+    CONFIG_NET_FC \
+    CONFIG_NET_IPIP \
+    CONFIG_NET_IP_TUNNEL \
+    CONFIG_NET_VENDOR_3COM \
+    CONFIG_NET_VENDOR_ADAPTEC \
+    CONFIG_NET_VENDOR_AGERE \
+    CONFIG_NET_VENDOR_ALACRITECH \
+    CONFIG_NET_VENDOR_ALTEON \
+    CONFIG_NET_VENDOR_AMAZON \
+    CONFIG_NET_VENDOR_AMD \
+    CONFIG_NET_VENDOR_AQUANTIA \
+    CONFIG_NET_VENDOR_ARC \
+    CONFIG_NET_VENDOR_ATHEROS \
+    CONFIG_NET_VENDOR_BROADCOM \
+    CONFIG_NET_VENDOR_BROCADE \
+    CONFIG_NET_VENDOR_CADENCE \
+    CONFIG_NET_VENDOR_CAVIUM \
+    CONFIG_NET_VENDOR_CHELSIO \
+    CONFIG_NET_VENDOR_CISCO \
+    CONFIG_NET_VENDOR_CORTINA \
+    CONFIG_NET_VENDOR_DEC \
+    CONFIG_NET_VENDOR_DLINK \
+    CONFIG_NET_VENDOR_EMULEX \
+    CONFIG_NET_VENDOR_EZCHIP \
+    CONFIG_NET_VENDOR_GOOGLE \
+    CONFIG_NET_VENDOR_HUAWEI \
+    CONFIG_NET_VENDOR_INTEL \
+    CONFIG_NET_VENDOR_LITEX \
+    CONFIG_NET_VENDOR_MARVELL \
+    CONFIG_NET_VENDOR_MELLANOX \
+    CONFIG_NET_VENDOR_MICREL \
+    CONFIG_NET_VENDOR_MICROCHIP \
+    CONFIG_NET_VENDOR_MICROSEMI \
+    CONFIG_NET_VENDOR_MICROSOFT \
+    CONFIG_NET_VENDOR_MYRI \
+    CONFIG_NET_VENDOR_NATSEMI \
+    CONFIG_NET_VENDOR_NETERION \
+    CONFIG_NET_VENDOR_NETRONOME \
+    CONFIG_NET_VENDOR_NI \
+    CONFIG_NET_VENDOR_NVIDIA \
+    CONFIG_NET_VENDOR_OKI \
+    CONFIG_NET_VENDOR_PACKET_ENGINES \
+    CONFIG_NET_VENDOR_PENSANDO \
+    CONFIG_NET_VENDOR_QLOGIC \
+    CONFIG_NET_VENDOR_QUALCOMM \
+    CONFIG_NET_VENDOR_RDC \
+    CONFIG_NET_VENDOR_RENESAS \
+    CONFIG_NET_VENDOR_ROCKER \
+    CONFIG_NET_VENDOR_SAMSUNG \
+    CONFIG_NET_VENDOR_SEEQ \
+    CONFIG_NET_VENDOR_SILAN \
+    CONFIG_NET_VENDOR_SIS \
+    CONFIG_NET_VENDOR_SMSC \
+    CONFIG_NET_VENDOR_SOCIONEXT \
+    CONFIG_NET_VENDOR_SOLARFLARE \
+    CONFIG_NET_VENDOR_STMICRO \
+    CONFIG_NET_VENDOR_SUN \
+    CONFIG_NET_VENDOR_SYNOPSYS \
+    CONFIG_NET_VENDOR_TEHUTI \
+    CONFIG_NET_VENDOR_TI \
+    CONFIG_NET_VENDOR_VIA \
+    CONFIG_NET_VENDOR_WIZNET \
+    CONFIG_NET_VENDOR_XILINX \
+    CONFIG_PARAVIRT \
+    CONFIG_PM_GENERIC_DOMAINS \
+    CONFIG_PVH \
+    CONFIG_RCU_TRACE \
+    CONFIG_SCHEDSTATS \
+    CONFIG_SCHED_STACK_END_CHECK \
+    CONFIG_SND_HRTIMER \
+    CONFIG_SND_SEQUENCER \
+    CONFIG_SOFTLOCKUP_DETECTOR \
+    CONFIG_STAGING \
+    CONFIG_SURFACE_PLATFORMS \
+    CONFIG_VGA_SWITCHEROO \
+    CONFIG_VHOST_MENU \
+    CONFIG_VIDEO_IR_I2C \
+    CONFIG_VIRTIO_MENU \
+    CONFIG_VIRT_DRIVERS \
+    CONFIG_WEXT_CORE \
+    CONFIG_WLAN_VENDOR_ADMTEK \
+    CONFIG_WLAN_VENDOR_ATH \
+    CONFIG_WLAN_VENDOR_ATMEL \
+    CONFIG_WLAN_VENDOR_BROADCOM \
+    CONFIG_WLAN_VENDOR_CISCO \
+    CONFIG_WLAN_VENDOR_INTEL \
+    CONFIG_WLAN_VENDOR_INTERSIL \
+    CONFIG_WLAN_VENDOR_MARVELL \
+    CONFIG_WLAN_VENDOR_MICROCHIP \
+    CONFIG_WLAN_VENDOR_QUANTENNA \
+    CONFIG_WLAN_VENDOR_RALINK \
+    CONFIG_WLAN_VENDOR_REALTEK \
+    CONFIG_WLAN_VENDOR_RSI \
+    CONFIG_WLAN_VENDOR_ST \
+    CONFIG_WLAN_VENDOR_TI \
+    CONFIG_WLAN_VENDOR_ZYDAS \
+    CONFIG_X86_DECODER_SELFTEST \
+    CONFIG_UCLAMP_TASK \
+    CONFIG_CGROUP_RDMA \
+    CONFIG_SLAB_MERGE_DEFAULT \
+    CONFIG_X86_EXTENDED_PLATFORM \
+    CONFIG_PERF_EVENTS_AMD_UNCORE \
+    CONFIG_AMD_MEM_ENCRYPT \
+    CONFIG_LEGACY_VSYSCALL_EMULATE \
+    CONFIG_PM_TEST_SUSPEND \
+    CONFIG_ACPI_DEBUG \
+    CONFIG_CPU_IDLE_GOV_TEO \
+    CONFIG_MODULE_FORCE_UNLOAD \
+    CONFIG_MODULE_SRCVERSION_ALL \
+    CONFIG_MODULE_SIG \
+    CONFIG_OSF_PARTITION \
+    CONFIG_UNIXWARE_DISKLABEL \
+    CONFIG_SGI_PARTITION \
+    CONFIG_SUN_PARTITION \
+    CONFIG_KARMA_PARTITION \
+    CONFIG_BINFMT_MISC \
+    CONFIG_PAGE_IDLE_FLAG \
+    CONFIG_PACKET_DIAG \
+    CONFIG_UNIX_DIAG \
+    CONFIG_IP_FIB_TRIE_STATS \
+    CONFIG_IPV6_MIP6 \
+    CONFIG_NET_SCH_DEFAULT \
+    CONFIG_NET_CLS_CGROUP \
+    CONFIG_DNS_RESOLVER \
+    CONFIG_NETLINK_DIAG \
+    CONFIG_PCIE_DW_PLAT_HOST \
+    CONFIG_PCI_MESON \
+    CONFIG_CXL_BUS \
+    CONFIG_GOOGLE_FIRMWARE \
+    CONFIG_CDROM \
+    CONFIG_INTEL_MEI \
+    CONFIG_BLK_DEV_SR \
+    CONFIG_ATA_PIIX \
+    CONFIG_BLK_DEV_MD \
+    CONFIG_BLK_DEV_DM \
+    CONFIG_MOUSE_PS2 \
+    CONFIG_SERIO \
+    CONFIG_SERIAL_8250_FINTEK \
+    CONFIG_SERIAL_8250_DW \
+    CONFIG_HW_RANDOM \
+    CONFIG_I2C_MUX \
+    CONFIG_SPI_AMD \
+    CONFIG_SPI_SLAVE \
+    CONFIG_PINCTRL_AMD \
+    CONFIG_POWER_RESET_RESTART \
+    CONFIG_WATCHDOG_PRETIMEOUT_GOV \
+    CONFIG_LOGO \
+    CONFIG_AUXDISPLAY \
+    CONFIG_X86_PLATFORM_DRIVERS_DELL \
+    CONFIG_SOC_TI \
+    CONFIG_PM_DEVFREQ \
+    CONFIG_PM_DEVFREQ \
+    CONFIG_LIBNVDIMM \
+
 
 # 精简内核调试
-scripts/config  \
-                --set-val CONFIG_CONSOLE_LOGLEVEL_DEFAULT "2" \
-                --set-val CONFIG_MESSAGE_LOGLEVEL_DEFAULT "3" \
-                -d CONFIG_DEBUG_BUGVERBOSE \
-                -d CONFIG_DEBUG_FS \
-                -d CONFIG_DEBUG_KERNEL \
-                -d CONFIG_DEBUG_MISC \
-                -d CONFIG_DEBUG_PREEMPT \
-                -d CONFIG_DYNAMIC_DEBUG \
-                -d CONFIG_DYNAMIC_DEBUG_CORE \
-                -d CONFIG_EARLY_PRINTK \
-                -d CONFIG_FTRACE \
-                -d CONFIG_MAGIC_SYSRQ \
-                -d CONFIG_PRINTK_TIME \
-                -d CONFIG_STACKTRACE_BUILD_ID \
-                -d CONFIG_STRICT_DEVMEM \
-                -d CONFIG_SYMBOLIC_ERRNAME \
-                -d CONFIG_X86_DEBUG_FPU \
-                -d RUNTIME_TESTING_MENU \
+set_value \
+    CONFIG_CONSOLE_LOGLEVEL_DEFAULT 2
+set_value \
+    CONFIG_MESSAGE_LOGLEVEL_DEFAULT 3
+
+set_disable \
+    CONFIG_DEBUG_BUGVERBOSE \
+    CONFIG_DEBUG_FS \
+    CONFIG_DEBUG_KERNEL \
+    CONFIG_DEBUG_MISC \
+    CONFIG_DEBUG_PREEMPT \
+    CONFIG_DYNAMIC_DEBUG \
+    CONFIG_DYNAMIC_DEBUG_CORE \
+    CONFIG_EARLY_PRINTK \
+    CONFIG_FTRACE \
+    CONFIG_MAGIC_SYSRQ \
+    CONFIG_PRINTK_TIME \
+    CONFIG_STACKTRACE_BUILD_ID \
+    CONFIG_STRICT_DEVMEM \
+    CONFIG_SYMBOLIC_ERRNAME \
+    CONFIG_X86_DEBUG_FPU \
+    RUNTIME_TESTING_MENU \
+
 
 # 压缩模式
-scripts/config  \
-                -d CONFIG_MODULE_COMPRESS_ZSTD \
-                -d CONFIG_RD_BZIP2 \
-                -d CONFIG_RD_GZIP \
-                -d CONFIG_RD_LZ4 \
-                -d CONFIG_RD_LZMA \
-                -d CONFIG_RD_LZO \
-                -d CONFIG_RD_XZ \
-                -d CONFIG_ZSWAP \
-                -e CONFIG_KERNEL_ZSTD \
-                -e CONFIG_MODULE_COMPRESS_NONE \
-                -e CONFIG_RD_ZSTD \
-                -e CONFIG_ZRAM \
-                -e CONFIG_ZRAM_DEF_COMP_ZSTD \
+set_disable \
+    CONFIG_MODULE_COMPRESS_ZSTD \
+    CONFIG_RD_BZIP2 \
+    CONFIG_RD_GZIP \
+    CONFIG_RD_LZ4 \
+    CONFIG_RD_LZMA \
+    CONFIG_RD_LZO \
+    CONFIG_RD_XZ \
+    CONFIG_ZSWAP \
+
+set_enable \
+    CONFIG_KERNEL_ZSTD \
+    CONFIG_MODULE_COMPRESS_NONE \
+    CONFIG_RD_ZSTD \
+    CONFIG_ZRAM \
+    CONFIG_ZRAM_DEF_COMP_ZSTD \
+
 
 # 桌面快速响应
-scripts/config  \
-                -d CONFIG_NO_HZ \
-                -e CONFIG_BFQ_GROUP_IOSCHED \
-                -e CONFIG_HZ_1000 \
-                -e CONFIG_IOSCHED_BFQ \
-                -e CONFIG_NO_HZ_IDLE \
-                -e CONFIG_PREEMPT \
-                -e CONFIG_SCHED_AUTOGROUP \
-                -e CONFIG_TICK_CPU_ACCOUNTING \
+set_disable \
+    CONFIG_NO_HZ \
+
+set_enable \
+    CONFIG_BFQ_GROUP_IOSCHED \
+    CONFIG_HZ_1000 \
+    CONFIG_IOSCHED_BFQ \
+    CONFIG_NO_HZ_IDLE \
+    CONFIG_PREEMPT \
+    CONFIG_SCHED_AUTOGROUP \
+    CONFIG_TICK_CPU_ACCOUNTING \
+
 
 # BPF调整
-scripts/config  \
-                -d CONFIG_BPF_PRELOAD \
-                -e CONFIG_BPF \
-                -e CONFIG_BPF_JIT \
-                -e CONFIG_BPF_JIT_ALWAYS_ON \
-                -e CONFIG_BPF_JIT_DEFAULT_ON \
-                -e CONFIG_BPF_UNPRIV_DEFAULT_OFF \
-                -e CONFIG_CGROUP_BPF \
-                -e CONFIG_HAVE_EBPF_JIT \
+set_disable \
+    CONFIG_BPF_PRELOAD \
+
+set_enable \
+    CONFIG_BPF \
+    CONFIG_BPF_JIT \
+    CONFIG_BPF_JIT_ALWAYS_ON \
+    CONFIG_BPF_JIT_DEFAULT_ON \
+    CONFIG_BPF_UNPRIV_DEFAULT_OFF \
+    CONFIG_CGROUP_BPF \
+    CONFIG_HAVE_EBPF_JIT \
+
 
 # systemd需要
-scripts/config  \
-                -d CONFIG_SYSFS_DEPRECATED \
-                -e CONFIG_BPF_SYSCALL \
-                -e CONFIG_DEVTMPFS \
-                -e CONFIG_EPOLL \
-                -e CONFIG_EVENTFD \
-                -e CONFIG_EXPERT \
-                -e CONFIG_FHANDLE \
-                -e CONFIG_INOTIFY_USER \
-                -e CONFIG_PROC_FS \
-                -e CONFIG_SHMEM \
-                -e CONFIG_SIGNALFD \
-                -e CONFIG_SYSFS \
-                -e CONFIG_TIMERFD \
+set_disable \
+    CONFIG_SYSFS_DEPRECATED \
+
+set_enable \
+    CONFIG_BPF_SYSCALL \
+    CONFIG_DEVTMPFS \
+    CONFIG_EPOLL \
+    CONFIG_EVENTFD \
+    CONFIG_EXPERT \
+    CONFIG_FHANDLE \
+    CONFIG_INOTIFY_USER \
+    CONFIG_PROC_FS \
+    CONFIG_SHMEM \
+    CONFIG_SIGNALFD \
+    CONFIG_SYSFS \
+    CONFIG_TIMERFD \
+
 
 # iwd需要
-scripts/config  \
-                -e CONFIG_CRYPTO_AES \
-                -e CONFIG_CRYPTO_CBC \
-                -e CONFIG_CRYPTO_CMAC \
-                -e CONFIG_CRYPTO_DES \
-                -e CONFIG_CRYPTO_ECB \
-                -e CONFIG_CRYPTO_HMAC \
-                -e CONFIG_CRYPTO_MD4 \
-                -e CONFIG_CRYPTO_MD5 \
-                -e CONFIG_CRYPTO_SHA256 \
-                -e CONFIG_CRYPTO_SHA512 \
-                -e CONFIG_CRYPTO_USER_API_HASH \
-                -e CONFIG_CRYPTO_USER_API_SKCIPHER \
-                -e CONFIG_KEY_DH_OPERATIONS \
+set_enable \
+    CONFIG_CRYPTO_AES \
+    CONFIG_CRYPTO_CBC \
+    CONFIG_CRYPTO_CMAC \
+    CONFIG_CRYPTO_DES \
+    CONFIG_CRYPTO_ECB \
+    CONFIG_CRYPTO_HMAC \
+    CONFIG_CRYPTO_MD4 \
+    CONFIG_CRYPTO_MD5 \
+    CONFIG_CRYPTO_SHA256 \
+    CONFIG_CRYPTO_SHA512 \
+    CONFIG_CRYPTO_USER_API_HASH \
+    CONFIG_CRYPTO_USER_API_SKCIPHER \
+    CONFIG_KEY_DH_OPERATIONS \
+
 
 # 虚拟机需要
-scripts/config  \
-                -e CONFIG_VIRTUALIZATION \
-                -m CONFIG_KVM \
-                -m CONFIG_VIRTIO_FS \
-                -m CONFIG_VIRTIO_MEM \
+set_enable \
+    CONFIG_VIRTUALIZATION \
+
+set_module \
+    CONFIG_KVM \
+    CONFIG_VIRTIO_FS \
+    CONFIG_VIRTIO_MEM \
+
 
 # 牺牲安全性换性能
-scripts/config  \
-                --set-str CONFIG_CMDLINE "spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off" \
-                -d CONFIG_HARDENED_USERCOPY \
-                -d CONFIG_KEYS_REQUEST_CACHE \
-                -d CONFIG_KEY_DH_OPERATIONS \
-                -d CONFIG_KEY_NOTIFICATIONS \
-                -d CONFIG_MQ_IOSCHED_KYBER \
-                -d CONFIG_PAGE_TABLE_ISOLATION \
-                -d CONFIG_PERSISTENT_KEYRINGS \
-                -d CONFIG_RETPOLINE \
-                -d CONFIG_SECURITY \
-                -d CONFIG_SECURITYFS \
-                -d CONFIG_SECURITY_DMESG_RESTRICT \
-                -d CONFIG_STACKPROTECTOR \
-                -d CONFIG_X86_INTEL_TSX_MODE_AUTO \
-                -e CONFIG_CMDLINE_BOOL \
-                -e CONFIG_X86_INTEL_TSX_MODE_ON \
+set_string \
+    CONFIG_CMDLINE \
+    "spectre_v1=off spectre_v2=off spec_store_bypass_disable=off pti=off"
+
+set_disable \
+    CONFIG_HARDENED_USERCOPY \
+    CONFIG_KEYS_REQUEST_CACHE \
+    CONFIG_KEY_DH_OPERATIONS \
+    CONFIG_KEY_NOTIFICATIONS \
+    CONFIG_MQ_IOSCHED_KYBER \
+    CONFIG_PAGE_TABLE_ISOLATION \
+    CONFIG_PERSISTENT_KEYRINGS \
+    CONFIG_RETPOLINE \
+    CONFIG_SECURITY \
+    CONFIG_SECURITYFS \
+    CONFIG_SECURITY_DMESG_RESTRICT \
+    CONFIG_STACKPROTECTOR \
+    CONFIG_X86_INTEL_TSX_MODE_AUTO \
+
+set_enable \
+    CONFIG_CMDLINE_BOOL \
+    CONFIG_X86_INTEL_TSX_MODE_ON \
+
 
 # 苹果手机
-scripts/config  -m CONFIG_USB_IPHETH \
-                -m USB_NET_DRIVERS \
+set_module \
+    CONFIG_USB_IPHETH \
+    USB_NET_DRIVERS \
+
 
 # 文件系统
-scripts/config  \
-                -d CONFIG_EXT4_FS_SECURITY \
-                -d CONFIG_FS_ENCRYPTION \
-                -d CONFIG_FS_VERITY \
-                -e CONFIG_AUTOFS_FS \
-                -e CONFIG_BTRFS_FS \
-                -e CONFIG_BTRFS_FS_POSIX_ACL \
-                -e CONFIG_EXT4_FS_POSIX_ACL \
-                -e CONFIG_FAT_DEFAULT_UTF8 \
-                -e CONFIG_NETWORK_FILESYSTEMS \
-                -e CONFIG_NTFS3_FS_POSIX_ACL \
-                -e CONFIG_NTFS3_LZX_XPRESS \
-                -e CONFIG_VFAT_FS \
-                -m CONFIG_CIFS \
-                -m CONFIG_EXFAT_FS \
-                -m CONFIG_EXT4_FS \
-                -m CONFIG_FUSE_FS \
-                -m CONFIG_ISO9660_FS \
-                -m CONFIG_MSDOS_FS \
-                -m CONFIG_NTFS3_FS \
-                -m CONFIG_UDF_FS \
+set_disable \
+    CONFIG_EXT4_FS_SECURITY \
+    CONFIG_FS_ENCRYPTION \
+    CONFIG_FS_VERITY \
+
+set_enable \
+    CONFIG_AUTOFS_FS \
+    CONFIG_BTRFS_FS \
+    CONFIG_BTRFS_FS_POSIX_ACL \
+    CONFIG_EXT4_FS_POSIX_ACL \
+    CONFIG_FAT_DEFAULT_UTF8 \
+    CONFIG_NETWORK_FILESYSTEMS \
+    CONFIG_NTFS3_FS_POSIX_ACL \
+    CONFIG_NTFS3_LZX_XPRESS \
+    CONFIG_VFAT_FS \
+
+set_module \
+    CONFIG_CIFS \
+    CONFIG_EXFAT_FS \
+    CONFIG_EXT4_FS \
+    CONFIG_FUSE_FS \
+    CONFIG_ISO9660_FS \
+    CONFIG_MSDOS_FS \
+    CONFIG_NTFS3_FS \
+    CONFIG_UDF_FS \
+
 
 # 显卡
-scripts/config  -d CONFIG_DRM_NOUVEAU \
-                -m CONFIG_DRM_I915 \
-                -m CONFIG_DRM_SIMPLEDRM \
+set_disable \
+    CONFIG_DRM_NOUVEAU
+
+set_module \
+    CONFIG_DRM_I915 \
+    CONFIG_DRM_SIMPLEDRM \
+
 
 # 蓝牙
-scripts/config  \
-                -d CONFIG_BT_BNEP \
-                -d CONFIG_RFCOMM \
-                -e CONFIG_BT_HCIBTUSB \
-                -e CONFIG_BT_HCIUART \
-                -e CONFIG_BT_HIDP \
-                -e CONFIG_UHID \
-                -m CONFIG_BT \
+set_disable \
+    CONFIG_BT_BNEP \
+    CONFIG_RFCOMM \
+
+set_enable \
+    CONFIG_BT_HCIBTUSB \
+    CONFIG_BT_HCIUART \
+    CONFIG_BT_HIDP \
+    CONFIG_UHID \
+
+set_module \
+    CONFIG_BT \
+
 
 # 摄像头
-scripts/config  \
-                -d CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
-                -d CONFIG_MEDIA_PCI_SUPPORT \
-                -d CONFIG_MEDIA_RADIO_SUPPORT \
-                -d CONFIG_MEDIA_TEST_SUPPORT \
-                -e CONFIG_MEDIA_CAMERA_SUPPORT \
-                -e CONFIG_MEDIA_PLATFORM_SUPPORT \
-                -e CONFIG_MEDIA_SUBDRV_AUTOSELECT \
-                -e CONFIG_MEDIA_SUPPORT_FILTER \
-                -e CONFIG_MEDIA_USB_SUPPORT \
-                -e CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
-                -e CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
-                -e CONFIG_VIDEO_V4L2_SUBDEV_API \
-                -m CONFIG_MEDIA_SUPPORT \
-                -m CONFIG_SND_USB_AUDIO \
-                -m CONFIG_SND_USB_UA101 \
-                -m CONFIG_SND_USB_US122L \
-                -m CONFIG_SND_USB_USX2Y \
-                -m CONFIG_USB_VIDEO_CLASS \
-                -m CONFIG_VIDEO_DEV \
-                -m CONFIG_VIDEO_V4L2 \
+set_disable \
+    CONFIG_MEDIA_DIGITAL_TV_SUPPORT \
+    CONFIG_MEDIA_PCI_SUPPORT \
+    CONFIG_MEDIA_RADIO_SUPPORT \
+    CONFIG_MEDIA_TEST_SUPPORT \
+
+set_enable \
+    CONFIG_MEDIA_CAMERA_SUPPORT \
+    CONFIG_MEDIA_PLATFORM_SUPPORT \
+    CONFIG_MEDIA_SUBDRV_AUTOSELECT \
+    CONFIG_MEDIA_SUPPORT_FILTER \
+    CONFIG_MEDIA_USB_SUPPORT \
+    CONFIG_SND_USB_AUDIO_USE_MEDIA_CONTROLLER \
+    CONFIG_USB_VIDEO_CLASS_INPUT_EVDEV \
+    CONFIG_VIDEO_V4L2_SUBDEV_API \
+
+set_module \
+    CONFIG_MEDIA_SUPPORT \
+    CONFIG_SND_USB_AUDIO \
+    CONFIG_SND_USB_UA101 \
+    CONFIG_SND_USB_US122L \
+    CONFIG_SND_USB_USX2Y \
+    CONFIG_USB_VIDEO_CLASS \
+    CONFIG_VIDEO_DEV \
+    CONFIG_VIDEO_V4L2 \
+
 
 # 无线网卡
-scripts/config  \
-                -e CONFIG_MT76_LEDS \
-                -e CONFIG_WLAN_VENDOR_MEDIATEK \
-                -m CONFIG_MT76_CORE \
-                -m CONFIG_MT76_USB \
-                -m CONFIG_MT76x02_LIB \
-                -m CONFIG_MT76x02_USB \
-                -m CONFIG_MT76x2U \
-                -m CONFIG_MT76x2_COMMON \
+set_enable \
+    CONFIG_MT76_LEDS \
+    CONFIG_WLAN_VENDOR_MEDIATEK \
+
+set_module \
+    CONFIG_MT76_CORE \
+    CONFIG_MT76_USB \
+    CONFIG_MT76x02_LIB \
+    CONFIG_MT76x02_USB \
+    CONFIG_MT76x2U \
+    CONFIG_MT76x2_COMMON \
+
 
 # 手机USB网络共享
-scripts/config  -m CONFIG_USB_NET_DRIVERS \
-                -m CONFIG_USB_USBNET \
+set_module \
+    CONFIG_USB_NET_DRIVERS \
+    CONFIG_USB_USBNET \
+
 
 # USB设备支持
-scripts/config  \
-                -d CONFIG_USB_SERIAL \
-                -e CONFIG_USB_HID \
-                -e CONFIG_USB_UAS \
-                -m CONFIG_QRTR \
-                -m CONFIG_TYPEC \
-                -m CONFIG_USB_PRINTER \
-                -m CONFIG_USB_STORAGE \
+set_disable \
+    CONFIG_USB_SERIAL \
 
+set_enable \
+    CONFIG_USB_HID \
+    CONFIG_USB_UAS \
+
+set_module \
+    CONFIG_QRTR \
+    CONFIG_TYPEC \
+    CONFIG_USB_PRINTER \
+    CONFIG_USB_STORAGE \
+
+
+# # #
 # 刷新
 scripts/config  --refresh
 
+
 # # #
 # 图形界面调整编译选项
+# 一定要保存配置
 make menuconfig
 
 # 对比选项
 echo scripts/diffconfig .config.bak .config
 scripts/diffconfig .config.bak .config
-echo scripts/diffconfig .config.old .config
-scripts/diffconfig .config.old .config
 
 # 输出配置文件大小
 ls -lh .config
