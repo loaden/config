@@ -38,12 +38,16 @@ media-fonts/wqy-microhei
 media-gfx/blender
 media-gfx/flameshot
 media-gfx/gimp
+media-gfx/imagemagick
+media-gfx/imv
 media-libs/gst-plugins-good
 media-sound/audacious
+media-video/celluloid
 media-video/ffmpeg
 media-video/handbrake
 media-video/mpv
 media-video/obs-studio
+media-video/vlc
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-im/dingtalk
@@ -54,6 +58,7 @@ net-misc/remmina
 net-misc/telnet-bsd
 net-print/hplip
 net-print/hplip-plugin
+net-wireless/iwd
 sci-calculators/galculator
 sys-apps/baobab
 sys-apps/flatpak
