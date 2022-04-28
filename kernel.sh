@@ -23,7 +23,7 @@ BUILD_WITH_CLANG=0
 # 初始本地配置
 read -p "是否生成本地配置？[y/N/old]" choice
 case $choice in
-YES | yes | Y | y) mv .config .config.bak && make localmodconfig && sleep 1 ;;
+YES | yes | Y | y) mv .config .config.bak ; make localmodconfig && sleep 1 ;;
 OLD | old | O | o) make oldconfig && sleep 1 ;;
 N | n | '') true ;;
 *) echo 错误选择，程序意外退出！ && exit ;;
