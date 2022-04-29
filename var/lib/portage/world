@@ -45,8 +45,6 @@ net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
 net-misc/telnet-bsd
-net-print/hplip
-net-print/hplip-plugin
 sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
