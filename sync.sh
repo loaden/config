@@ -36,7 +36,7 @@ echo "# Hi..." > etc/portage/package.use/zz-autounmask
 # network
 [ -d /etc/systemd/ ] && rm -rf etc/systemd/
 mkdir -p etc/systemd/network
-[ -f /etc/systemd/network/20-wired.network ] && cp -f /etc/systemd/network/20-wired.network etc/systemd/network/
+cp -r /etc/systemd/network/* etc/systemd/network/
 
 # fstab
 cp -r /etc/fstab etc/
