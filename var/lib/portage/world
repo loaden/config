@@ -7,7 +7,6 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-i18n/fcitx5-meta
 app-misc/neofetch
-app-office/libreoffice-bin
 app-office/wps-office
 app-pda/usbmuxd
 app-portage/eix
