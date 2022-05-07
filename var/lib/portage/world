@@ -42,6 +42,7 @@ media-gfx/imagemagick
 media-gfx/imv
 media-libs/gst-plugins-good
 media-sound/audacious
+media-sound/pavucontrol
 media-video/ffmpeg
 media-video/handbrake
 media-video/mpv
