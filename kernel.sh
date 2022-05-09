@@ -635,7 +635,10 @@ esac
 if [ "$COMPILE_KERNEL" = "1" ]; then
     make -j$(nproc) && make modules_install && make install
     find /boot/ -maxdepth 1 -mmin -1 -type f -name vmlinuz-* -exec cp -fv {} /boot/efi/EFI/gentoo/vmlinuz \; -print
-    dracut --force /boot/initramfs-$(grep 'Kernel Configuration' .config | cut -d ' ' -f 3).img
+    rm -f /etc/dracut.conf.d/*
+    dracut --force /boot/initramfs-$(grep 'Kernel Configuration' .config | cut -d ' ' -f 3).img \
+        --hostonly --show-modules --modules "rootfs-block base btrfs" \
+        --no-early-microcode --fstab --zstd
     find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-* -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*
