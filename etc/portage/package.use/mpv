@@ -1,1 +1,1 @@
-media-video/mpv drm libmpv pulseaudio vaapi vdpau jpeg bluray
+media-video/mpv drm libmpv vaapi vdpau jpeg bluray pulseaudio
