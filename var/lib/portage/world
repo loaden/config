@@ -21,7 +21,6 @@ app-text/tree
 dev-lang/rust-bin
 dev-python/i3ipc
 dev-util/catfish
-dev-util/ccache
 dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
