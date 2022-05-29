@@ -19,7 +19,7 @@ app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
 app-text/tree
-dev-lang/rust-bin
+dev-lang/rust
 dev-python/i3ipc
 dev-util/catfish
 dev-util/meld
