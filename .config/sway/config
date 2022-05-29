@@ -27,9 +27,6 @@ set $menu wofi -I -m --show=drun --prompt="Hi..."
 # Alternatively, set GTK_USE_PORTAL=0 in your environment.
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-# 字体
-font pango:sans-serif 10
-
 # 不显示标题
 default_border pixel
 
@@ -93,6 +90,7 @@ for_window [title="创建新归档文件"] floating enable
 for_window [app_id="qt5ct"] floating enable, sticky enable
 for_window [title="DING"] floating enable
 for_window [class="Wine"] floating enable
+for_window [app_id="system-config-printer"] floating enable, resize set width 35 ppt height 30 ppt
 
 # 随机壁纸
 output * bg $(find ~/.config/wallpapers -type f | shuf -n1) fill
