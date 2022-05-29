@@ -1,5 +1,6 @@
 app-admin/eclean-kernel
 app-admin/sudo
+app-admin/system-config-printer
 app-arch/p7zip
 app-arch/unrar
 app-arch/xarchiver
@@ -25,6 +26,7 @@ dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
 gnome-extra/gnome-system-monitor
+gnome-extra/polkit-gnome
 gui-apps/foot
 gui-apps/grim
 gui-apps/mako
