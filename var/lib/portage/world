@@ -16,7 +16,6 @@ app-shells/bash-completion
 app-text/convmv
 app-text/tree
 dev-lang/rust-bin
-dev-util/ccache
 dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
@@ -47,6 +46,7 @@ sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/gptfdisk
+sys-apps/ripgrep
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
