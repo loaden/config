@@ -15,8 +15,7 @@ app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
 app-text/tree
-dev-lang/rust-bin
-dev-util/ccache
+dev-lang/rust
 dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
@@ -49,6 +48,7 @@ sys-apps/baobab
 sys-apps/flatpak
 sys-apps/gnome-disk-utility
 sys-apps/gptfdisk
+sys-apps/ripgrep
 sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
@@ -68,7 +68,7 @@ www-client/firefox
 x11-apps/xlsclients
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
-x11-terms/terminator
+x11-terms/alacritty
 x11-themes/adwaita-qt
 x11-themes/arc-theme
 x11-themes/fluent-icon-theme
