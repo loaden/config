@@ -4,8 +4,6 @@
     "editor.formatOnPaste": true,
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
-    "terminal.integrated.shell.windows": "cmd.exe",
-    "terminal.integrated.shell.linux": "bash",
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     "cmake.configureOnOpen": false,
     "cmake.debugConfig": {
@@ -62,7 +60,6 @@
     "window.titleBarStyle": "custom",
     "workbench.startupEditor": "none",
     "terminal.integrated.fontSize": 16,
-    "workbench.iconTheme": "material-icon-theme",
     "gitlens.views.branches.showBranchComparison": false,
     "terminal.explorerKind": "external",
     "terminal.external.linuxExec": "alacritty",
