@@ -63,5 +63,8 @@
     "workbench.startupEditor": "none",
     "terminal.integrated.fontSize": 16,
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "GitHub Dark Default"
+    "gitlens.views.branches.showBranchComparison": false,
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "alacritty",
+    "terminal.integrated.allowChords": false
 }
