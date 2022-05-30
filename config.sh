@@ -2,6 +2,12 @@
 # 维护：Yuchen Deng [loaden] 钉钉群：35948877
 # QQ群：19346666、111601117
 
+# 仅允许普通用户权限执行
+if [ $EUID == 0 ]; then
+    echo $(basename $0) 命令只允许普通用户执行
+    exit 1
+fi
+
 # 启动单元初始化配置
 sudo systemd-machine-id-setup
 sudo systemctl preset-all --preset-mode=enable-only --now
