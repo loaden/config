@@ -5,10 +5,11 @@ app-arch/p7zip
 app-arch/unrar
 app-arch/xarchiver
 app-arch/zstd
+app-editors/gnome-text-editor
 app-editors/mousepad
 app-editors/vscode
 app-eselect/eselect-repository
-app-i18n/fcitx5-meta
+app-i18n/fcitx-meta
 app-misc/jq
 app-misc/neofetch
 app-office/wps-office
@@ -83,7 +84,6 @@ www-client/firefox
 x11-apps/xlsclients
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
-x11-terms/terminator
 x11-themes/adwaita-qt
 x11-themes/arc-theme
 x11-themes/fluent-icon-theme
