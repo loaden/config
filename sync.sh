@@ -17,8 +17,8 @@ echo "# Hi..." > etc/portage/package.accept_keywords/zz-autounmask
 [ -d /etc/portage/ ] && cp -r /etc/portage/package.mask/ etc/portage/
 [ -d /etc/portage/ ] && cp -r /etc/portage/package.use/ etc/portage/
 echo "# Hi..." > etc/portage/package.use/zz-autounmask
-[ -d /etc/portage/ ] && cp -r /etc/portage/env/ etc/portage/
-[ -d /etc/portage/ ] && cp /etc/portage/package.env etc/portage/
+[ -d /etc/portage/env ] && cp -r /etc/portage/env/ etc/portage/
+[ -f /etc/portage/package.env ] && cp /etc/portage/package.env etc/portage/
 
 # kernel config
 [ -d /usr/src/linux/ ] && cp /usr/src/linux/.config usr/src/linux/
@@ -36,7 +36,7 @@ echo "# Hi..." > etc/portage/package.use/zz-autounmask
 # network
 [ -d /etc/systemd/ ] && rm -rf etc/systemd/
 mkdir -p etc/systemd/network
-cp -r /etc/systemd/network/* etc/systemd/network/
+[ -d /etc/systemd/network ] && cp -r /etc/systemd/network etc/systemd/
 
 # fstab
 cp -r /etc/fstab etc/

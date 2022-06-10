@@ -16,7 +16,7 @@ app-portage/pfl
 app-shells/bash-completion
 app-text/convmv
 app-text/tree
-dev-lang/rust
+dev-lang/rust-bin
 dev-util/meld
 dev-vcs/git
 dev-vcs/gitg
@@ -65,7 +65,7 @@ sys-libs/zlib
 sys-power/acpid
 sys-power/thermald
 sys-process/htop
-www-client/firefox
+www-client/firefox-bin
 x11-apps/xlsclients
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
