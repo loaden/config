@@ -9,18 +9,14 @@ if [ $EUID == 0 ]; then
 fi
 
 # 启动单元初始化配置
-sudo systemd-machine-id-setup
-sudo systemctl preset-all --preset-mode=enable-only --now
-systemd-machine-id-setup
-systemctl --user preset-all --now
+sudo systemd-firstboot --setup-machine-id
+sudo systemctl preset-all
 
 # 主机名
-if [ "$(hostname)" != "lucky" ]; then
-    read -p "Please input the hostname: " hostname
-    sudo hostnamectl set-hostname $hostname
-    if [[ ! $(cat /etc/hosts | grep $hostname) ]]; then
-        sudo HOSTNAME=$hostname bash -c 'echo -e "\n127.0.0.1\t$HOSTNAME.me $HOSTNAME\n" >> /etc/hosts'
-    fi
+HOSTNAME=lucky
+sudo hostnamectl hostname $HOSTNAME
+if [[ -z $(grep $HOSTNAME /etc/hosts) ]]; then
+    sudo HOSTNAME=$HOSTNAME bash -c 'echo -e "\n127.0.0.1\t$HOSTNAME.me $HOSTNAME\n" >> /etc/hosts'
 fi
 
 # 时区
@@ -52,14 +48,13 @@ sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
 
 # 用户组
-sudo usermod -aG users,audio,video $USER
+#sudo usermod -aG users,audio,video $USER
 sudo usermod -aG lpadmin $USER
-sudo usermod -aG scanner $USER
-sudo usermod -aG plugdev $USER
+#sudo usermod -aG scanner $USER
 sudo usermod -aG pcap $USER
 
 # udisks 支持 NTFS3
-sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
+#sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
 # 别名
 if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
@@ -70,16 +65,16 @@ fi
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
 
 # PipeWire替代PulseAudio
-sudo sed -i 's/.*autospawn =.*/autospawn = no/g' /etc/pulse/client.conf
-sudo sed -i 's/.*daemonize =.*/daemonize = no/g' /etc/pulse/daemon.conf
-systemctl --user disable --now pulseaudio.service pulseaudio.socket
-systemctl --user enable --now pipewire.socket pipewire-pulse.socket
-systemctl --user daemon-reload
+#sudo sed -i 's/.*autospawn =.*/autospawn = no/g' /etc/pulse/client.conf
+#sudo sed -i 's/.*daemonize =.*/daemonize = no/g' /etc/pulse/daemon.conf
+#systemctl --user disable --now pulseaudio.service pulseaudio.socket
+#systemctl --user enable --now pipewire.socket pipewire-pulse.socket
+#systemctl --user daemon-reload
 LANG=C pactl info | grep "Server Name"
 
 # PipeWire更换session服务
-systemctl --user disable pipewire-media-session.service
-systemctl --user --force enable wireplumber.service
+#systemctl --user disable pipewire-media-session.service
+#systemctl --user --force enable wireplumber.service
 
 # 蓝牙
 # sudo systemctl enable bluetooth --now
