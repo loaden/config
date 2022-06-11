@@ -43,7 +43,7 @@ sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
 
 # 用户组
-#sudo usermod -aG users,audio,video $USER
+sudo usermod -aG audio,video $USER
 sudo usermod -aG lpadmin $USER
 #sudo usermod -aG scanner $USER
 sudo usermod -aG pcap $USER
