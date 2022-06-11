@@ -38,7 +38,6 @@ media-video/mpv
 media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
-net-im/dingtalk
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
@@ -65,7 +64,7 @@ sys-libs/zlib
 sys-power/acpid
 sys-power/thermald
 sys-process/htop
-www-client/firefox-bin
+www-client/microsoft-edge
 x11-apps/xlsclients
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
