@@ -6,7 +6,7 @@ app-arch/zstd
 app-editors/gnome-text-editor
 app-editors/vscode
 app-eselect/eselect-repository
-app-i18n/fcitx5-meta
+app-i18n/fcitx-meta
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
