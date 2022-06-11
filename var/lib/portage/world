@@ -30,10 +30,8 @@ media-gfx/blender
 media-gfx/flameshot
 media-gfx/gimp
 media-gfx/simple-scan
-media-libs/gst-plugins-good
 media-sound/audacious
 media-video/ffmpeg
-media-video/handbrake
 media-video/mpv
 media-video/obs-studio
 net-analyzer/traceroute
@@ -54,7 +52,6 @@ sys-apps/usb_modeswitch
 sys-apps/usbutils
 sys-auth/polkit
 sys-boot/efibootmgr
-sys-devel/clang
 sys-fs/btrfs-progs
 sys-fs/dosfstools
 sys-kernel/dracut
