@@ -1,0 +1,3 @@
+app-i18n/fcitx-gtk gtk4 gtk3 gtk2
+app-i18n/fcitx-meta -chinese-addons -configtool rime gtk2 lua
+app-i18n/fcitx-qt onlyplugin qt5
