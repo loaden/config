@@ -8,7 +8,7 @@ sudo systemctl preset-all --preset-mode=enable-only
 
 # 网络
 sudo systemctl disable --now systemd-networkd.socket systemd-networkd.service
-sudo systemctl disable --now systemd-resolved.service
+# sudo systemctl disable --now systemd-resolved.service
 sudo systemctl enable --now NetworkManager.service
 
 # 主机名
@@ -55,10 +55,11 @@ sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=0,gid=0,noatime,prealloc" >
 # sudo systemctl enable bluetooth --now
 # bluetoothctl list
 
-# 添加中国用户源和官方GURU源
+# 配置中国用户源和官方GURU源
 sudo emerge -avu1 eselect-repository
 sudo eselect repository enable gentoo-zh >/dev/null
 # sudo eselect repository enable guru >/dev/null
+sudo eselect repository disable guru >/dev/null
 # emerge --sync
 
 
@@ -78,6 +79,9 @@ xdg-user-dirs-update --force
 if [ -z "$(grep .bash_aliases ~/.bashrc)" ]; then
     echo "[ -f ~/.bash_aliases ] && . ~/.bash_aliases" >> ~/.bashrc
 fi
+
+# 删除用户服务目录
+rm -rf ~/.config/systemd
 
 # PipeWire替代PulseAudio
 sudo sed -i 's/.*autospawn =.*/autospawn = no/g' /etc/pulse/client.conf
