@@ -38,6 +38,7 @@ media-video/mpv
 media-video/obs-studio
 net-analyzer/traceroute
 net-analyzer/wireshark
+net-im/dingtalk
 net-misc/anydesk
 net-misc/aria2
 net-misc/remmina
