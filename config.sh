@@ -35,18 +35,9 @@ eselect locale list
 # 允许弱密码
 sudo sed -i 's/enforce=everyone/enforce=none/g' /etc/security/passwdqc.conf
 
-# 配置默认终端
-sudo chsh -s /bin/bash $USER
-
 # 电源管理
 sudo systemctl enable acpid.service
 sudo systemctl enable thermald.service
-
-# 用户组
-sudo usermod -aG audio,video $USER
-sudo usermod -aG lpadmin $USER
-#sudo usermod -aG scanner $USER
-sudo usermod -aG pcap $USER
 
 # 支持NTFS3
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=0,gid=0,noatime,prealloc" > /etc/udisks2/mount_options.conf'
@@ -62,9 +53,8 @@ sudo systemctl restart polkit.service
 # 配置中国用户源和官方GURU源
 sudo emerge -avu1 eselect-repository
 sudo eselect repository enable gentoo-zh >/dev/null
-# sudo eselect repository enable guru >/dev/null
-sudo eselect repository disable guru >/dev/null
-# emerge --sync
+sudo eselect repository enable guru >/dev/null
+sudo eix-update
 
 
 ########################################################
@@ -74,6 +64,15 @@ if [ $EUID == 0 ]; then
     echo $(basename $0) 命令从现在开始只允许普通用户执行
     exit 1
 fi
+
+# 配置默认终端
+sudo chsh -s /bin/bash $USER
+
+# 用户组
+sudo usermod -aG audio,video $USER
+sudo usermod -aG lpadmin $USER
+#sudo usermod -aG scanner $USER
+sudo usermod -aG pcap $USER
 
 # 用户目录
 sudo emerge -avu1 xdg-user-dirs
