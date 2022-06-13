@@ -1,2 +1,6 @@
 x11-libs/libxkbcommon X
 sys-apps/dbus X
+media-libs/libpulse X
+dev-qt/qtgui X
+dev-qt/qtwidgets X
+x11-libs/cairo X

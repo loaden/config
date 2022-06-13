@@ -6,7 +6,7 @@ app-arch/zstd
 app-editors/gnome-text-editor
 app-editors/vscode
 app-eselect/eselect-repository
-app-i18n/fcitx5-meta
+app-i18n/fcitx-meta
 app-misc/neofetch
 app-office/wps-office
 app-pda/usbmuxd
@@ -60,7 +60,6 @@ sys-libs/zlib
 sys-power/acpid
 sys-power/thermald
 sys-process/htop
-www-client/firefox-bin
 x11-apps/xlsclients
 x11-drivers/nvidia-drivers
 x11-misc/qt5ct
