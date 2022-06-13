@@ -62,9 +62,8 @@ sudo systemctl restart polkit.service
 # 配置中国用户源和官方GURU源
 sudo emerge -avu1 eselect-repository
 sudo eselect repository enable gentoo-zh >/dev/null
-# sudo eselect repository enable guru >/dev/null
-sudo eselect repository disable guru >/dev/null
-# emerge --sync
+sudo eselect repository enable guru >/dev/null
+sudo eix-update
 
 
 ########################################################
