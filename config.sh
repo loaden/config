@@ -43,8 +43,9 @@ sudo systemctl enable thermald.service
 sudo bash -c 'echo -e "[defaults]\nntfs_defaults=uid=0,gid=0,noatime,prealloc" > /etc/udisks2/mount_options.conf'
 
 # wheel用户组授权polkit
-sudo bash -c 'echo -e "polkit.addAdminRule(function(action, subject) {\n    return ["unix-group:wheel"];\n});" > /etc/polkit-1/rules.d/10-admin.rules'
+sudo bash -c 'echo -e "polkit.addAdminRule(function(action, subject) {\n    return [\"unix-group:wheel\"];\n});" > /etc/polkit-1/rules.d/10-admin.rules'
 sudo systemctl restart polkit.service
+sudo systemctl daemon-reload
 
 # 蓝牙
 # sudo systemctl enable bluetooth --now
