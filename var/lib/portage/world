@@ -62,7 +62,7 @@ sys-libs/zlib
 sys-power/acpid
 sys-power/thermald
 sys-process/htop
-www-client/firefox-bin
+www-client/microsoft-edge
 x11-apps/xlsclients
 x11-misc/qt5ct
 x11-misc/xdg-user-dirs
