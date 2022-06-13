@@ -4,4 +4,4 @@
 
 for i in `sudo btrfs subvolume list -p / |grep .snapshots |awk '{print $ 11}'`; do sudo btrfs sub del /$i; done
 sudo rm -rf /.snapshots/*
-sudo rm -rf /home/.snapshots/*
+
