@@ -1,0 +1,47 @@
+{
+    "added": [
+        {
+            "title": "german (Switzerland) tl",
+            "subtitle": "by MrReSc #152"
+        },
+        {
+            "title": "german (Germany) tl",
+            "subtitle": "by pjanze #161"
+        },
+        {
+            "title": "italian tl",
+            "subtitle": "by starise #164"
+        },
+        {
+            "title": "spanish tl",
+            "subtitle": "by fjsevilla-dev #168"
+        }
+    ],
+    "removed": [
+        {
+            "title": "hacky partial touch 'support'"
+        },
+        {
+            "title": "'App Switcher and Tiling Popup' setting"
+        }
+    ],
+    "changed": [
+        {
+            "title": "Port to GNOME 42 and drop support for older versions"
+        },
+        {
+            "title": "Update Brazillian Portuguese tl",
+            "subtitle": "by ItzJaum #157"
+        },
+        {
+            "title": "Layouts with app attachments",
+            "subtitle": "if an app is attached to a layout rect, try to tile an existing window instance first before opening a new one"
+        }
+
+    ],
+    "fixed": [
+        {
+            "title": "Override GNOME's default shortcuts only if they are set in Tiling Assistant"
+        }
+    ]
+}
