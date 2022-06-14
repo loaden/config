@@ -30,19 +30,25 @@ sudo btrfs subvolume list -p / | grep -v .snapshots
 # 配置
 sudo snapper list-configs
 sudo snapper list -a
+sudo snapper set-config ALLOW_GROUPS=wheel
+sudo snapper set-config SYNC_ACL=yes
 sudo snapper set-config FREE_LIMIT=2g
 sudo snapper set-config TIMELINE_CREATE=yes
+sudo snapper set-config TIMELINE_MIN_AGE=1200
 sudo snapper set-config TIMELINE_CLEANUP=yes
 sudo snapper set-config TIMELINE_LIMIT_HOURLY=3
 sudo snapper set-config TIMELINE_LIMIT_DAILY=7
 sudo snapper set-config TIMELINE_LIMIT_WEEKLY=3
 sudo snapper set-config TIMELINE_LIMIT_MONTHLY=0
 sudo snapper set-config TIMELINE_LIMIT_YEARLY=0
-sudo snapper set-config TIMELINE_MIN_AGE=1800
+sudo snapper set-config NUMBER_CLEANUP=yes
+sudo snapper set-config NUMBER_MIN_AGE=1200
+sudo snapper set-config NUMBER_LIMIT=10
+sudo snapper set-config NUMBER_LIMIT_IMPORTANT=3
 sudo snapper set-config EMPTY_PRE_POST_CLEANUP=yes
-sudo snapper set-config NUMBER_LIMIT=15
-sudo snapper set-config NUMBER_LIMIT_IMPORTANT=5
+sudo btrfs qgroup show /
 sudo btrfs quota disable /
+sudo btrfs subvolume list -s / | wc -l
 
 # 启用定时快照
 if [ "$(systemctl is-enabled snapper-timeline.timer)" = "disabled" ]; then
@@ -61,4 +67,3 @@ if [ "$(systemctl is-enabled snapper-cleanup.timer)" = "disabled" ]; then
     sudo systemctl enable snapper-cleanup.timer
     sudo systemctl start snapper-cleanup.timer
 fi
-
