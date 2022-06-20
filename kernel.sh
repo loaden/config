@@ -620,6 +620,12 @@ set_module \
     CONFIG_USB_PRINTER \
     CONFIG_USB_STORAGE \
 
+# 罗技驱动
+set_module \
+    CONFIG_HID_LOGITECH \
+    CONFIG_HID_LOGITECH_DJ \
+    CONFIG_HID_LOGITECH_HIDPP \
+
 
 # # #
 # 刷新
