@@ -3,7 +3,7 @@ app-admin/sudo
 app-arch/p7zip
 app-arch/unrar
 app-arch/zstd
-app-backup/timeshift
+app-backup/snapper
 app-editors/gnome-text-editor
 app-editors/vscode
 app-eselect/eselect-repository
@@ -61,6 +61,7 @@ sys-libs/zlib
 sys-power/acpid
 sys-power/thermald
 sys-process/htop
+www-client/microsoft-edge
 x11-apps/xlsclients
 x11-drivers/nvidia-drivers
 x11-misc/qt5ct
