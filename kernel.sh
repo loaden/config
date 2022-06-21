@@ -657,7 +657,7 @@ if [ "$COMPILE_KERNEL" = "1" ]; then
     rm -f /etc/dracut.conf.d/*
     dracut --force /boot/initramfs-$(grep 'Kernel Configuration' /usr/src/linux/.config | cut -d ' ' -f 3).img \
         --hostonly --show-modules --modules "rootfs-block base btrfs" \
-        --no-early-microcode --fstab --zstd
+        --no-early-microcode --fstab --zstd --no-kernel
     find /boot/ -maxdepth 1 -mmin -1 -type f -name initramfs-*.img -exec cp -fv {} /boot/efi/EFI/gentoo/initramfs.img \; -print
     ls -lh /boot/efi/EFI/gentoo/
     ls -lh /boot/vmlinuz*
