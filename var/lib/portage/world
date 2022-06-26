@@ -3,6 +3,7 @@ app-admin/sudo
 app-arch/p7zip
 app-arch/unrar
 app-arch/zstd
+app-backup/snapper
 app-editors/gnome-text-editor
 app-editors/vscode
 app-eselect/eselect-repository
@@ -22,6 +23,7 @@ dev-vcs/git
 dev-vcs/gitg
 gnome-base/gnome
 gnome-extra/gnome-calculator
+gnome-extra/gnome-system-monitor
 gnome-extra/gnome-tweaks
 gnome-extra/gnome-weather
 gui-apps/grim
